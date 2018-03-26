@@ -192,7 +192,8 @@ app.get('*', function(req, res){
   res.send('404 Error');
 });
 
-app.listen('8081');
-console.log('Server listening on port 8081');
+const port = process.env.PORT || 5000;
+app.listen(port);
+console.log(`Server listening on port 8081`);
 
 exports = module.exports = app;
