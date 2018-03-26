@@ -115,14 +115,22 @@ class Prospects extends Component {
 
   render() {
     let {prospects, categories} = this.state;
+    let data = <div className="loading">Collecting data...</div>;
+    if (prospects.length !== 0) {
+      data = (
+        <div className="prospects-container">
+          <ProspectFilter handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+          <ProspectTable
+            prospects={prospects}
+            categories={categories}
+            sortColumn={this.sortColumn}
+          />
+        </div>
+     )
+    }
     return (
-      <div className="prospects-container">
-        <ProspectFilter handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
-        <ProspectTable
-          prospects={prospects}
-          categories={categories}
-          sortColumn={this.sortColumn}
-         />
+      <div>
+        {data}
       </div>
     );
   }
