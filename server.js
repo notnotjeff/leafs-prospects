@@ -1,4 +1,5 @@
 var express = require('express');
+const path  = require('path');
 var fs      = require('fs');
 var rp      = require('request-promise');
 var cheerio = require('cheerio');
@@ -8,6 +9,8 @@ var backend = require('./prospects.js');
 
 // Get And Set Backend Prospect Array
 const prospects = backend.prospects;
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 function getAge(dateString)
 {
@@ -188,12 +191,12 @@ app.get('/prospects', function(req, res){
     });
 });
 
-app.get('*', function(req, res){
-  res.send('404 Error');
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 const port = process.env.PORT || 5000;
 app.listen(port);
-console.log(`Server listening on port 8081`);
+console.log(`Server listening on port ${port}`);
 
 exports = module.exports = app;
