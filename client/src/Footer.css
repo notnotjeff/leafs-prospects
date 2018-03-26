@@ -1,0 +1,16 @@
+.Footer {
+  margin: 50px 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Footer span:first-child {
+  margin-bottom: 10px;
+}
+
+.Footer span:last-child {
+  display: flex;
+  justify-content: space-between;
+}

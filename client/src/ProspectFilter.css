@@ -1,0 +1,14 @@
+.filter {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 20px 0;
+}
+
+.filter label {
+  padding: 0 20px;
+}
+
+.filter label select {
+  margin-left: 10px;
+}
