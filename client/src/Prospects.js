@@ -93,16 +93,17 @@ class Prospects extends Component {
         let fail = false;
         filterCategories.forEach(f => {
           if (filter[f] !== p[f] && filter[f] !== "Any") {
-            fail = true;
-            // Exceptions for grouping positions/Canadian hockey leagues
             if (f === "position" && filter[f] === "F") {
-              if (p[f] === "C" || p[f] === "LW" || p[f] === "RW" || p[f] === "LW/RW") { fail = false }
+              if (p[f] !== "C" && p[f] !== "LW" && p[f] !== "RW" && p[f] !== "LW/RW") { fail = true }
             }
-            if (f === "position" && filter[f] === "W") {
-              if (p[f] === "LW" || p[f] === "RW" || p[f] === "LW/RW") { fail = false }
+            else if (f === "position" && filter[f] === "W") {
+              if (p[f] !== "LW" && p[f] !== "RW" && p[f] !== "LW/RW") { fail = true }
             }
-            if (f === "league" && filter[f] === "CHL") {
-              if (p[f] === "OHL" || p[f] === "QMJHL" || p[f] === "WHL") { fail = false }
+            else if (f === "league" && filter[f] === "CHL") {
+              if (p[f] !== "OHL" && p[f] !== "QMJHL" && p[f] !== "WHL") { fail = true }
+            }
+            else {
+              fail = true;
             }
           }
         });
@@ -116,7 +117,7 @@ class Prospects extends Component {
   render() {
     let {prospects, categories} = this.state;
     let data = <div className="loading">Collecting data...</div>;
-    if (prospects.length !== 0) {
+    if (this.state.originalProspects.length !== 0) {
       data = (
         <div className="prospects-container">
           <ProspectFilter handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
