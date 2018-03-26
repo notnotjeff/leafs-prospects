@@ -1,0 +1,7 @@
+.prospects-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  padding: 5px;
+  box-sizing: border-box;
+}
