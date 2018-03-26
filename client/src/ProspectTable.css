@@ -1,5 +1,6 @@
 .table-container {
   overflow-x: scroll;
+  margin-top: 30px;
 }
 
 table {
@@ -7,9 +8,6 @@ table {
   border-spacing: 0;
   font-size: 18px;
   box-shadow: 1px 1px 6px black;
-}
-
-table td {
 }
 
 table td,
@@ -22,15 +20,7 @@ table th {
   background-color: #053975;
   color: white;
 }
-
-table thead tr:first-child th {
-  position: sticky;
-  top: -3px;
-}
-
 table thead tr:last-child th {
-  position: sticky;
-  top: 24px;
   cursor: pointer;
 }
 

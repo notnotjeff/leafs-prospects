@@ -14,7 +14,7 @@ class ProspectTable extends Component {
               <th colSpan="4">Rates</th>
             </tr>
 
-            <tr>
+            <tr className="categories">
               {categories.map((c, i) =>
                 <th
                   key={i}
