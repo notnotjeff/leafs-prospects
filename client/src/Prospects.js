@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Prospects.css';
-// import firebase from './firebase.js';
+import firebase from './firebase.js';
 import ProspectTable from './ProspectTable';
 import ProspectFilter from './ProspectFilter';
 
