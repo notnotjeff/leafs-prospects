@@ -8,7 +8,8 @@ class ProspectFilter extends Component {
     this.state = {
       leagues: ["Any", "AHL", "CHL", "ECHL", "KHL", "Liiga", "MHL", "NCAA", "OHL", "QMJHL", "SHL", "VHL", "WHL"],
       positions: ["Any", "F", "D", "W", "LW", "RW", "C"],
-      shoots: ["Any", "L", "R"]
+      shoots: ["Any", "L", "R"],
+      rounds: ["Any", 1, 2, 3, 4, 5, 6, 7, "Undrafted"]
     }
   }
 
@@ -27,6 +28,10 @@ class ProspectFilter extends Component {
         <label>
           Shoots:
           <FilterOption name="shoots" options={this.state.shoots} handleChange={handleChange} />
+        </label>
+        <label>
+          Round:
+          <FilterOption name="round" options={this.state.rounds} handleChange={handleChange} />
         </label>
       </form>
     )

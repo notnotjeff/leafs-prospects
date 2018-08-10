@@ -16,6 +16,8 @@ class Prospects extends Component {
         { name: "Position", value: "position" },
         { name: "Shoots", value: "shoots"},
         { name: "Age", value: "age"},
+        { name: "DY", value: "draft_year"},
+        { name: "RD", value: "round"},
         { name: "GP", value: "games_played"},
         { name: "G", value: "goals"},
         { name: "A", value: "assists"},
@@ -27,11 +29,12 @@ class Prospects extends Component {
         { name: "S/G", value: "shots_pg" } ],
       sortColumn: "",
       sortDirection: "asc",
-      filterCategories: ["league", "position", "shoots"],
+      filterCategories: ["league", "position", "shoots", "round"],
       filter: {
         league: "Any",
         position: "Any",
-        shoots: "Any"
+        shoots: "Any",
+        round: "Any"
       }
     }
     this.sortColumn = this.sortColumn.bind(this);
@@ -68,7 +71,7 @@ class Prospects extends Component {
       } else {
         sortDirection = "desc";
       }
-    } else if (sortColumn !== columnName && (columnName === "last_name" || columnName === "league" || columnName === "position" || columnName === "shoots")) {
+    } else if (sortColumn !== columnName && (columnName === "last_name" || columnName === "league" || columnName === "position" || columnName === "shoots" || columnName === "round")) {
       sortDirection = "asc";
     }
     else {
@@ -77,9 +80,17 @@ class Prospects extends Component {
 
     let sortProspects = this.state.prospects.sort((a, b) => {
       if (sortDirection === "desc") {
+        // Sort null values to the bottom
+        if (a[columnName] == null) return 1;
+        if (b[columnName] == null) return -1;
+        
         if (a[columnName] > b[columnName]) return -1;
         if (a[columnName] < b[columnName]) return 1;
       } else {
+        // Sort null values to the bottom
+        if (a[columnName] == null) return 1;
+        if (b[columnName] == null) return -1;
+        
         if (a[columnName] < b[columnName]) return -1;
         if (a[columnName] > b[columnName]) return 1;
       }
@@ -104,7 +115,13 @@ class Prospects extends Component {
       let prospects = this.state.originalProspects.filter(p => {
         let fail = false;
         filterCategories.forEach(f => {
-          if (filter[f] !== p[f] && filter[f] !== "Any") {
+          if (f === "round" && filter[f] !== "Any") { 
+            if (filter[f] === "Undrafted" && p[f] !== null) { 
+              fail = true;
+            } else if (+p[f] !== +filter[f] && filter[f] !== "Undrafted") { 
+              fail = true;
+            }
+          } else if (filter[f] !== p[f] && filter[f] !== "Any") {
             if (f === "position" && filter[f] === "F") {
               if (p[f] !== "C" && p[f] !== "LW" && p[f] !== "RW" && p[f] !== "LW/RW") { fail = true }
             }

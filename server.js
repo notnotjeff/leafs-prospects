@@ -54,7 +54,9 @@ function scrape(prospects) {
                       var position = p.position;
                       var shoots = p.shoots;
                       var age = getAge(p.dob);
-                      var ep_url = p.ep_url
+                      var ep_url = p.ep_url;
+                      var round = p.round;
+                      var draft_year = p.draft_year;
 
                       if (p.league === "OHL") {
                         var goals = data.SiteKit.Player.regular[0].goals;
@@ -192,7 +194,9 @@ function scrape(prospects) {
                         goals_pg,
                         assists_pg,
                         points_pg,
-                        shots_pg
+                        shots_pg,
+                        round,
+                        draft_year
                       };
                     })
                     .catch(err => {

@@ -18,15 +18,29 @@ table th {
 
 table th {
   background-color: #053975;
+  border: 1px solid #053975;
   color: white;
 }
 table thead tr:last-child th {
   cursor: pointer;
 }
 
+.last_name, tbody tr td:first-child {
+  position: sticky;
+  left: -2px;
+}
+
+tbody tr td:first-child {
+  background-color: white;
+}
+
 @media only screen and (max-width: 1000px) {
   table td,
   table th {
     padding: 5px 8px;
+  }
+
+  tbody tr td:first-child {
+    min-width: 130px;
   }
 }

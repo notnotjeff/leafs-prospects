@@ -9,7 +9,8 @@ class ProspectTable extends Component {
         <table>
           <thead>
             <tr>
-              <th colSpan="5">Bio</th>
+              <th colSpan="1" className="last_name"></th>
+              <th colSpan="7">Bio</th>
               <th colSpan="5">Stats</th>
               <th colSpan="4">Rates</th>
             </tr>
@@ -18,6 +19,7 @@ class ProspectTable extends Component {
               {categories.map((c, i) =>
                 <th
                   key={i}
+                  className={c.value}
                   onClick={() => { sortColumn(c.value) }}>{c.name}</th>
               )}
             </tr>
@@ -25,11 +27,13 @@ class ProspectTable extends Component {
           <tbody>
             {prospects.map((p, i) =>
               <tr key={i}>
-                <td><a href={p.ep_url}>{p.first_name} {p.last_name}</a></td>
+                <td><a href={p.ep_url} target="_blank">{p.first_name} {p.last_name}</a></td>
                 <td>{p.league}</td>
                 <td>{p.position}</td>
                 <td>{p.shoots}</td>
                 <td>{p.age}</td>
+                <td>{p.draft_year}</td>
+                <td>{p.round}</td>
                 <td>{p.games_played}</td>
                 <td>{p.goals}</td>
                 <td>{p.assists}</td>
