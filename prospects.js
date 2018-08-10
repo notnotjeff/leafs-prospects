@@ -44,17 +44,6 @@ module.exports.prospects = [
     ep_url: "http://www.eliteprospects.com/player.php?player=224910"
   },
   {
-    first_name: "Andreas",
-    last_name: "Johnsson",
-    position: "LW",
-    shoots: "L",
-    dob: "1994-11-21",
-    player_id: 6382,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6382&season_id=57&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=43991"
-  },
-  {
     first_name: "Jeremy",
     last_name: "Bracco",
     position: "RW",
@@ -152,17 +141,6 @@ module.exports.prospects = [
     profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6966&season_id=57&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
     league: "AHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=85683"
-  },
-  {
-    first_name: "Miro",
-    last_name: "Aaltonen",
-    position: "C",
-    shoots: "L",
-    dob: "1993-06-07",
-    player_id: 6892,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6892&season_id=57&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=44162"
   },
   {
     first_name: "Martin",
@@ -284,5 +262,93 @@ module.exports.prospects = [
     profile_url: "http://liiga.fi/pelaajat/100025980/lindgren-jesper",
     league: "Liiga",
     ep_url: "http://www.eliteprospects.com/player.php?player=187806"
+  },
+  {
+    first_name: "Rasmus",
+    last_name: "Sandin",
+    position: "D",
+    shoots: "L",
+    dob: "2000-03-07",
+    player_id: 7852,
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7852&category=seasonstats",
+    league: "OHL",
+    ep_url: "https://www.eliteprospects.com/player/289453/rasmus-sandin"
+  },
+  {
+    first_name: "Sean",
+    last_name: "Durzi",
+    position: "D",
+    shoots: "L",
+    dob: "1998-10-21",
+    player_id: 7174,
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7174&category=seasonstats",
+    league: "OHL",
+    ep_url: "https://www.eliteprospects.com/player/268973/sean-durzi"
+  },
+  {
+    first_name: "Semyon",
+    last_name: "Der-Arguchintsev",
+    position: "C",
+    shoots: "R",
+    dob: "2000-09-15",
+    player_id: 7484,
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7484&category=seasonstats",
+    league: "OHL",
+    ep_url: "https://www.eliteprospects.com/player/315260/semyon-der-arguchintsev"
+  },
+  {
+    first_name: "Riley",
+    last_name: "Stotts",
+    position: "C",
+    shoots: "L",
+    dob: "2000-01-05",
+    player_id: 27355,
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27355&category=seasonstats",
+    league: "WHL",
+    ep_url: "https://www.eliteprospects.com/player/201715/riley-stotts"
+  },
+  {
+    first_name: "Mac",
+    last_name: "Hollowell",
+    position: "D",
+    shoots: "R",
+    dob: "1998-09-26",
+    player_id: 6948,
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=6948&category=seasonstats",
+    league: "OHL",
+    ep_url: "https://www.eliteprospects.com/player/267652/mac-hollowell"
+  },
+  {
+    first_name: "Filip",
+    last_name: "Kral",
+    position: "D",
+    shoots: "L",
+    dob: "1999-10-20",
+    player_id: 27960,
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27960&category=seasonstats",
+    league: "WHL",
+    ep_url: "https://www.eliteprospects.com/player/247241/filip-kral"
+  },
+  {
+    first_name: "Pontus",
+    last_name: "Holmberg",
+    position: "LW",
+    shoots: "L",
+    dob: "1999-03-09",
+    player_id: 0,
+    profile_url: "https://www.shl.se/spelare/qTQ-6qrzYidap__pontus-holmberg/statistics",
+    league: "SHL",
+    ep_url: "https://www.eliteprospects.com/player/265859/pontus-holmberg"
+  },
+  {
+    first_name: "Semyon",
+    last_name: "Kizimov",
+    position: "LW",
+    shoots: "L",
+    dob: "2000-01-19",
+    player_id: 25697,
+    profile_url: "https://engmhl.khl.ru/players/25697/",
+    league: "VHL",
+    ep_url: "https://www.eliteprospects.com/player/420947/semyon-kizimov"
   }
 ]

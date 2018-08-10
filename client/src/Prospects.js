@@ -45,7 +45,6 @@ class Prospects extends Component {
     fetch('/prospects')
       .then(res => res.json())
       .then(prospects => {
-        console.log(prospects);
         this.setState({ prospects, originalProspects: prospects });
       });
 

@@ -29,7 +29,7 @@ function scrape(prospects) {
   let promises = [];
 
   prospects.forEach((p, i) => {
-    if (p.league === "OHL" || p.league === "AHL" || p.league === "ECHL") {
+    if (p.league === "OHL" || p.league === "AHL" || p.league === "ECHL" || p.league == "WHL") {
       var url = {
         url: p.profile_url,
         json: true
@@ -57,6 +57,26 @@ function scrape(prospects) {
                       var ep_url = p.ep_url
 
                       if (p.league === "OHL") {
+                        var goals = data.SiteKit.Player.regular[0].goals;
+                        var assists = data.SiteKit.Player.regular[0].assists;
+                        var points = data.SiteKit.Player.regular[0].points;
+                        var shots = data.SiteKit.Player.regular[0].shots;
+                        var games_played = data.SiteKit.Player.regular[0].games_played;
+                      } else if (p.league === "WHL") {
+                        if (p.player_id === 27355) { // If player is Riley Stotts it means he was traded, add up both team stats
+                          var goals = +data.SiteKit.Player.regular[0].goals + +data.SiteKit.Player.regular[1].goals;
+                          var assists = +data.SiteKit.Player.regular[0].assists + +data.SiteKit.Player.regular[1].assists;
+                          var points = +data.SiteKit.Player.regular[0].points + +data.SiteKit.Player.regular[1].points;
+                          var shots = +data.SiteKit.Player.regular[0].shots + +data.SiteKit.Player.regular[1].shots;
+                          var games_played = +data.SiteKit.Player.regular[0].games_played + +data.SiteKit.Player.regular[1].games_played;
+                        } else {
+                          var goals = data.SiteKit.Player.regular[0].goals;
+                          var assists = data.SiteKit.Player.regular[0].assists;
+                          var points = data.SiteKit.Player.regular[0].points;
+                          var shots = data.SiteKit.Player.regular[0].shots;
+                          var games_played = data.SiteKit.Player.regular[0].games_played;
+                        }
+                      } else if (p.league === "QMJHL") {
                         var goals = data.SiteKit.Player.regular[0].goals;
                         var assists = data.SiteKit.Player.regular[0].assists;
                         var points = data.SiteKit.Player.regular[0].points;
@@ -110,6 +130,12 @@ function scrape(prospects) {
                         var points = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(6)').text();
                         var shots = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(15)').text();
                         var games_played = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(3)').text();
+                      } else if (p.last_name === "Kizimov") {
+                        var goals = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(4)').text();
+                        var assists = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(5)').text();
+                        var points = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(6)').text();
+                        var shots = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(15)').text();
+                        var games_played = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(3)').text();
                       } else if (p.league === "NCAA") {
                         // console.log(data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(3)').text());
                         var goals = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(4)').text();
