@@ -112,24 +112,23 @@ function scrape(prospects) {
                         var games_played = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(3)').text();
                       } else if (p.league === "NCAA") {
                         // console.log(data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(3)').text());
-                        var goals = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(4)').text();
-                        var assists = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(5)').text();
-                        var points = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(6)').text();
-                        var shots = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(10)').text();
-                        var games_played = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(3)').text();
+                        var goals = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(4)').text();
+                        var assists = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(5)').text();
+                        var points = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(6)').text();
+                        var shots = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(10)').text();
+                        var games_played = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(3)').text();
                       } else if (p.last_name === "Greenway") {
-                        console.log(data);
                         var goals = "";
                         var assists = "";
                         var points = "";
                         var shots = "";
                         var games_played = "";
                       } else if (p.league === "Liiga") {
-                        var goals = data('#stats-section > table:nth-child(2) > tbody > tr > td:nth-child(5)').text();
-                        var assists = data('#stats-section > table:nth-child(2) > tbody > tr > td:nth-child(6)').text();
-                        var points = data('#stats-section > table:nth-child(2) > tbody > tr > td:nth-child(7)').text();
-                        var shots = data('#stats-section > table:nth-child(2) > tbody > tr > td:nth-child(15)').text();
-                        var games_played = data('#stats-section > table:nth-child(2) > tbody > tr > td:nth-child(4)').text();
+                        var goals = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(5)').text();
+                        var assists = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(6)').text();
+                        var points = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(7)').text();
+                        var shots = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(15)').text();
+                        var games_played = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(4)').text();
                       }
 
                       if (Number(games_played) !== 0 || Number(games_played) !== NaN) {
@@ -175,7 +174,6 @@ function scrape(prospects) {
                     })
                   );
   });
-
   return Promise.all(promises);
 }
 
@@ -192,7 +190,7 @@ app.get('/prospects', function(req, res){
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.send('There is nothing here.');
 });
 
 const port = process.env.PORT || 5000;
@@ -200,3 +198,11 @@ app.listen(port);
 console.log(`Server listening on port ${port}`);
 
 exports = module.exports = app;
+
+// Fetch Code in Prospects.js when just getting info from API, goes in ComponentDidMount
+
+// fetch('/prospects')
+//       .then(res => res.json())
+//       .then(prospects => {
+//         this.setState({ prospects, originalProspects: prospects });
+//       });

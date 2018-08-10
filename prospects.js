@@ -6,7 +6,7 @@ module.exports.prospects = [
     shoots: "L",
     dob: "1999-01-27",
     player_id: 7146,
-    profile_url: "http://cluster.leaguestat.com/feed/?feed=modulekit&view=player&key=f109cf290fcf50d4&fmt=json&client_code=ohl&lang=en&player_id=7146&category=seasonstats",
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7146&category=seasonstats",
     league: "OHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=273797"
   },
@@ -17,31 +17,9 @@ module.exports.prospects = [
     shoots: "R",
     dob: "1999-03-06",
     player_id: 7308,
-    profile_url: "http://cluster.leaguestat.com/feed/?feed=modulekit&view=player&key=f109cf290fcf50d4&fmt=json&client_code=ohl&lang=en&player_id=7308&category=seasonstats",
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7308&category=seasonstats",
     league: "OHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=302228"
-  },
-  {
-    first_name: "Nicolas",
-    last_name: "Mattinen",
-    position: "D",
-    shoots: "R",
-    dob: "1998-03-05",
-    player_id: 7107,
-    profile_url: "http://cluster.leaguestat.com/feed/?feed=modulekit&view=player&key=f109cf290fcf50d4&fmt=json&client_code=ohl&lang=en&player_id=7107&category=seasonstats",
-    league: "OHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=251744"
-  },
-  {
-    first_name: "Keaton",
-    last_name: "Middleton",
-    position: "D",
-    shoots: "L",
-    dob: "1998-02-10",
-    player_id: 6753,
-    profile_url: "http://cluster.leaguestat.com/feed/?feed=modulekit&view=player&key=f109cf290fcf50d4&fmt=json&client_code=ohl&lang=en&player_id=6753&category=seasonstats",
-    league: "OHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=249597"
   },
   {
     first_name: "Ryan",
@@ -50,7 +28,7 @@ module.exports.prospects = [
     shoots: "L",
     dob: "1999-01-29",
     player_id: 7117,
-    profile_url: "http://cluster.leaguestat.com/feed/?feed=modulekit&view=player&key=f109cf290fcf50d4&fmt=json&client_code=ohl&lang=en&player_id=7117&category=seasonstats",
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7117&category=seasonstats",
     league: "OHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=289231"
   },
@@ -226,7 +204,7 @@ module.exports.prospects = [
     shoots: "L",
     dob: "1997-12-01",
     player_id: 0,
-    profile_url: "https://www.shl.se/lag/087a-087aTQv9u__frolunda-hc/qQ9-3230HHhqE__carl-grundstrom/statistics",
+    profile_url: "https://www.shl.se/spelare/qQ9-3230HHhqE__carl-grundstrom/statistics",
     league: "SHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=113516"
   },
@@ -237,7 +215,7 @@ module.exports.prospects = [
     shoots: "L",
     dob: "1996-05-31",
     player_id: 0,
-    profile_url: "https://www.shl.se/lag/3db0-3db09jXTE__hv71/qRh-1LnWA7ztX__pierre-engvall/statistics",
+    profile_url: "https://www.shl.se/spelare/qRh-1LnWA7ztX__pierre-engvall/statistics",
     league: "SHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=147720"
   },
@@ -284,17 +262,6 @@ module.exports.prospects = [
     profile_url: "https://www.collegehockeynews.com/players/career/Dakota-Joshua/29891",
     league: "NCAA",
     ep_url: "http://www.eliteprospects.com/player.php?player=194948"
-  },
-  {
-    first_name: "Nolan",
-    last_name: "Vesey",
-    position: "LW",
-    shoots: "L",
-    dob: "1995-03-28",
-    player_id: 29532,
-    profile_url: "https://www.collegehockeynews.com/players/career/Nolan-Vesey/29532",
-    league: "NCAA",
-    ep_url: "http://www.eliteprospects.com/player.php?player=248373"
   },
   {
     first_name: "James",
