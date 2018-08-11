@@ -154,6 +154,7 @@ class Prospects extends Component {
             prospects={prospects}
             categories={categories}
             sortColumn={this.sortColumn}
+            sortedColumn={this.state.sortColumn}
           />
         </div>
      )

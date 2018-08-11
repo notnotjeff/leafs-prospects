@@ -34,6 +34,11 @@ tbody tr td:first-child {
   background-color: white;
 }
 
+.active {
+  background-color: #a6cffe !important;
+  border: 1px solid #a6cffe;
+}
+
 @media only screen and (max-width: 1000px) {
   table td,
   table th {
