@@ -13,8 +13,8 @@ class Prospects extends Component {
       categories: [
         { name: "Name", value: "last_name" },
         { name: "League", value: "league" },
-        { name: "Position", value: "position" },
-        { name: "Shoots", value: "shoots"},
+        { name: "POS", value: "position" },
+        { name: "H", value: "shoots"},
         { name: "Age", value: "age"},
         { name: "DY", value: "draft_year"},
         { name: "RD", value: "round"},
