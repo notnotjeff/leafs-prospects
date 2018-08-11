@@ -29,12 +29,13 @@ class Prospects extends Component {
         { name: "S/G", value: "shots_pg" } ],
       sortColumn: "",
       sortDirection: "asc",
-      filterCategories: ["league", "position", "shoots", "round"],
+      filterCategories: ["league", "position", "shoots", "round", "draft_year"],
       filter: {
         league: "Any",
         position: "Any",
         shoots: "Any",
-        round: "Any"
+        round: "Any",
+        draft_year: "Any"
       }
     }
     this.sortColumn = this.sortColumn.bind(this);
@@ -71,7 +72,12 @@ class Prospects extends Component {
       } else {
         sortDirection = "desc";
       }
-    } else if (sortColumn !== columnName && (columnName === "last_name" || columnName === "league" || columnName === "position" || columnName === "shoots" || columnName === "round")) {
+    } else if (sortColumn !== columnName && (columnName === "last_name" || 
+                                            columnName === "league" || 
+                                            columnName === "position" || 
+                                            columnName === "shoots" || 
+                                            columnName === "round" || 
+                                            columnName === "draft_year")) {
       sortDirection = "asc";
     }
     else {
@@ -121,7 +127,16 @@ class Prospects extends Component {
             } else if (+p[f] !== +filter[f] && filter[f] !== "Undrafted") { 
               fail = true;
             }
-          } else if (filter[f] !== p[f] && filter[f] !== "Any") {
+          } 
+          else if (f === "draft_year" && filter[f] !== "Any") { 
+            console.log("here");
+            if (filter[f] === "Undrafted" && p[f] !== null) { 
+              fail = true;
+            } else if (+p[f] !== +filter[f] && filter[f] !== "Undrafted") { 
+              fail = true;
+            }
+          }
+          else if (filter[f] !== p[f] && filter[f] !== "Any") {
             if (f === "position" && filter[f] === "F") {
               if (p[f] !== "C" && p[f] !== "LW" && p[f] !== "RW" && p[f] !== "W") { fail = true }
             }

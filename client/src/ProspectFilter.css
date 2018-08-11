@@ -8,14 +8,30 @@
 
 .filter label {
   padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filter label select {
   margin-left: 10px;
+  width: 110px;
+}
+
+.label {
+  flex: 1 1 50%;
 }
 
 @media only screen and (max-width: 1000px) {
   .filter label {
     flex: 0 1 50%;
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter {
+    width: 60%;
   }
 }
