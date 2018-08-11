@@ -10,7 +10,7 @@ class ProspectTable extends Component {
           <thead>
             <tr>
               <th colSpan="1" className="last_name"></th>
-              <th colSpan="6">Bio</th>
+              <th colSpan="7">Bio</th>
               <th colSpan="5">Stats</th>
               <th colSpan="4">Rates</th>
             </tr>
@@ -34,6 +34,7 @@ class ProspectTable extends Component {
                 <td className={(sortedColumn === "age" ? 'active' : '')}>{p.age}</td>
                 <td className={(sortedColumn === "draft_year" ? 'active' : '')}>{p.draft_year}</td>
                 <td className={(sortedColumn === "round" ? 'active' : '')}>{p.round}</td>
+                <td className={(sortedColumn === "pick" ? 'active' : '')}>{p.pick}</td>
                 <td className={(sortedColumn === "games_played" ? 'active' : '')}>{p.games_played}</td>
                 <td className={(sortedColumn === "goals" ? 'active' : '')}>{p.goals}</td>
                 <td className={(sortedColumn === "assists" ? 'active' : '')}>{p.assists}</td>

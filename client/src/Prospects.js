@@ -18,6 +18,7 @@ class Prospects extends Component {
         { name: "Age", value: "age"},
         { name: "DY", value: "draft_year"},
         { name: "RD", value: "round"},
+        { name: "Pick", value: "pick"},
         { name: "GP", value: "games_played"},
         { name: "G", value: "goals"},
         { name: "A", value: "assists"},
@@ -77,7 +78,7 @@ class Prospects extends Component {
                                             columnName === "position" || 
                                             columnName === "shoots" || 
                                             columnName === "round" || 
-                                            columnName === "draft_year")) {
+                                            columnName === "pick")) {
       sortDirection = "asc";
     }
     else {
