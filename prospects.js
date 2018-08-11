@@ -184,7 +184,7 @@ module.exports.prospects = [
   {
     first_name: "Pierre",
     last_name: "Engvall",
-    position: "LW/RW",
+    position: "W",
     shoots: "L",
     dob: "1996-05-31",
     round: 7,
@@ -210,7 +210,7 @@ module.exports.prospects = [
   {
     first_name: "Nikolai",
     last_name: "Chebykin",
-    position: "LW/RW",
+    position: "W",
     shoots: "L",
     dob: "1997-08-01",
     round: 7,
@@ -223,7 +223,7 @@ module.exports.prospects = [
   {
     first_name: "Vladimir",
     last_name: "Bobylev",
-    position: "LW/RW",
+    position: "W",
     shoots: "L",
     dob: "1997-04-18",
     round: 5,

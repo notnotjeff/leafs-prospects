@@ -123,10 +123,16 @@ class Prospects extends Component {
             }
           } else if (filter[f] !== p[f] && filter[f] !== "Any") {
             if (f === "position" && filter[f] === "F") {
-              if (p[f] !== "C" && p[f] !== "LW" && p[f] !== "RW" && p[f] !== "LW/RW") { fail = true }
+              if (p[f] !== "C" && p[f] !== "LW" && p[f] !== "RW" && p[f] !== "W") { fail = true }
             }
             else if (f === "position" && filter[f] === "W") {
-              if (p[f] !== "LW" && p[f] !== "RW" && p[f] !== "LW/RW") { fail = true }
+              if (p[f] !== "LW" && p[f] !== "RW" && p[f] !== "W") { fail = true }
+            }
+            else if (f === "position" && filter[f] === "LW") {
+              if (p[f] !== "LW" && p[f] !== "W") { fail = true }
+            }
+            else if (f === "position" && filter[f] === "RW") {
+              if (p[f] !== "RW" && p[f] !== "W") { fail = true }
             }
             else if (f === "league" && filter[f] === "CHL") {
               if (p[f] !== "OHL" && p[f] !== "QMJHL" && p[f] !== "WHL") { fail = true }
