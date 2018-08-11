@@ -97,7 +97,7 @@ function scrape(prospects) {
                         var goals = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(4)').text();
                         var assists = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(5)').text();
                         var points = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(6)').text();
-                        var shots = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(15)').text();
+                        var shots = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(17)').text();
                         var games_played = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(3)').text();
                       } else if (p.league === "SHL") {
                         // If Row Says Playoffs, Take Previous Regular Season Instead
