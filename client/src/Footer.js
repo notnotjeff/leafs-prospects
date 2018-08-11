@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <div className="Footer">
         <span>Created by Jeff Craig</span>
-        <span>
+        <span className="footer-links">
           <a href="https://twitter.com/jeff_craig_">Twitter</a>
           <a href="http://www.ahltracker.com">AHL Tracker</a>
           <a href="https://jtc-git.github.io/ahl-writeups/">Blog</a>
