@@ -16,13 +16,8 @@ function getAge(dateString)
 {
     var today = new Date();
     var birthDate = new Date(dateString);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
-    {
-        age--;
-    }
-    return age;
+    var age = today - birthDate;
+    return Math.floor(age/31557600000*10) / 10;
 }
 
 function scrape(prospects) {
