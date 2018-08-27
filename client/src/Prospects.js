@@ -123,15 +123,14 @@ class Prospects extends Component {
         let fail = false;
         filterCategories.forEach(f => {
           if (f === "round" && filter[f] !== "Any") { 
-            if (filter[f] === "Undrafted" && p[f] !== null) { 
+            if (filter[f] === "Undrafted" && p[f] !== undefined) { 
               fail = true;
             } else if (+p[f] !== +filter[f] && filter[f] !== "Undrafted") { 
               fail = true;
             }
           } 
-          else if (f === "draft_year" && filter[f] !== "Any") { 
-            console.log("here");
-            if (filter[f] === "Undrafted" && p[f] !== null) { 
+          else if (f === "draft_year" && filter[f] !== "Any") {
+            if (filter[f] === "Undrafted" && p[f] !== undefined) { 
               fail = true;
             } else if (+p[f] !== +filter[f] && filter[f] !== "Undrafted") { 
               fail = true;
