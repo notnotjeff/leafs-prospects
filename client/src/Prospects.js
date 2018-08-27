@@ -47,20 +47,20 @@ class Prospects extends Component {
   componentDidMount() {
     const prospectsRef = firebase.database().ref('prospects');
 
-    fetch('/prospects')
-      .then(res => res.json())
-      .then(prospects => {
-        this.setState({ prospects, originalProspects: prospects });
-      });
-
-    // prospectsRef.on('value', (snapshot) => {
-    //   let prospects = [];
-    //   snapshot.forEach(snap => {
-    //     prospects.push(snap.val());
+    // fetch('/prospects')
+    //   .then(res => res.json())
+    //   .then(prospects => {
+    //     this.setState({ prospects, originalProspects: prospects });
     //   });
+
+    prospectsRef.on('value', (snapshot) => {
+      let prospects = [];
+      snapshot.forEach(snap => {
+        prospects.push(snap.val());
+      });
       
-    //   this.setState({ prospects, originalProspects: prospects });
-    // });
+      this.setState({ prospects, originalProspects: prospects });
+    });
   }
 
   sortColumn(columnName) {

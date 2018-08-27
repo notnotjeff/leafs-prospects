@@ -39,7 +39,7 @@ tbody tr td:first-child {
   border: 1px solid #a6cffe;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 800px) {
   table td,
   table th {
     padding: 5px 8px;

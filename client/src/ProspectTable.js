@@ -9,8 +9,7 @@ class ProspectTable extends Component {
         <table>
           <thead>
             <tr>
-              <th colSpan="1" className="last_name"></th>
-              <th colSpan="7">Bio</th>
+              <th colSpan="8">Bio</th>
               <th colSpan="5">Stats</th>
               <th colSpan="4">Rates</th>
             </tr>

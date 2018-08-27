@@ -2,12 +2,12 @@
 import firebase from 'firebase'
 
 var config = {
-    apiKey: "AIzaSyDF4dlLgWelez92pEEh6yemAbLd9-B4QkY",
-    authDomain: "leaf-aggregator.firebaseapp.com",
-    databaseURL: "https://leaf-aggregator.firebaseio.com",
-    projectId: "leaf-aggregator",
-    storageBucket: "leaf-aggregator.appspot.com",
-    messagingSenderId: "454209898947"
+    apiKey: "AIzaSyDq7OZHZIUJ0D59aOzgjI4pcoiz5_ZgSQk",
+    authDomain: "leafs-prospects.firebaseapp.com",
+    databaseURL: "https://leafs-prospects.firebaseio.com",
+    projectId: "leafs-prospects",
+    storageBucket: "leafs-prospects.appspot.com",
+    messagingSenderId: "623837291963"
 };
 firebase.initializeApp(config);
 export default firebase;
