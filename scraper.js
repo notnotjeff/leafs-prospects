@@ -1,3 +1,5 @@
+// Use 'node scraper.js' to run script
+
 var rp      = require('request-promise');
 var cheerio = require('cheerio');
 var backend = require('./prospects.js');
@@ -5,6 +7,7 @@ var admin = require('firebase-admin');
 var dotenv = require('dotenv');
 
 dotenv.config();
+const TESTING_MODE = false;
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -95,12 +98,20 @@ function scrape(prospects) {
                         var shots = data.careerStats[0].sections[0].data[0].row.shots;
                         var games_played = data.careerStats[0].sections[0].data[0].row.games_played;
                       } else if (p.league === "KHL") {
-                        // You Will Have to Change The Row When It's Just Regular Season
-                        var goals = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(4)').text();
-                        var assists = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(5)').text();
-                        var points = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(6)').text();
-                        var shots = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(17)').text();
-                        var games_played = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(3)').text();
+                        // Check to make sure the row scraped is regular season not playoffs
+                        if (data('#pl_Stats > tbody > tr:nth-child(1) > td:nth-child(1)').text().includes("Regular")) {
+                          var goals = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(4)').text();
+                          var assists = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(5)').text();
+                          var points = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(6)').text();
+                          var shots = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(17)').text();
+                          var games_played = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(3)').text();
+                        } else {
+                          var goals = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(4)').text();
+                          var assists = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(5)').text();
+                          var points = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(6)').text();
+                          var shots = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(17)').text();
+                          var games_played = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(3)').text();
+                        }
                       } else if (p.league === "SHL") {
                         // If Row Says Playoffs, Take Previous Regular Season Instead
                         if (data('.rmss_t-stat-table__row').last().children('td:nth-child(2)').text() === "Slutspel") {
@@ -213,6 +224,7 @@ function scrape(prospects) {
 function updateDB() {
     scrape(prospects)
         .then(data => {
+          if (!TESTING_MODE) {
             const prospectsRef = admin.database().ref('prospects');
             prospectsRef.set({});
 
@@ -220,6 +232,17 @@ function updateDB() {
                 prospectsRef.push(prospect);
             });
             console.log('Completed Scrape');
+            console.log('Shutting Down DB Ref');
+            admin.app().delete()
+          } else {
+            data.forEach(prospect => {
+              // Log Specific Prospect:
+              // if (prospect.first_name === "Yegor") { console.log(prospect) };
+
+              // Log All Prospects
+              console.log(prospect);
+            });
+          }
         });
 }
 
