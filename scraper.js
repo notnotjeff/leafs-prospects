@@ -2,10 +2,13 @@ var rp      = require('request-promise');
 var cheerio = require('cheerio');
 var backend = require('./prospects.js');
 var admin = require('firebase-admin');
+var dotenv = require('dotenv');
+
+dotenv.config();
 
 admin.initializeApp({
   credential: admin.credential.cert({
-    "private_key": process.env.FIREBASE_KEY,
+    "private_key": process.env.FIREBASE_KEY.replace(/\\n/g, '\n'),
     "client_email": process.env.FIREBASE_EMAIL,
     "project_id": "leafs-prospects"
   }),
