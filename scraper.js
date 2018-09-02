@@ -222,28 +222,36 @@ function scrape(prospects) {
 }
 
 function updateDB() {
-    scrape(prospects)
-        .then(data => {
-          if (!TESTING_MODE) {
-            const prospectsRef = admin.database().ref('prospects');
-            prospectsRef.set({});
+  scrape(prospects)
+    .then(data => {
+      // Store Each Commit To DB As Promise In This Array So That We Can Shut Down DB Once They're All Done
+      let allTransactionPromises = [];
 
-            data.forEach(prospect => {
-                prospectsRef.push(prospect);
-            });
-            console.log('Completed Scrape');
-            console.log('Shutting Down DB Ref');
-            admin.app().delete()
-          } else {
-            data.forEach(prospect => {
-              // Log Specific Prospect:
-              // if (prospect.first_name === "Yegor") { console.log(prospect) };
+      if (!TESTING_MODE) {
+        const prospectsRef = admin.database().ref('prospects');
+        prospectsRef.set({});
 
-              // Log All Prospects
-              console.log(prospect);
-            });
-          }
+        data.forEach(prospect => {
+          let transactionPromise = prospectsRef.push(prospect);
+          allTransactionPromises.push(transactionPromise);
         });
+      } else {
+        data.forEach(prospect => {
+          // Log Specific Prospect:
+          // if (prospect.last_name === "Rasanen") { console.log(prospect) };
+
+          // Log All Prospects
+          console.log(prospect);
+        });
+      }
+
+      return Promise.all(allTransactionPromises);
+    })
+  .then(data => {
+    console.log('Completed Scrape');
+    console.log('Shutting Down DB Ref');
+    admin.app().delete();
+  });
 }
 
 updateDB();

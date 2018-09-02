@@ -22,9 +22,9 @@ module.exports.prospects = [
     round: 2,
     pick: 59,
     draft_year: 2017,
-    player_id: 7308,
-    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7308&category=seasonstats",
-    league: "OHL",
+    player_id: 31190,
+    profile_url: "https://en.khl.ru/players/31190/",
+    league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=302228"
   },
   {
@@ -148,9 +148,9 @@ module.exports.prospects = [
     round: 3,
     pick: 68,
     draft_year: 2015,
-    player_id: 7331,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7331&season_id=44&site_id=1&key=e18cfddba0db3b21&client_code=echl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "ECHL",
+    player_id: 23319,
+    profile_url: "https://en.khl.ru/players/23319/",
+    league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=239362"
   },
   {
@@ -190,9 +190,9 @@ module.exports.prospects = [
     round: 2,
     pick: 57,
     draft_year: 2016,
-    player_id: 0,
-    profile_url: "https://www.shl.se/spelare/qQ9-3230HHhqE__carl-grundstrom/statistics",
-    league: "SHL",
+    player_id: 6788,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6788&season_id=57&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "AHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=113516"
   },
   {
@@ -204,9 +204,9 @@ module.exports.prospects = [
     round: 7,
     pick: 188,
     draft_year: 2014,
-    player_id: 0,
-    profile_url: "https://www.shl.se/spelare/qRh-1LnWA7ztX__pierre-engvall/statistics",
-    league: "SHL",
+    player_id: 6761,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6761&season_id=57&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "AHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=147720"
   },
   {
@@ -239,7 +239,7 @@ module.exports.prospects = [
   },
   {
     first_name: "Vladimir",
-    last_name: "Bobylev",
+    last_name: "Bobylyov",
     position: "W",
     shoots: "L",
     dob: "1997-04-18",
@@ -247,8 +247,8 @@ module.exports.prospects = [
     pick: 122,
     draft_year: 2016,
     player_id: 21313,
-    profile_url: "https://engmhl.khl.ru/players/21313/",
-    league: "VHL",
+    profile_url: "https://en.khl.ru/players/21313/",
+    league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=268059"
   },
   {
