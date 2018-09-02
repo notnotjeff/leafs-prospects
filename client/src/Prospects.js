@@ -88,15 +88,15 @@ class Prospects extends Component {
     let sortProspects = this.state.prospects.sort((a, b) => {
       if (sortDirection === "desc") {
         // Sort null values to the bottom
-        if (a[columnName] == null) return 1;
-        if (b[columnName] == null) return -1;
+        if (a[columnName] == null || isNaN(a[columnName])) return 1;
+        if (b[columnName] == null || isNaN(b[columnName])) return -1;
         
         if (a[columnName] > b[columnName]) return -1;
         if (a[columnName] < b[columnName]) return 1;
       } else {
         // Sort null values to the bottom
-        if (a[columnName] == null) return 1;
-        if (b[columnName] == null) return -1;
+        if (a[columnName] == null || isNaN(a[columnName])) return 1;
+        if (b[columnName] == null || isNaN(b[columnName])) return -1;
         
         if (a[columnName] < b[columnName]) return -1;
         if (a[columnName] > b[columnName]) return 1;
