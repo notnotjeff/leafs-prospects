@@ -30,6 +30,7 @@ class Prospects extends Component {
         { name: "S/G", value: "shots_pg" } ],
       sortColumn: "",
       sortDirection: "asc",
+      startAscendingColumns: ["last_name", "league", "position", "shoots", "round", "pick"],
       filterCategories: ["league", "position", "shoots", "round", "draft_year"],
       filter: {
         league: "Any",
@@ -47,12 +48,6 @@ class Prospects extends Component {
   componentDidMount() {
     const prospectsRef = firebase.database().ref('prospects');
 
-    // fetch('/prospects')
-    //   .then(res => res.json())
-    //   .then(prospects => {
-    //     this.setState({ prospects, originalProspects: prospects });
-    //   });
-
     prospectsRef.on('value', (snapshot) => {
       let prospects = [];
       snapshot.forEach(snap => {
@@ -64,41 +59,36 @@ class Prospects extends Component {
   }
 
   sortColumn(columnName) {
-    var sortDirection = this.state.sortDirection;
     var sortColumn = this.state.sortColumn;
+    var sortDirection;
     
-    if (sortColumn === columnName) {
-      if (sortDirection === "desc") {
-        sortDirection = "asc";
-      } else {
-        sortDirection = "desc";
-      }
-    } else if (sortColumn !== columnName && (columnName === "last_name" || 
-    columnName === "league" || 
-    columnName === "position" || 
-    columnName === "shoots" || 
-    columnName === "round" || 
-    columnName === "pick")) 
-    {
-      sortDirection = "asc";
+    // If Column Already Selected Reverse Direction
+    if (sortColumn === columnName){
+      this.state.sortDirection === "desc" ? sortDirection = "asc" : sortDirection = "desc";
     }
+    // If Column Is Newly Selected Sort Direction Based On Column Type
+    else if (sortColumn !== columnName) {
+      this.state.startAscendingColumns.includes(columnName) ? sortDirection = "asc" : sortDirection = "desc";
+    }
+    // If Something Breaks Just Set Sort To Last Name By Default
     else {
-      sortDirection = "desc";
+      sortColumn = "last_name";
+      sortDirection = "asc"
     }
-    
-    let sortProspects = this.state.prospects.sort((a, b) => {
-      
+
+    // Sort Prospects Array Based On Column And Direction Selected
+    let sortProspects = this.state.prospects.sort((a, b) => { 
       if (sortDirection === "desc") {
         // Sort null values to the bottom
-        if (a[columnName] == null || ( isNaN(a[columnName]) && typeof(a[columnName]) !== "string" )) return 1;
-        if (b[columnName] == null || ( isNaN(b[columnName]) && typeof(a[columnName]) !== "string" )) return -1;
+        if (a[columnName] == null) return 1;
+        if (b[columnName] == null) return -1;
         
         if (a[columnName] > b[columnName]) return -1;
         if (a[columnName] < b[columnName]) return 1;
       } else {
         // Sort null values to the bottom
-        if (a[columnName] == null || ( isNaN(a[columnName]) && typeof(a[columnName]) !== "string" )) return 1;
-        if (b[columnName] == null || ( isNaN(b[columnName]) && typeof(a[columnName]) !== "string" )) return -1;
+        if (a[columnName] == null) return 1;
+        if (b[columnName] == null) return -1;
         
         if (a[columnName] < b[columnName]) return -1;
         if (a[columnName] > b[columnName]) return 1;

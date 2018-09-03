@@ -172,17 +172,17 @@ function scrape(prospects) {
                         var games_played = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(4)').text();
                       }
 
-                      if (Number(games_played) !== 0 || Number(games_played) !== NaN) {
+                      if (Number(games_played) > 0) {
                         games_played = Number(games_played);
                         var goals_pg = (goals / games_played).toFixed(2);
                         var assists_pg = (assists / games_played).toFixed(2);
                         var points_pg = (points / games_played).toFixed(2);
                         var shots_pg = (shots / games_played).toFixed(2);
                       } else {
-                        var goals_pg = "NA";
-                        var assists_pg = "NA";
-                        var points_pg = "NA";
-                        var shots_pg = "NA";
+                        var goals_pg = null;
+                        var assists_pg = null;
+                        var points_pg = null;
+                        var shots_pg = null;
                       }
 
                       goals = Number(goals);
