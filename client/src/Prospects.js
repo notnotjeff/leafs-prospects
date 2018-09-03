@@ -66,7 +66,7 @@ class Prospects extends Component {
   sortColumn(columnName) {
     var sortDirection = this.state.sortDirection;
     var sortColumn = this.state.sortColumn;
-
+    
     if (sortColumn === columnName) {
       if (sortDirection === "desc") {
         sortDirection = "asc";
@@ -74,36 +74,34 @@ class Prospects extends Component {
         sortDirection = "desc";
       }
     } else if (sortColumn !== columnName && (columnName === "last_name" || 
-                                            columnName === "league" || 
-                                            columnName === "position" || 
-                                            columnName === "shoots" || 
-                                            columnName === "round" || 
-                                            columnName === "pick")) {
+    columnName === "league" || 
+    columnName === "position" || 
+    columnName === "shoots" || 
+    columnName === "round" || 
+    columnName === "pick")) 
+    {
       sortDirection = "asc";
     }
     else {
       sortDirection = "desc";
     }
-
+    
     let sortProspects = this.state.prospects.sort((a, b) => {
+      
       if (sortDirection === "desc") {
         // Sort null values to the bottom
-        if (a[columnName] == null || isNaN(a[columnName])) return 1;
-        if (b[columnName] == null || isNaN(b[columnName])) return -1;
+        if (a[columnName] == null || ( isNaN(a[columnName]) && typeof(a[columnName]) !== "string" )) return 1;
+        if (b[columnName] == null || ( isNaN(b[columnName]) && typeof(a[columnName]) !== "string" )) return -1;
         
         if (a[columnName] > b[columnName]) return -1;
         if (a[columnName] < b[columnName]) return 1;
       } else {
         // Sort null values to the bottom
-        if (a[columnName] == null || isNaN(a[columnName])) return 1;
-        if (b[columnName] == null || isNaN(b[columnName])) return -1;
+        if (a[columnName] == null || ( isNaN(a[columnName]) && typeof(a[columnName]) !== "string" )) return 1;
+        if (b[columnName] == null || ( isNaN(b[columnName]) && typeof(a[columnName]) !== "string" )) return -1;
         
         if (a[columnName] < b[columnName]) return -1;
         if (a[columnName] > b[columnName]) return 1;
-      }
-      if (columnName !== "last_name") {
-        if (a.last_name < b.last_name) return -1;
-        if (a.last_name > b.last_name) return 1;
       }
       return 0;
     });
