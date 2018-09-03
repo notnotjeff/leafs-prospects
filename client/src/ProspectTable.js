@@ -19,6 +19,7 @@ class ProspectTable extends Component {
               {categories.map((c, i) =>
                 <th
                   key={i}
+                  title={c.title}
                   className={c.value + ' ' + (sortedColumn === c.value ? 'active' : '')}
                   onClick={() => { sortColumn(c.value) }}>{c.name}</th>
               )}
