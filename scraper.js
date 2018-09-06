@@ -127,43 +127,25 @@ function scrape(prospects) {
                           var shots = data('.rmss_t-stat-table__row').last().children('td:nth-child(10)').text();
                           var games_played = data('.rmss_t-stat-table__row').last().children('td:nth-child(4)').text();
                         }
-                      } else if (p.last_name === "Kara") {
-                        var goals = data('.player_stats > tbody > tr:nth-last-of-type(4)').children('td:nth-child(4)').text();
-                        var assists = data('.player_stats > tbody > tr:nth-last-of-type(4)').children('td:nth-child(5)').text();
-                        var points = data('.player_stats > tbody > tr:nth-last-of-type(4)').children('td:nth-child(6)').text();
-                        var shots = data('.player_stats > tbody > tr:nth-last-of-type(4)').children('td:nth-child(15)').text();
-                        var games_played = data('.player_stats > tbody > tr:nth-last-of-type(4)').children('td:nth-child(3)').text();
-                      } else if (p.last_name === "Chebykin") {
-                        var goals = data('.player_stats > tbody > tr:nth-child(8)').children('td:nth-child(3)').text();
-                        var assists = data('.player_stats > tbody > tr:nth-child(8)').children('td:nth-child(4)').text();
-                        var points = data('.player_stats > tbody > tr:nth-child(8)').children('td:nth-child(5)').text();
-                        var shots = data('.player_stats > tbody > tr:nth-child(8)').children('td:nth-child(14)').text();
-                        var games_played = data('.player_stats > tbody > tr:nth-child(8)').children('td:nth-child(2)').text();
-                      } else if (p.last_name === "Bobylev") {
-                        var goals = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(4)').text();
-                        var assists = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(5)').text();
-                        var points = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(6)').text();
-                        var shots = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(15)').text();
-                        var games_played = data('.player_standings .site_table tbody > tr:nth-child(8)').children('td:nth-child(3)').text();
-                      } else if (p.last_name === "Kizimov") {
-                        var goals = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(4)').text();
-                        var assists = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(5)').text();
-                        var points = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(6)').text();
-                        var shots = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(15)').text();
-                        var games_played = data('.player_standings .site_table tbody > tr:nth-child(4)').children('td:nth-child(3)').text();
+                      } else if (p.league === "VHL") {
+                        let rowNumber = 4
+                        
+                        // Set rowNumber to the right table row based on if their summary statline has playoffs or not (adds an extra row)
+                        data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).text() === "SHL Summary" ? rowNumber = 5 : rowNumber = 4;
+                        // If the last season was the playoffs skip it and go to regular season
+                        if (data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber + 1})`).text().includes("Playoffs")) { rowNumber += 2; }
+
+                        var goals = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(4)').text();
+                        var assists = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(5)').text();
+                        var points = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(6)').text();
+                        var shots = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(15)').text();
+                        var games_played = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(3)').text();
                       } else if (p.league === "NCAA") {
-                        // console.log(data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(1) td:nth-child(3)').text());
                         var goals = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(4)').text();
                         var assists = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(5)').text();
                         var points = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(6)').text();
                         var shots = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(10)').text();
                         var games_played = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(3)').text();
-                      } else if (p.last_name === "Greenway") {
-                        var goals = "";
-                        var assists = "";
-                        var points = "";
-                        var shots = "";
-                        var games_played = "";
                       } else if (p.league === "Liiga") {
                         var goals = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(5)').text();
                         var assists = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(6)').text();
@@ -238,10 +220,10 @@ function updateDB() {
       } else {
         data.forEach(prospect => {
           // Log Specific Prospect:
-          // if (prospect.last_name === "Rasanen") { console.log(prospect) };
+          // if (prospect.last_name === "Kizimov") { console.log(prospect) };
 
           // Log All Prospects
-          console.log(prospect);
+          // console.log(prospect);
         });
       }
 

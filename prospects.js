@@ -233,7 +233,7 @@ module.exports.prospects = [
     pick: 182,
     draft_year: 2016,
     player_id: 22161,
-    profile_url: "http://www.vhlru.ru/en/players/22161/#c",
+    profile_url: "http://www.vhlru.ru/en/players/22161/",
     league: "VHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=300931"
   },
@@ -401,7 +401,7 @@ module.exports.prospects = [
     pick: 211,
     draft_year: 2018,
     player_id: 25697,
-    profile_url: "https://engmhl.khl.ru/players/25697/",
+    profile_url: "http://www.vhlru.ru/en/players/25697/",
     league: "VHL",
     ep_url: "https://www.eliteprospects.com/player/420947/semyon-kizimov"
   }
