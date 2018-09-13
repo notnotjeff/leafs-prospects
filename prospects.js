@@ -311,7 +311,7 @@ module.exports.prospects = [
     first_name: "Sean",
     last_name: "Durzi",
     position: "D",
-    shoots: "L",
+    shoots: "R",
     dob: "1998-10-21",
     round: 2,
     pick: 52,
