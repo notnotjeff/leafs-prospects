@@ -70,19 +70,11 @@ function scrape(prospects) {
                         var shots = data.SiteKit.Player.regular[0].shots;
                         var games_played = data.SiteKit.Player.regular[0].games_played;
                       } else if (p.league === "WHL") {
-                        if (p.player_id === 27355) { // If player is Riley Stotts it means he was traded, add up both team stats
-                          var goals = +data.SiteKit.Player.regular[0].goals + +data.SiteKit.Player.regular[1].goals;
-                          var assists = +data.SiteKit.Player.regular[0].assists + +data.SiteKit.Player.regular[1].assists;
-                          var points = +data.SiteKit.Player.regular[0].points + +data.SiteKit.Player.regular[1].points;
-                          var shots = +data.SiteKit.Player.regular[0].shots + +data.SiteKit.Player.regular[1].shots;
-                          var games_played = +data.SiteKit.Player.regular[0].games_played + +data.SiteKit.Player.regular[1].games_played;
-                        } else {
-                          var goals = data.SiteKit.Player.regular[0].goals;
-                          var assists = data.SiteKit.Player.regular[0].assists;
-                          var points = data.SiteKit.Player.regular[0].points;
-                          var shots = data.SiteKit.Player.regular[0].shots;
-                          var games_played = data.SiteKit.Player.regular[0].games_played;
-                        }
+                        var goals = data.SiteKit.Player.regular[0].goals;
+                        var assists = data.SiteKit.Player.regular[0].assists;
+                        var points = data.SiteKit.Player.regular[0].points;
+                        var shots = data.SiteKit.Player.regular[0].shots;
+                        var games_played = data.SiteKit.Player.regular[0].games_played;
                       } else if (p.league === "QMJHL") {
                         var goals = data.SiteKit.Player.regular[0].goals;
                         var assists = data.SiteKit.Player.regular[0].assists;

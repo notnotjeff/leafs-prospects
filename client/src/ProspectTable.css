@@ -32,6 +32,7 @@ table thead tr:last-child th {
 
 tbody tr td:first-child {
   background-color: white;
+  min-width: 180px;
 }
 
 .active {
@@ -43,9 +44,5 @@ tbody tr td:first-child {
   table td,
   table th {
     padding: 5px 8px;
-  }
-
-  tbody tr td:first-child {
-    min-width: 130px;
   }
 }
