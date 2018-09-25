@@ -139,11 +139,11 @@ function scrape(prospects) {
                         var shots = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(10)').text();
                         var games_played = data('#content > div:nth-child(4) > table tbody tr:nth-last-of-type(2) td:nth-child(3)').text();
                       } else if (p.league === "Liiga") {
-                        var goals = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(5)').text();
-                        var assists = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(6)').text();
-                        var points = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(7)').text();
-                        var shots = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(15)').text();
-                        var games_played = data('#stats-section > table:nth-child(4) > tbody > tr:nth-last-of-type(3) > td:nth-child(4)').text();
+                        var goals = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(5)').text();
+                        var assists = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(6)').text();
+                        var points = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(7)').text();
+                        var shots = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(15)').text();
+                        var games_played = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(4)').text();
                       }
 
                       if (Number(games_played) > 0) {
@@ -212,7 +212,7 @@ function updateDB() {
       } else {
         data.forEach(prospect => {
           // Log Specific Prospect:
-          // if (prospect.last_name === "Kizimov") { console.log(prospect) };
+          // if (prospect.last_name === "Lindgren") { console.log(prospect) };
 
           // Log All Prospects
           // console.log(prospect);
