@@ -7,7 +7,7 @@ var admin = require('firebase-admin');
 var dotenv = require('dotenv');
 
 dotenv.config();
-const TESTING_MODE = false;
+const TESTING_MODE = true;
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -190,40 +190,33 @@ function scrape(prospects) {
   return Promise.all(promises);
 }
 
-function updateDB() {
-  scrape(prospects)
-    .then(data => {
-      // Store Each Commit To DB As Promise In This Array So That We Can Shut Down DB Once They're All Done
-      let allTransactionPromises = [];
+async function updateDB() {
+  let prospectData = await scrape(prospects);
 
-      if (!TESTING_MODE) {
-        const prospectsRef = admin.database().ref('prospects');
-        prospectsRef.set({});
+  if (!TESTING_MODE) {
+    let allTransactionPromises = [];
+    const prospectsRef = admin.database().ref('prospects');
+    prospectsRef.set({});
 
-        data.forEach(prospect => {
-          let transactionPromise = prospectsRef.push(prospect);
-          allTransactionPromises.push(transactionPromise);
-        });
-      } else {
-        data.forEach(prospect => {
-          // Log Specific Prospect:
-          if (prospect.last_name === "Greenway") { console.log(prospect) };
+    prospectData.forEach(prospect => {
+      let transactionPromise = prospectsRef.push(prospect);
+      allTransactionPromises.push(transactionPromise);
+    });
 
-          // Log All Prospects
-          // console.log(prospect);
-        });
-      }
-
-      return Promise.all(allTransactionPromises);
-    })
-  .then(data => {
+    await Promise.all(allTransactionPromises);
     console.log('Completed Scrape');
     console.log('Shutting Down DB Ref');
     admin.app().delete();
-  })
-  .catch(err => {
-    console.log(err);
-  });
+
+  } else {
+    prospectData.forEach(prospect => {
+      // Log Specific Prospect:
+      if (prospect.last_name === "Greenway") { console.log(prospect) };
+
+      // Log All Prospects
+      // console.log(prospect);
+    });
+  }
 }
 
 updateDB();
