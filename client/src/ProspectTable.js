@@ -28,7 +28,7 @@ class ProspectTable extends Component {
           <tbody>
             {prospects.map((p, i) =>
               <tr key={i}>
-                <td className={(sortedColumn === "last_name" ? 'active' : '')}><a href={p.ep_url} target="_blank">{p.first_name} {p.last_name}</a></td>
+                <td className={(sortedColumn === "last_name" ? 'active' : '')}><a href={p.ep_url} target="_blank" rel="noopener noreferrer">{p.first_name} {p.last_name}</a></td>
                 <td className={(sortedColumn === "league" ? 'active' : '')}>{p.league}</td>
                 <td className={(sortedColumn === "position" ? 'active' : '')}>{p.position}</td>
                 <td className={(sortedColumn === "shoots" ? 'active' : '')}>{p.shoots}</td>
