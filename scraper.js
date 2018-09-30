@@ -33,15 +33,10 @@ function scrape(prospects) {
   let promises = [];
 
   prospects.forEach((p, i) => {
-    if (p.league === "OHL" || p.league === "AHL" || p.league === "ECHL" || p.league == "WHL") {
+    if (p.league === "OHL" || p.league === "AHL" || p.league === "ECHL" || p.league === "WHL" || p.league === "USHL") {
       var url = {
         url: p.profile_url,
         json: true
-      }
-    } else if (p.league === "NCAA" && p.last_name === "Joshua") {
-      var url = {
-        url: p.profile_url,
-        transform: body => cheerio.load(body, { xmlMode: true })
       }
     } else {
       var url = {
@@ -81,7 +76,7 @@ function scrape(prospects) {
                         var points = data.SiteKit.Player.regular[0].points;
                         var shots = data.SiteKit.Player.regular[0].shots;
                         var games_played = data.SiteKit.Player.regular[0].games_played;
-                      } else if (p.league === "AHL" || p.league === "ECHL") {
+                      } else if (p.league === "AHL" || p.league === "ECHL" || p.league === "USHL") {
                         data = data.slice(5, data.length-1);
                         data = JSON.parse(data);
                         var goals = data.careerStats[0].sections[0].data[0].row.goals;
@@ -157,12 +152,12 @@ function scrape(prospects) {
                         var assists_pg = null;
                         var points_pg = null;
                         var shots_pg = null;
+                        games_played = null;
                       }
 
                       goals = Number(goals);
                       assists = Number(assists);
                       points = Number(points);
-                      games_played = Number(games_played);
                       shots = Number(shots);
 
                       return {
@@ -212,7 +207,7 @@ function updateDB() {
       } else {
         data.forEach(prospect => {
           // Log Specific Prospect:
-          // if (prospect.last_name === "Lindgren") { console.log(prospect) };
+          if (prospect.last_name === "Greenway") { console.log(prospect) };
 
           // Log All Prospects
           // console.log(prospect);
@@ -225,6 +220,9 @@ function updateDB() {
     console.log('Completed Scrape');
     console.log('Shutting Down DB Ref');
     admin.app().delete();
+  })
+  .catch(err => {
+    console.log(err);
   });
 }
 

@@ -275,8 +275,8 @@ module.exports.prospects = [
     pick: 72,
     draft_year: 2016,
     player_id: 31877,
-    profile_url: "https://www.collegehockeynews.com/players/career/JD-Greenway/31877",
-    league: "NCAA",
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=245&site_id=0&key=e828f89b243dc43f&client_code=ushl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "USHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=226438"
   },
   {
