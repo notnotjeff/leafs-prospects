@@ -192,6 +192,7 @@ function scrape(prospects) {
 
 async function updateDB() {
   let prospectData = await scrape(prospects);
+  console.log('Completed Scrape');
 
   if (!TESTING_MODE) {
     let allTransactionPromises = [];
@@ -204,7 +205,6 @@ async function updateDB() {
     });
 
     await Promise.all(allTransactionPromises);
-    console.log('Completed Scrape');
     console.log('Shutting Down DB Ref');
     admin.app().delete();
 
