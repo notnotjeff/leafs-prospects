@@ -7,7 +7,7 @@ var admin = require('firebase-admin');
 var dotenv = require('dotenv');
 
 dotenv.config();
-const TESTING_MODE = true;
+const TESTING_MODE = false;
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -211,7 +211,7 @@ async function updateDB() {
   } else {
     prospectData.forEach(prospect => {
       // Log Specific Prospect:
-      if (prospect.last_name === "Greenway") { console.log(prospect) };
+      if (prospect.last_name === "Holmberg") { console.log(prospect) };
 
       // Log All Prospects
       // console.log(prospect);
