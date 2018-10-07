@@ -211,7 +211,7 @@ async function updateDB() {
   } else {
     prospectData.forEach(prospect => {
       // Log Specific Prospect:
-      if (prospect.last_name === "Holmberg") { console.log(prospect) };
+      if (prospect.last_name === "Liljegren") { console.log(prospect) };
 
       // Log All Prospects
       // console.log(prospect);
