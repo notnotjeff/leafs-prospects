@@ -9,13 +9,25 @@ class Games extends Component {
 
         this.state = {
             todaysGames: [],
-            yesterdaysGames: []
+            yesterdaysGames: [],
+            updatedAt: ""
         }
     }
 
     componentDidMount() {
         const todaysRef = firebase.database().ref('todaysGames');
         const yesterdaysRef = firebase.database().ref('yesterdaysGames');
+        const timeRef = firebase.database().ref('gamesScrapedTime');
+
+        timeRef.on('value', (snapshot) => {
+          let time = "";
+          snapshot.forEach(snap => {
+            time = String(snap.val().updatedAt);
+          });
+          
+          this.setState({updatedAt: time})
+        });
+
         let todaysGames = [];
         let yesterdaysGames = [];
     
@@ -37,7 +49,7 @@ class Games extends Component {
     }
 
     render() {
-        const {todaysGames, yesterdaysGames} = this.state;
+        const {todaysGames, yesterdaysGames, updatedAt} = this.state;
         let gamesTables = <div className="loading">Collecting data...</div>;
 
         if (this.state.todaysGames.length !== 0 || this.state.yesterdaysGames.length !== 0) {
@@ -52,6 +64,9 @@ class Games extends Component {
         return (
             <section>
                 {gamesTables}
+                <div className="updated-container">
+                    Updated at: {updatedAt}
+                </div>
             </section>
         );
     }

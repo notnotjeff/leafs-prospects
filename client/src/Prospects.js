@@ -38,7 +38,8 @@ class Prospects extends Component {
         shoots: "Any",
         round: "Any",
         draft_year: "Any"
-      }
+      },
+      updatedAt: ""
     }
     this.sortColumn = this.sortColumn.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,6 +48,16 @@ class Prospects extends Component {
 
   componentDidMount() {
     const prospectsRef = firebase.database().ref('prospects');
+    const timeRef = firebase.database().ref('prospectsScrapedTime');
+
+    timeRef.on('value', (snapshot) => {
+      let time = "";
+      snapshot.forEach(snap => {
+        time = String(snap.val().updatedAt);
+      });
+      
+      this.setState({updatedAt: time})
+    });
 
     prospectsRef.on('value', (snapshot) => {
       let prospects = [];
@@ -159,7 +170,7 @@ class Prospects extends Component {
   }
 
   render() {
-    let {prospects, categories} = this.state;
+    let {prospects, categories, updatedAt} = this.state;
     let data = <div className="loading">Collecting data...</div>;
     if (this.state.originalProspects.length !== 0) {
       data = (
@@ -177,6 +188,9 @@ class Prospects extends Component {
     return (
       <section>
         {data}
+        <div className="updated-container">
+          Updated at: {updatedAt}
+        </div>
       </section>
     );
   }

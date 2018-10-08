@@ -142,11 +142,20 @@ async function addGames() {
     console.log('Completed Scrape!');
 
     if (!TESTING_MODE) {
+        let day = new Date();
+        let amPm = day.getHours() < 12 ? "am" : "pm";
+        time = `${day.getHours() + 12}:${day.getMinutes()}${amPm}`;
+
         let allTransactionPromises = [];
         const todaysRef = admin.database().ref('todaysGames');
         const yesterdaysRef = admin.database().ref('yesterdaysGames');
+        const ranAtRef = admin.database().ref('gamesScrapedTime');
+
         todaysRef.set({});
         yesterdaysRef.set({});
+        ranAtRef.set({});
+
+        allTransactionPromises.push(ranAtRef.push({updatedAt: time}));
     
         for (game of todaysGames) {
             let transactionPromise = todaysRef.push(game);

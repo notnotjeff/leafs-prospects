@@ -195,9 +195,17 @@ async function updateDB() {
   console.log('Completed Scrape');
 
   if (!TESTING_MODE) {
+    let day = new Date();
+    let amPm = day.getHours() < 12 ? "am" : "pm";
+    time = `${day.getHours() + 12}:${day.getMinutes()}${amPm}`;
+
     let allTransactionPromises = [];
     const prospectsRef = admin.database().ref('prospects');
+    const ranAtRef = admin.database().ref('prospectsScrapedTime');
     prospectsRef.set({});
+    ranAtRef.set({});
+
+    allTransactionPromises.push(ranAtRef.push({updatedAt: time}));
 
     prospectData.forEach(prospect => {
       let transactionPromise = prospectsRef.push(prospect);
