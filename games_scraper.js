@@ -186,7 +186,6 @@ async function scrape_games(prospects) {
 async function addGames() {
     console.log('Start Scrape...');
     let {todaysGames, yesterdaysGames} = await scrape_games(prospects);
-    console.log('todaysGames', todaysGames);
     console.log('Completed Scrape!');
 
     if (!TESTING_MODE) {
