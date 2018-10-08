@@ -196,9 +196,8 @@ async function updateDB() {
 
   if (!TESTING_MODE) {
     let day = new Date();
-    let amPm = day.getHours() < 12 ? "am" : "pm";
+    let amPm = "";
     let hours = "";
-    console.log(day.getHours());
 
     if (+day.getTimezoneOffset() === 0) {
       if (+day.getHours() < 12) { 
@@ -209,6 +208,7 @@ async function updateDB() {
       if (+hours === 0) {
         hours = "12"
       }
+      amPm = (+day.getHours() - 4) < 12 ? "am" : "pm";
     } else {
       if (+day.getHours() === 0) {
         hours = "12"
@@ -217,6 +217,7 @@ async function updateDB() {
       } else {
         hours = String(day.getHours() - 12);
       }
+      amPm = +day.getHours() < 12 ? "am" : "pm";
     }
 
     time = `${hours}:${day.getMinutes()}${amPm}`;
