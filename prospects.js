@@ -396,7 +396,7 @@ module.exports.prospects = [
     draft_year: 2018,
     player_id: 27960,
     profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27960&category=seasonstats",
-    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27355&category=gamebygame",
+    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27960&category=gamebygame",
     league: "WHL",
     ep_url: "https://www.eliteprospects.com/player/247241/filip-kral"
   },
