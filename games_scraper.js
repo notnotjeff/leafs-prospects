@@ -78,6 +78,9 @@ async function scrape_games(prospects) {
             if (prospect.league === "OHL" || prospect.league === "WHL") {
                 let gameIndex = scrapedProspect.SiteKit.Player.games.length-1;
 
+                // Skip If No Games
+                if (gameIndex === -1) { continue }
+
                 if (scrapedProspect.SiteKit.Player.games[gameIndex].date_played === `${year}-${month}-${day}`) {
                     let goals = +scrapedProspect.SiteKit.Player.games[gameIndex].goals;
                     let assists = +scrapedProspect.SiteKit.Player.games[gameIndex].assists;
@@ -112,6 +115,9 @@ async function scrape_games(prospects) {
                 data = JSON.parse(data);
                 let games = data.gameByGame[0].sections[0].data
                 let gameIndex = games.length - 1;
+
+                // Skip If No Games
+                if (gameIndex === -1) { continue }
 
                 if (games[gameIndex].row.date_played === `${year}-${month}-${day}`) {
                     let goals = +games[gameIndex].row.goals;
