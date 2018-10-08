@@ -40,6 +40,19 @@ function setDateValues() {
     return {day, month, year, yDay, yMonth, yYear};
 }
 
+function getDateFromString(date){
+    date = date.split(' ');
+    let day = date[0];
+    let month = date[1];
+    let year = date[2];
+
+    month = new Date(Date.parse(month +" 1, 2012")).getMonth()+1;
+
+    day = day < 10 ? `0${day}` : `${day}`;
+
+    return `${year}-${month}-${day}`;
+ }
+
 async function scrape_games(prospects) {
     let todaysGames = [];
     let yesterdaysGames = [];
@@ -54,7 +67,7 @@ async function scrape_games(prospects) {
             }
         } else {
             var url = {
-                url: prospect.profile_url,
+                url: prospect.games_url,
                 transform: body => cheerio.load(body)
             }
         }
@@ -72,7 +85,7 @@ async function scrape_games(prospects) {
                     let shots = +scrapedProspect.SiteKit.Player.games[gameIndex].shots;
                     let penaltyMinutes = +scrapedProspect.SiteKit.Player.games[gameIndex].penalty_minutes;
 
-                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
                 }
 
                 if (scrapedProspect.SiteKit.Player.games[gameIndex].date_played === `${yYear}-${yMonth}-${yDay}`) {
@@ -82,7 +95,7 @@ async function scrape_games(prospects) {
                     let shots = +scrapedProspect.SiteKit.Player.games[gameIndex].shots;
                     let penaltyMinutes = +scrapedProspect.SiteKit.Player.games[gameIndex].penalty_minutes;
 
-                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }
 
                 if (scrapedProspect.SiteKit.Player.games[gameIndex - 1].date_played === `${yYear}-${yMonth}-${yDay}`) {
@@ -92,7 +105,7 @@ async function scrape_games(prospects) {
                     let shots = +scrapedProspect.SiteKit.Player.games[gameIndex - 1].shots;
                     let penaltyMinutes = +scrapedProspect.SiteKit.Player.games[gameIndex - 1].penalty_minutes;
 
-                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }
             } else if (prospect.league === "AHL" || prospect.league === "USHL" || prospect.league === "ECHL") {
                 data = scrapedProspect.slice(5, scrapedProspect.length-1);
@@ -107,7 +120,7 @@ async function scrape_games(prospects) {
                     let shots = +games[gameIndex].row.shots;
                     let penaltyMinutes = +games[gameIndex].row.penalty_minutes;
 
-                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
                 }
 
                 if (games[gameIndex].row.date_played === `${yYear}-${yMonth}-${yDay}`) {
@@ -117,7 +130,7 @@ async function scrape_games(prospects) {
                     let shots = +games[gameIndex].row.shots;
                     let penaltyMinutes = +games[gameIndex].row.penalty_minutes;
 
-                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }
 
                 if (games[gameIndex - 1].row.date_played === `${yYear}-${yMonth}-${yDay}`) {
@@ -127,9 +140,43 @@ async function scrape_games(prospects) {
                     let shots = +games[gameIndex - 1].row.shots;
                     let penaltyMinutes = +games[gameIndex - 1].row.penalty_minutes;
 
-                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }
-            } 
+            } else if (prospect.league === "KHL") {                
+                let date = getDateFromString(scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(4)').text());
+                let secondLastDate = getDateFromString(scrapedProspect('#pl_Games > tbody > tr:nth-last-child(2) > td:nth-child(4)').text());
+                
+                if (`${year}-${month}-${day}` === date) {
+                    let goals = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(8)').text();
+                    let assists = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(9)').text();
+                    let points = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(10)').text();
+                    let shots = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(21)').text();
+                    let penaltyMinutes = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(14)').text();
+
+                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+
+                if (`${yYear}-${yMonth}-${yDay}` === date) {
+                    let goals = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(8)').text();
+                    let assists = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(9)').text();
+                    let points = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(10)').text();
+                    let shots = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(21)').text();
+                    let penaltyMinutes = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(1) > td:nth-child(14)').text();
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+
+                if (`${yYear}-${yMonth}-${yDay}` === secondLastDate) {
+                    let goals = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(2) > td:nth-child(8)').text();
+                    let assists = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(2) > td:nth-child(9)').text();
+                    let points = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(2) > td:nth-child(10)').text();
+                    let shots = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(2) > td:nth-child(21)').text();
+                    let penaltyMinutes = +scrapedProspect('#pl_Games > tbody > tr:nth-last-child(2) > td:nth-child(14)').text();
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+                
+            }
         }
     }
 
@@ -139,6 +186,7 @@ async function scrape_games(prospects) {
 async function addGames() {
     console.log('Start Scrape...');
     let {todaysGames, yesterdaysGames} = await scrape_games(prospects);
+    console.log('todaysGames', todaysGames);
     console.log('Completed Scrape!');
 
     if (!TESTING_MODE) {

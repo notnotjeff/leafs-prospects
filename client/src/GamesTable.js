@@ -13,6 +13,7 @@ class GamesTable extends Component {
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
             </tr>  
         )
 
@@ -21,6 +22,7 @@ class GamesTable extends Component {
                 games.map((game, i) => 
                     <tr key={i}>
                         <td>{game.fullName}</td>
+                        <td>{game.league}</td>
                         <td>{game.shots}</td>
                         <td>{game.goals}</td>
                         <td>{game.assists}</td>
@@ -35,10 +37,11 @@ class GamesTable extends Component {
             <table>
                 <thead>
                     <tr>
-                        <th colSpan="6">{title}</th>
+                        <th colSpan="7">{title}</th>
                     </tr>
                     <tr>
                         <th>Name</th>
+                        <th>League</th>
                         <th>S</th>
                         <th>G</th>
                         <th>A</th>

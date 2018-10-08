@@ -25,6 +25,7 @@ module.exports.prospects = [
     draft_year: 2017,
     player_id: 31190,
     profile_url: "https://en.khl.ru/players/31190/",
+    games_url: "https://en.khl.ru/players/31190/",
     league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=302228"
   },
@@ -153,6 +154,7 @@ module.exports.prospects = [
     draft_year: 2015,
     player_id: 23319,
     profile_url: "https://en.khl.ru/players/23319/",
+    games_url: "https://en.khl.ru/players/23319/",
     league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=239362"
   },
@@ -181,6 +183,7 @@ module.exports.prospects = [
     draft_year: 2016,
     player_id: 20766,
     profile_url: "https://en.khl.ru/players/20766/",
+    games_url: "https://en.khl.ru/players/20766/",
     league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=176637"
   },
@@ -223,6 +226,7 @@ module.exports.prospects = [
     draft_year: 2017,
     player_id: 22888,
     profile_url: "https://en.khl.ru/players/22888/",
+    games_url: "https://en.khl.ru/players/22888/",
     league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=322627"
   },
@@ -251,6 +255,7 @@ module.exports.prospects = [
     draft_year: 2016,
     player_id: 21313,
     profile_url: "https://en.khl.ru/players/21313/",
+    games_url: "https://en.khl.ru/players/21313/",
     league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=268059"
   },
