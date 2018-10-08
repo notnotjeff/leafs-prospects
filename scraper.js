@@ -197,6 +197,7 @@ async function updateDB() {
   if (!TESTING_MODE) {
     let day = new Date();
     let amPm = day.getHours() < 12 ? "am" : "pm";
+    console.log(day.getTimezoneOffset());
     time = `${day.getHours() + 12}:${day.getMinutes()}${amPm}`;
 
     let allTransactionPromises = [];
