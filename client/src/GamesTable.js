@@ -5,6 +5,32 @@ class GamesTable extends Component {
     render() {
         const {games, title} = this.props;
 
+        let gamesRows = (
+            <tr>
+                <td>No Data</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>  
+        )
+
+        if (games.length !== 0) {
+            gamesRows = (
+                games.map((game, i) => 
+                    <tr key={i}>
+                        <td>{game.fullName}</td>
+                        <td>{game.shots}</td>
+                        <td>{game.goals}</td>
+                        <td>{game.assists}</td>
+                        <td>{game.points}</td>
+                        <td>{game.penaltyMinutes}</td>
+                    </tr>  
+                )
+            )
+        }
+
         return(
             <table>
                 <thead>
@@ -20,17 +46,8 @@ class GamesTable extends Component {
                         <th>PIM</th>
                     </tr>
                 </thead>
-                <tbody> 
-                    {games.map((game, i) => 
-                        <tr key={i}>
-                            <td>{game.fullName}</td>
-                            <td>{game.shots}</td>
-                            <td>{game.goals}</td>
-                            <td>{game.assists}</td>
-                            <td>{game.points}</td>
-                            <td>{game.penaltyMinutes}</td>
-                        </tr>  
-                    )}
+                <tbody>
+                    {gamesRows}
                 </tbody>
             </table>
         );

@@ -40,7 +40,7 @@ class Games extends Component {
         const {todaysGames, yesterdaysGames} = this.state;
         let gamesTables = <div className="loading">Collecting data...</div>;
 
-        if (this.state.todaysGames.length !== 0) {
+        if (this.state.todaysGames.length !== 0 || this.state.yesterdaysGames.length !== 0) {
             gamesTables = (
                 <div className="games-container">
                     <GamesTable games={todaysGames} title="Today's Games" />

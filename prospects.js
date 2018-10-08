@@ -54,6 +54,7 @@ module.exports.prospects = [
     draft_year: 2017,
     player_id: 6893,
     profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6893&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6893&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
     league: "AHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=224910"
   },
@@ -350,6 +351,7 @@ module.exports.prospects = [
     draft_year: 2018,
     player_id: 27355,
     profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27355&category=seasonstats",
+    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27355&category=gamebygame",
     league: "WHL",
     ep_url: "https://www.eliteprospects.com/player/201715/riley-stotts"
   },
@@ -379,6 +381,7 @@ module.exports.prospects = [
     draft_year: 2018,
     player_id: 27960,
     profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27960&category=seasonstats",
+    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=41b145a848f4bd67&fmt=json&client_code=whl&lang=en&player_id=27355&category=gamebygame",
     league: "WHL",
     ep_url: "https://www.eliteprospects.com/player/247241/filip-kral"
   },
