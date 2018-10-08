@@ -199,6 +199,7 @@ async function updateDB() {
     let day = new Date();
     let amPm = "";
     let hours = "";
+    let minutes = day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
 
     if (+day.getTimezoneOffset() === 0) {
       if (+day.getHours() < 12) { 
@@ -221,7 +222,7 @@ async function updateDB() {
       amPm = +day.getHours() < 12 ? "am" : "pm";
     }
 
-    time = `${hours}:${day.getMinutes()}${amPm}`;
+    time = `${hours}:${minutes}${amPm}`;
 
     let allTransactionPromises = [];
     const prospectsRef = admin.database().ref('prospects');
