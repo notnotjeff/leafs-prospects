@@ -207,19 +207,18 @@ async function updateDB() {
       } else {
         hours = String(day.getHours() - 16);
       }
-      if (+hours === 0) {
-        hours = "12"
-      }
       amPm = (+day.getHours() - 4) < 12 ? "am" : "pm";
     } else {
-      if (+day.getHours() === 0) {
-        hours = "12"
-      } else if (+day.getHours() < 12) { 
+      if (+day.getHours() < 12) { 
         hours = String(day.getHours());
       } else {
         hours = String(day.getHours() - 12);
       }
       amPm = +day.getHours() < 12 ? "am" : "pm";
+    }
+
+    if (+hours === 0) {
+      hours = 12;
     }
 
     time = `${hours}:${minutes}${amPm}`;
