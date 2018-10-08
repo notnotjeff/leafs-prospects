@@ -3,7 +3,6 @@ import './Prospects.css';
 import firebase from './firebase.js';
 import ProspectTable from './ProspectTable';
 import ProspectFilter from './ProspectFilter';
-import Games from './Games';
 
 class Prospects extends Component {
   constructor(props) {
