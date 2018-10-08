@@ -195,6 +195,7 @@ async function updateDB() {
   console.log('Completed Scrape');
 
   if (!TESTING_MODE) {
+    // Set Time
     let day = new Date();
     let amPm = "";
     let hours = "";

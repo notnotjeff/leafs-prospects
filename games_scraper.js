@@ -142,9 +142,33 @@ async function addGames() {
     console.log('Completed Scrape!');
 
     if (!TESTING_MODE) {
+        // Set Time
         let day = new Date();
-        let amPm = day.getHours() < 12 ? "am" : "pm";
-        time = `${day.getHours() + 12}:${day.getMinutes()}${amPm}`;
+        let amPm = "";
+        let hours = "";
+
+        if (+day.getTimezoneOffset() === 0) {
+            if (+day.getHours() < 12) { 
+                hours = String(day.getHours() - 4);
+            } else {
+                hours = String(day.getHours() - 16);
+            }
+            if (+hours === 0) {
+                hours = "12"
+            }
+            amPm = (+day.getHours() - 4) < 12 ? "am" : "pm";
+        } else {
+            if (+day.getHours() === 0) {
+                hours = "12"
+            } else if (+day.getHours() < 12) { 
+                hours = String(day.getHours());
+            } else {
+                hours = String(day.getHours() - 12);
+            }
+            amPm = +day.getHours() < 12 ? "am" : "pm";
+        }
+
+        time = `${hours}:${day.getMinutes()}${amPm}`;
 
         let allTransactionPromises = [];
         const todaysRef = admin.database().ref('todaysGames');
