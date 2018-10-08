@@ -202,7 +202,7 @@ async function updateDB() {
     let minutes = day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
 
     if (+day.getTimezoneOffset() === 0) {
-      if (+day.getHours() < 12) { 
+      if ((+day.getHours() - 4) < 12) { 
         hours = String(day.getHours() - 4);
       } else {
         hours = String(day.getHours() - 16);
