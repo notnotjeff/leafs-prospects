@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <h1>Toronto Maple Leafs Prospect Aggregator</h1>
         <BrowserRouter>
-          <div>
+          <div className="content-container">
             <Navigation />
             <Switch>
               <Route path='/prospects' component={Prospects} />

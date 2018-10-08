@@ -1,17 +1,24 @@
-.tables-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.tables-container table {
-    margin-bottom: 30px;
-}
-
 .games-container {
     margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 0 5px;
+    width: 100vw;
+    overflow: scroll;
+}
+
+.games-tables-container {
+    overflow: scroll;
 }
 
 table {
     margin-bottom: 30px;
-    min-width: 60vw;
+}
+
+@media only screen and (max-width: 800px) {
+    .games-container {
+        display: inline-block;
+    }
 }

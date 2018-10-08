@@ -7,7 +7,7 @@ class GamesTable extends Component {
 
         let gamesRows = (
             <tr>
-                <td>No Data</td>
+                <td className="last_name">No Data</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -21,7 +21,7 @@ class GamesTable extends Component {
             gamesRows = (
                 games.map((game, i) => 
                     <tr key={i}>
-                        <td>{game.fullName}</td>
+                        <td className="last_name">{game.fullName}</td>
                         <td>{game.league}</td>
                         <td>{game.shots}</td>
                         <td>{game.goals}</td>
@@ -37,10 +37,11 @@ class GamesTable extends Component {
             <table>
                 <thead>
                     <tr>
-                        <th colSpan="7">{title}</th>
+                        <th colSpan="1" className="last_name">{title}</th>
+                        <th colSpan="6"></th>
                     </tr>
                     <tr>
-                        <th>Name</th>
+                        <th className="last_name">Name</th>
                         <th>League</th>
                         <th>S</th>
                         <th>G</th>
