@@ -20,7 +20,7 @@ class ProspectTable extends Component {
                 <th
                   key={i}
                   title={c.title}
-                  className={c.value + ' ' + (sortedColumn === c.value ? 'active' : '')}
+                  className={c.value + ' ' + (sortedColumn === c.value ? 'active-col' : '')}
                   onClick={() => { sortColumn(c.value) }}>{c.name}</th>
               )}
             </tr>
@@ -28,23 +28,23 @@ class ProspectTable extends Component {
           <tbody>
             {prospects.map((p, i) =>
               <tr key={i}>
-                <td className={(sortedColumn === "last_name" ? 'active' : '')}><a href={p.ep_url} target="_blank" rel="noopener noreferrer">{p.first_name} {p.last_name}</a></td>
-                <td className={(sortedColumn === "league" ? 'active' : '')}>{p.league}</td>
-                <td className={(sortedColumn === "position" ? 'active' : '')}>{p.position}</td>
-                <td className={(sortedColumn === "shoots" ? 'active' : '')}>{p.shoots}</td>
-                <td className={(sortedColumn === "age" ? 'active' : '')}>{p.age}</td>
-                <td className={(sortedColumn === "draft_year" ? 'active' : '')}>{p.draft_year}</td>
-                <td className={(sortedColumn === "round" ? 'active' : '')}>{p.round}</td>
-                <td className={(sortedColumn === "pick" ? 'active' : '')}>{p.pick}</td>
-                <td className={(sortedColumn === "games_played" ? 'active' : '')}>{p.games_played}</td>
-                <td className={(sortedColumn === "goals" ? 'active' : '')}>{p.goals}</td>
-                <td className={(sortedColumn === "assists" ? 'active' : '')}>{p.assists}</td>
-                <td className={(sortedColumn === "points" ? 'active' : '')}>{p.points}</td>
-                <td className={(sortedColumn === "shots" ? 'active' : '')}>{p.shots}</td>
-                <td className={(sortedColumn === "goals_pg" ? 'active' : '')}>{p.goals_pg}</td>
-                <td className={(sortedColumn === "assists_pg" ? 'active' : '')}>{p.assists_pg}</td>
-                <td className={(sortedColumn === "points_pg" ? 'active' : '')}>{p.points_pg}</td>
-                <td className={(sortedColumn === "shots_pg" ? 'active' : '')}>{p.shots_pg}</td>
+                <td className={(sortedColumn === "last_name" ? 'active-col' : '')}><a href={p.ep_url} target="_blank" rel="noopener noreferrer">{p.first_name} {p.last_name}</a></td>
+                <td className={(sortedColumn === "league" ? 'active-col' : '')}>{p.league}</td>
+                <td className={(sortedColumn === "position" ? 'active-col' : '')}>{p.position}</td>
+                <td className={(sortedColumn === "shoots" ? 'active-col' : '')}>{p.shoots}</td>
+                <td className={(sortedColumn === "age" ? 'active-col' : '')}>{p.age}</td>
+                <td className={(sortedColumn === "draft_year" ? 'active-col' : '')}>{p.draft_year}</td>
+                <td className={(sortedColumn === "round" ? 'active-col' : '')}>{p.round}</td>
+                <td className={(sortedColumn === "pick" ? 'active-col' : '')}>{p.pick}</td>
+                <td className={(sortedColumn === "games_played" ? 'active-col' : '')}>{p.games_played}</td>
+                <td className={(sortedColumn === "goals" ? 'active-col' : '')}>{p.goals}</td>
+                <td className={(sortedColumn === "assists" ? 'active-col' : '')}>{p.assists}</td>
+                <td className={(sortedColumn === "points" ? 'active-col' : '')}>{p.points}</td>
+                <td className={(sortedColumn === "shots" ? 'active-col' : '')}>{p.shots}</td>
+                <td className={(sortedColumn === "goals_pg" ? 'active-col' : '')}>{p.goals_pg}</td>
+                <td className={(sortedColumn === "assists_pg" ? 'active-col' : '')}>{p.assists_pg}</td>
+                <td className={(sortedColumn === "points_pg" ? 'active-col' : '')}>{p.points_pg}</td>
+                <td className={(sortedColumn === "shots_pg" ? 'active-col' : '')}>{p.shots_pg}</td>
               </tr>
             )}
           </tbody>

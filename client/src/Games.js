@@ -42,7 +42,7 @@ class Games extends Component {
 
         if (this.state.todaysGames.length !== 0) {
             gamesTables = (
-                <div className="tables-container">
+                <div className="games-container">
                     <GamesTable games={todaysGames} title="Today's Games" />
                     <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
                 </div>
@@ -50,9 +50,9 @@ class Games extends Component {
         }
 
         return (
-            <div className="games-container">
+            <section>
                 {gamesTables}
-            </div>
+            </section>
         );
     }
 }

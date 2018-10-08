@@ -175,9 +175,9 @@ class Prospects extends Component {
      )
     }
     return (
-      <div>
+      <section>
         {data}
-      </div>
+      </section>
     );
   }
 }

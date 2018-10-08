@@ -1,0 +1,25 @@
+.nav-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#nav .active {
+    color: white;
+    background-color: #053975;
+}
+
+#nav a {
+    color: #053975;
+    background-color: white;
+    padding: 5px;
+    width: 75px;
+    display: inline-block;
+    text-align: center;
+}
+
+#nav {
+    border: 1px solid #053975;
+    border-radius: 10px;
+    overflow: hidden;
+}
