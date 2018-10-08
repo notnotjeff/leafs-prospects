@@ -198,10 +198,11 @@ async function updateDB() {
     let day = new Date();
     let amPm = day.getHours() < 12 ? "am" : "pm";
     let hours = "";
+    console.log(day.getHours());
 
     if (+day.getTimezoneOffset() === 0) {
       if (+day.getHours() < 12) { 
-        hours = String(day.getHours() + 8);
+        hours = String(day.getHours() - 4);
       } else {
         hours = String(day.getHours() - 16);
       }
