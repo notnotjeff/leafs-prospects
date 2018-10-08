@@ -189,7 +189,7 @@ class Prospects extends Component {
       <section>
         {data}
         <div className="updated-container">
-          Updated at: {updatedAt}
+          Updated at: {updatedAt} EST
         </div>
       </section>
     );

@@ -65,7 +65,7 @@ class Games extends Component {
             <section>
                 {gamesTables}
                 <div className="updated-container">
-                    Updated at: {updatedAt}
+                    Updated at: {updatedAt} EST
                 </div>
             </section>
         );

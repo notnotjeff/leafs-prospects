@@ -197,8 +197,28 @@ async function updateDB() {
   if (!TESTING_MODE) {
     let day = new Date();
     let amPm = day.getHours() < 12 ? "am" : "pm";
-    console.log(day.getTimezoneOffset());
-    time = `${day.getHours() + 12}:${day.getMinutes()}${amPm}`;
+    let hours = "";
+
+    if (+day.getTimezoneOffset() === 0) {
+      if (+day.getHours() < 12) { 
+        hours = String(day.getHours() + 8);
+      } else {
+        hours = String(day.getHours() - 16);
+      }
+      if (+hours === 0) {
+        hours = "12"
+      }
+    } else {
+      if (+day.getHours() === 0) {
+        hours = "12"
+      } else if (+day.getHours() < 12) { 
+        hours = String(day.getHours());
+      } else {
+        hours = String(day.getHours() - 12);
+      }
+    }
+
+    time = `${hours}:${day.getMinutes()}${amPm}`;
 
     let allTransactionPromises = [];
     const prospectsRef = admin.database().ref('prospects');
