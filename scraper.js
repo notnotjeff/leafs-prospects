@@ -201,22 +201,15 @@ async function updateDB() {
     let hours = "";
     let minutes = day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
 
-    if (+day.getTimezoneOffset() === 0) {
-      if ((+day.getHours() - 4) < 12) { 
-        hours = String(day.getHours() - 4);
-      } else {
-        hours = String(day.getHours() - 16);
-      }
-      amPm = (+day.getHours() - 4) < 12 ? "am" : "pm";
+    if (+day.getTimezoneOffset() === 0) { day.setHours(day.getHours() - 4) }
+    
+    if (+day.getHours() < 12) { 
+      hours = String(day.getHours());
     } else {
-      if (+day.getHours() < 12) { 
-        hours = String(day.getHours());
-      } else {
-        hours = String(day.getHours() - 12);
-      }
-      amPm = +day.getHours() < 12 ? "am" : "pm";
+      hours = String(day.getHours() - 12);
     }
-
+      
+    amPm = +day.getHours() < 12 ? "am" : "pm";
     if (+hours === 0) {
       hours = 12;
     }

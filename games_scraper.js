@@ -26,6 +26,11 @@ function setDateValues() {
     let yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
 
+    if (+today.getTimezoneOffset() === 0) { 
+        today.setHours(today.getHours() - 4);
+        yesterday.setHours(yesterday.getHours() - 4);
+    }
+
     let day = String(today.getDate());
     let month = String(today.getMonth() + 1);
     let year = String(today.getFullYear());
@@ -201,24 +206,17 @@ async function addGames() {
         let hours = "";
         let minutes = day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
 
-        if (+day.getTimezoneOffset() === 0) {
-            if ((+day.getHours() - 4) < 12) { 
-                hours = String(day.getHours() - 4);
-            } else {
-                hours = String(day.getHours() - 16);
-            }
-            amPm = (+day.getHours() - 4) < 12 ? "am" : "pm";
+        if (+day.getTimezoneOffset() === 0) { day.setHours(day.getHours() - 4) }
+        
+        if (+day.getHours() < 12) { 
+        hours = String(day.getHours());
         } else {
-            if (+day.getHours() < 12) { 
-                hours = String(day.getHours());
-            } else {
-                hours = String(day.getHours() - 12);
-            }
-            amPm = +day.getHours() < 12 ? "am" : "pm";
+        hours = String(day.getHours() - 12);
         }
-
+        
+        amPm = +day.getHours() < 12 ? "am" : "pm";
         if (+hours === 0) {
-            hours = 12;
+        hours = 12;
         }
 
         time = `${hours}:${minutes}${amPm}`;

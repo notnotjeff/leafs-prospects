@@ -27,19 +27,18 @@ class Games extends Component {
           
           this.setState({updatedAt: time})
         });
-
-        let todaysGames = [];
-        let yesterdaysGames = [];
     
         todaysRef.on('value', (snapshot) => {
-          snapshot.forEach(snap => {
-            todaysGames.push(snap.val());
-          });
+            let todaysGames = [];
+            snapshot.forEach(snap => {
+                todaysGames.push(snap.val());
+            });
 
-          this.setState({ todaysGames });
+            this.setState({ todaysGames });
         });
 
         yesterdaysRef.on('value', (snapshot) => {
+            let yesterdaysGames = [];
             snapshot.forEach(snap => {
               yesterdaysGames.push(snap.val());
             }); 
