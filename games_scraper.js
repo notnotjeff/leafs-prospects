@@ -187,7 +187,45 @@ async function scrape_games(prospects) {
 
                     yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
                 }
-                
+            } else if (prospect.league === "Liiga") {
+                // Skip To Next Prospect If No Games Have Been Played
+                if (!scrapedProspect('#stats-section > table > tbody > tr:nth-child(1) > td:nth-child(1)').text().split('.').length === 3) { continue }
+
+                // Get Date of Last Played Game
+                let date = getDateFromString(scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(1)').text().split('.').join(' '));
+                // If Prior Row Is a Monthly Total, Skip It, Then Use Row Number To Get Date of Second Last Played Game
+                let row = scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(4) > td:nth-child(1)').text().includes('yht.') ? 5 : 4;
+                let secondDate = getDateFromString(scrapedProspect(`#stats-section > table > tbody > tr:nth-last-child(${row}) > td:nth-child(1)`).text().split('.').join(' '));
+
+                if (`${year}-${month}-${day}` === date) {
+                    let goals = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(3)').text();
+                    let assists = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(4)').text();
+                    let points = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(5)').text();
+                    let shots = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(13)').text();
+                    let penaltyMinutes = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(6)').text();
+
+                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+
+                if (`${yYear}-${yMonth}-${yDay}` === date) {
+                    let goals = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(3)').text();
+                    let assists = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(4)').text();
+                    let points = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(5)').text();
+                    let shots = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(13)').text();
+                    let penaltyMinutes = +scrapedProspect('#stats-section > table > tbody > tr:nth-last-child(3) > td:nth-child(6)').text();
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+
+                if (`${yYear}-${yMonth}-${yDay}` === secondDate) {
+                    let goals = +scrapedProspect(`#stats-section > table > tbody > tr:nth-last-child(${row}) > td:nth-child(3)`).text();
+                    let assists = +scrapedProspect(`#stats-section > table > tbody > tr:nth-last-child(${row}) > td:nth-child(4)`).text();
+                    let points = +scrapedProspect(`#stats-section > table > tbody > tr:nth-last-child(${row}) > td:nth-child(5)`).text();
+                    let shots = +scrapedProspect(`#stats-section > table > tbody > tr:nth-last-child(${row}) > td:nth-child(13)`).text();
+                    let penaltyMinutes = +scrapedProspect(`#stats-section > table > tbody > tr:nth-last-child(${row}) > td:nth-child(6)`).text();
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
             }
         }
     }

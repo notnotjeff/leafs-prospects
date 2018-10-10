@@ -308,6 +308,7 @@ module.exports.prospects = [
     draft_year: 2015,
     player_id: 100025980,
     profile_url: "http://liiga.fi/pelaajat/100025980/lindgren-jesper",
+    games_url: "http://liiga.fi/fi/pelaajat/100025980/lindgren-jesper/ottelu-ottelulta",
     league: "Liiga",
     ep_url: "http://www.eliteprospects.com/player.php?player=187806"
   },
