@@ -6,7 +6,7 @@ const Navigation = () => {
     return(
         <div className="nav-container">
             <nav id="nav">
-                <NavLink to="/prospects">Prospects</NavLink>
+                <NavLink to="/" exact>Prospects</NavLink>
                 <NavLink to="/games">Games</NavLink>
             </nav>
         </div>

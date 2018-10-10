@@ -9,6 +9,10 @@
     overflow: scroll;
 }
 
+.games-container thead tr:nth-child(2) th {
+    cursor: auto;
+}
+
 .games-tables-container {
     overflow: scroll;
 }

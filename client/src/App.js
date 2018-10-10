@@ -15,9 +15,9 @@ class App extends Component {
           <div className="content-container">
             <Navigation />
             <Switch>
-              <Route path='/prospects' component={Prospects} />
+              <Route path='/' component={Prospects} exact />
               <Route path='/games' component={Games} />
-              <Redirect to="/prospects" />
+              <Redirect to="/" />
             </Switch>
           </div>
         </BrowserRouter>
