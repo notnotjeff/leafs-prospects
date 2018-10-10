@@ -34,26 +34,28 @@ class GamesTable extends Component {
         }
 
         return(
-            <table>
-                <thead>
-                    <tr>
-                        <th colSpan="1" className="last_name">{title}</th>
-                        <th colSpan="6"></th>
-                    </tr>
-                    <tr>
-                        <th className="last_name">Name</th>
-                        <th>League</th>
-                        <th>S</th>
-                        <th>G</th>
-                        <th>A</th>
-                        <th>P</th>
-                        <th>PIM</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {gamesRows}
-                </tbody>
-            </table>
+            <div className="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colSpan="1" className="last_name">{title}</th>
+                            <th colSpan="6"></th>
+                        </tr>
+                        <tr>
+                            <th className="last_name">Name</th>
+                            <th>League</th>
+                            <th>S</th>
+                            <th>G</th>
+                            <th>A</th>
+                            <th>P</th>
+                            <th>PIM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {gamesRows}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
