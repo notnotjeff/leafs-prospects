@@ -58,12 +58,12 @@ class Games extends Component {
             </div>
         );
 
+        let updatedDiv = updatedAt === "" ? (<div className="updated-container"></div>) : (<div className="updated-container">Updated at: {updatedAt} EST</div>)
+
         return (
             <section>
                 {gamesTables}
-                <div className="updated-container">
-                    Updated at: {updatedAt} EST
-                </div>
+                {updatedDiv}
             </section>
         );
     }

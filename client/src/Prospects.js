@@ -185,11 +185,14 @@ class Prospects extends Component {
         </div>
      )
     }
+
+    let updatedDiv = updatedAt === "" ? (<div className="updated-container"></div>) : (<div className="updated-container">Updated at: {updatedAt} EST</div>)
+
     return (
       <section>
         {data}
         <div className="updated-container">
-          Updated at: {updatedAt} EST
+          {updatedDiv}
         </div>
       </section>
     );
