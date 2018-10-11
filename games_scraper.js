@@ -226,6 +226,39 @@ async function scrape_games(prospects) {
 
                     yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
                 }
+            } else if (prospect.league === "SHL") {
+                let date = scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(1)').text();
+                let yesterdayDate = scrapedProspect('.rmss_t-stat-table__row').first().next().children('td:nth-child(1)').text();
+
+                if (`${year}-${month}-${day}` === date) {
+                    let goals = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(5)').text();
+                    let assists = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(6)').text();
+                    let points = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(7)').text();
+                    let penaltyMinutes = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(9)').text();
+                    let shots = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(13)').text();
+
+                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+
+                if (`${yYear}-${yMonth}-${yDay}` === date) {
+                    let goals = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(5)').text();
+                    let assists = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(6)').text();
+                    let points = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(7)').text();
+                    let penaltyMinutes = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(9)').text();
+                    let shots = +scrapedProspect('.rmss_t-stat-table__row').first().children('td:nth-child(13)').text();
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+
+                if (`${yYear}-${yMonth}-${yDay}` === yesterdayDate) {
+                    let goals = +scrapedProspect('.rmss_t-stat-table__row').first().next().children('td:nth-child(5)').text();
+                    let assists = +scrapedProspect('.rmss_t-stat-table__row').first().next().children('td:nth-child(6)').text();
+                    let points = +scrapedProspect('.rmss_t-stat-table__row').first().next().children('td:nth-child(7)').text();
+                    let penaltyMinutes = +scrapedProspect('.rmss_t-stat-table__row').first().next().children('td:nth-child(9)').text();
+                    let shots = +scrapedProspect('.rmss_t-stat-table__row').first().next().children('td:nth-child(13)').text();
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
             }
         }
     }

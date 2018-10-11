@@ -412,6 +412,7 @@ module.exports.prospects = [
     draft_year: 2018,
     player_id: 0,
     profile_url: "https://www.shl.se/lag/fe02-fe02mf1FN__vaxjo-lakers/qTK-4a8Y9mMrn__pontus-holmberg/statistics",
+    games_url: "https://www.shl.se/lag/fe02-fe02mf1FN__vaxjo-lakers/qTK-4a8Y9mMrn__pontus-holmberg/gamelog",
     league: "SHL",
     ep_url: "https://www.eliteprospects.com/player/265859/pontus-holmberg"
   },
