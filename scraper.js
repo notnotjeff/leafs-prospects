@@ -128,11 +128,12 @@ function scrape(prospects) {
                         var shots = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(15)').text();
                         var games_played = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(3)').text();
                       } else if (p.league === "NCAA") {
-                        var goals = data('#content > div:nth-child(4) > table > tbody > tr:nth-last-child(1) > td:nth-child(4)').text();
-                        var assists = data('#content > div:nth-child(4) > table > tbody > tr:nth-last-child(1) > td:nth-child(5)').text();
-                        var points = data('#content > div:nth-child(4) > table > tbody > tr:nth-last-child(1) > td:nth-child(6)').text();
-                        var shots = data('#content > div:nth-child(4) > table > tbody > tr:nth-last-child(1) > td:nth-child(10)').text();
-                        var games_played = data('#content > div:nth-child(4) > table > tbody > tr:nth-last-child(1) > td:nth-child(3)').text();
+                        var statGroup = data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(3)').text().split('-');
+                        var goals = +statGroup[0];
+                        var assists = +statGroup[1];
+                        var points = +statGroup[2];
+                        var shots = +data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(9)').text();
+                        var games_played = +data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)').text().split(' ')[1];
                       } else if (p.league === "Liiga") {
                         var goals = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(5)').text();
                         var assists = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(6)').text();
