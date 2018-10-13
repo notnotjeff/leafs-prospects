@@ -280,8 +280,24 @@ module.exports.prospects = [
     draft_year: 2014,
     player_id: 29891,
     profile_url: "https://www.collegehockeynews.com/players/career/Dakota-Joshua/29891",
+    games_url: "https://www.collegehockeynews.com/players/career/Dakota-Joshua/29891",
     league: "NCAA",
     ep_url: "http://www.eliteprospects.com/player.php?player=194948"
+  },
+  {
+    first_name: "Ryan",
+    last_name: "O'Connell",
+    position: "D",
+    shoots: "L",
+    dob: "1999-04-25",
+    round: 7,
+    pick: 203,
+    draft_year: 2017,
+    player_id: 36023,
+    profile_url: "https://www.collegehockeynews.com/players/career/Ryan-OConnell/36023",
+    games_url: "https://www.collegehockeynews.com/players/career/Ryan-OConnell/36023",
+    league: "NCAA",
+    ep_url: "https://www.eliteprospects.com/player/286946/ryan-o-connell"
   },
   {
     first_name: "James",

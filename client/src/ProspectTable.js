@@ -20,7 +20,7 @@ class ProspectTable extends Component {
                 <th
                   key={i}
                   title={c.title}
-                  className={c.value + ' ' + (sortedColumn === c.value ? 'active-col' : '')}
+                  className={c.value + ' ' + (sortedColumn === c.value ? 'header-active-col' : '')}
                   onClick={() => { sortColumn(c.value) }}>{c.name}</th>
               )}
             </tr>

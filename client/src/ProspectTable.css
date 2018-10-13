@@ -39,6 +39,12 @@ tbody tr td:first-child {
   border: 1px solid #a6cffe;
 }
 
+.header-active-col {
+  background-color: #72b1f9 !important;
+  /* border: 1px solid #a6cffe; */
+  border: 1px solid #72b1f9;
+}
+
 @media only screen and (max-width: 800px) {
   table td,
   table th {
