@@ -51,10 +51,8 @@ class Games extends Component {
         const {todaysGames, yesterdaysGames, updatedAt} = this.state;
         let gamesTables = (
             <div className="games-container">
-                <div className="games-tables-container">
-                    <GamesTable games={todaysGames} title="Today's Games" />
-                    <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
-                </div>
+                <GamesTable games={todaysGames} title="Today's Games" />
+                <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
             </div>
         );
 
