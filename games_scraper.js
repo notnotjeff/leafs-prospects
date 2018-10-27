@@ -105,6 +105,8 @@ async function scrape_games(prospects) {
                     yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }
 
+                if (gameIndex - 1 === -1) { continue }
+
                 if (scrapedProspect.SiteKit.Player.games[gameIndex - 1].date_played === `${yYear}-${yMonth}-${yDay}`) {
                     let goals = +scrapedProspect.SiteKit.Player.games[gameIndex - 1].goals;
                     let assists = +scrapedProspect.SiteKit.Player.games[gameIndex - 1].assists;
@@ -117,6 +119,7 @@ async function scrape_games(prospects) {
             } else if (prospect.league === "AHL" || prospect.league === "USHL" || prospect.league === "ECHL") {
                 data = scrapedProspect.slice(5, scrapedProspect.length-1);
                 data = JSON.parse(data);
+
                 let games = data.gameByGame[0].sections[0].data
                 let gameIndex = games.length - 1;
 
@@ -142,6 +145,8 @@ async function scrape_games(prospects) {
 
                     yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }
+
+                if (gameIndex - 1 === -1) { continue }
 
                 if (games[gameIndex - 1].row.date_played === `${yYear}-${yMonth}-${yDay}`) {
                     let goals = +games[gameIndex - 1].row.goals;

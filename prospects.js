@@ -338,9 +338,10 @@ module.exports.prospects = [
     round: 1,
     pick: 29,
     draft_year: 2018,
-    player_id: 7852,
-    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7852&category=seasonstats",
-    league: "OHL",
+    player_id: 7314,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7314&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7314&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "AHL",
     ep_url: "https://www.eliteprospects.com/player/289453/rasmus-sandin"
   },
   {
