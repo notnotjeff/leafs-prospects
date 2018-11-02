@@ -29,6 +29,12 @@ function getAge(dateString)
     return Math.floor(age/31557600000*10) / 10;
 }
 
+function getCurrentSeason() {
+  // Return string in format YYYY-YY eg: 2018-19
+  let date = new Date();
+  return `${date.getFullYear()}-${(date.getFullYear() + 1).toString().substr(-2)}`;
+}
+
 function scrape(prospects) {
   let promises = [];
 
@@ -76,7 +82,7 @@ function scrape(prospects) {
                         var points = data.SiteKit.Player.regular[0].points;
                         var shots = data.SiteKit.Player.regular[0].shots;
                         var games_played = data.SiteKit.Player.regular[0].games_played;
-                      } else if (p.league === "AHL" || p.league === "ECHL" || p.league === "USHL") {
+                      } else if (p.league === "AHL" || p.league === "USHL") {
                         data = data.slice(5, data.length-1);
                         data = JSON.parse(data);
                         var goals = data.careerStats[0].sections[0].data[0].row.goals;
@@ -84,6 +90,25 @@ function scrape(prospects) {
                         var points = data.careerStats[0].sections[0].data[0].row.points;
                         var shots = data.careerStats[0].sections[0].data[0].row.shots;
                         var games_played = data.careerStats[0].sections[0].data[0].row.games_played;
+                      } else if (p.league === "ECHL") {
+                        let seasons = data.data.stats.history;
+                        let seasonYears = getCurrentSeason();
+
+                        var goals = 0;
+                        var assists = 0;
+                        var points = 0;
+                        var shots = 0;
+                        var games_played = 0;
+
+                        for (season of seasons) {
+                          if (season.season.name === `${seasonYears} Regular Season`) {
+                            goals = season.properties[1].value;
+                            assists = season.properties[2].value;
+                            points = season.properties[3].value;
+                            shots = season.properties[10].value;
+                            games_played = season.properties[0].value;
+                          }
+                        }
                       } else if (p.league === "KHL") {
                         // Check to make sure the row scraped is regular season not playoffs
                         if (data('#pl_Stats > tbody > tr:nth-child(1) > td:nth-child(1)').text().includes("Regular")) {
@@ -237,7 +262,7 @@ async function updateDB() {
   } else {
     prospectData.forEach(prospect => {
       // Log Specific Prospect:
-      if (prospect.last_name === "Kara") { console.log(prospect) };
+      if (prospect.last_name === "Piccinich") { console.log(prospect) };
 
       // Log All Prospects
       // console.log(prospect);

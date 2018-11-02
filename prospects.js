@@ -174,9 +174,11 @@ module.exports.prospects = [
     pick: 103,
     draft_year: 2014,
     player_id: 7307,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7307&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7307&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
+    profile_url: "https://www.echl.com/api/s3?q=player-8849f569f3e47885f5a72d90.json",
+    games_url: "https://www.echl.com/api/s3?q=player-8849f569f3e47885f5a72d90.json",
+    // profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7307&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json", // AHL
+    // games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7307&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json", // AHL
+    league: "ECHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=191113"
   },
   {
