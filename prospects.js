@@ -234,9 +234,11 @@ module.exports.prospects = [
     pick: 124,
     draft_year: 2017,
     player_id: 22888,
-    profile_url: "https://en.khl.ru/players/22888/",
-    games_url: "https://en.khl.ru/players/22888/",
-    league: "KHL",
+    profile_url: "http://www.vhlru.ru/en/players/22888/",
+    games_url: "http://www.vhlru.ru/en/players/22888/games",
+    // profile_url: "https://en.khl.ru/players/22888/", // KHL
+    // games_url: "https://en.khl.ru/players/22888/", // KHL
+    league: "VHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=322627"
   },
   {
