@@ -116,7 +116,7 @@ async function scrape_games(prospects) {
 
                     yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }
-            } else if (prospect.league === "AHL" || prospect.league === "USHL" || prospect.league === "ECHL") {
+            } else if (prospect.league === "AHL" || prospect.league === "USHL") {
                 data = scrapedProspect.slice(5, scrapedProspect.length-1);
                 data = JSON.parse(data);
 
