@@ -35,6 +35,16 @@ function getCurrentSeason() {
   return `${date.getFullYear()}-${(date.getFullYear() + 1).toString().substr(-2)}`;
 }
 
+Date.prototype.stdTimezoneOffset = function () {
+  var jan = new Date(this.getFullYear(), 0, 1);
+  var jul = new Date(this.getFullYear(), 6, 1);
+  return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+}
+
+Date.prototype.isDstObserved = function () {
+  return this.getTimezoneOffset() < this.stdTimezoneOffset();
+}
+
 function scrape(prospects) {
   let promises = [];
 
@@ -227,7 +237,9 @@ async function updateDB() {
     let hours = "";
     let minutes = day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
 
-    if (+day.getTimezoneOffset() === 0) { day.setHours(day.getHours() - 4) }
+    let offsetHours = day.isDstObserved() ? 5 : 4
+
+    if (+day.getTimezoneOffset() === 0) { day.setHours(day.getHours() - offsetHours) }
     
     if (+day.getHours() < 12) { 
       hours = String(day.getHours());
