@@ -105,6 +105,21 @@ module.exports.prospects = [
     ep_url: "http://www.eliteprospects.com/player.php?player=115161"
   },
   {
+    first_name: "Trevor",
+    last_name: "Moore",
+    position: "LW",
+    shoots: "L",
+    dob: "1995-03-31",
+    round: null,
+    pick: null,
+    draft_year: null,
+    player_id: 6444,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6444&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6444&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "AHL",
+    ep_url: "https://www.eliteprospects.com/player/87846/trevor-moore"
+  },
+  {
     first_name: "Andrew",
     last_name: "Nielsen",
     position: "D",
@@ -268,9 +283,11 @@ module.exports.prospects = [
     pick: 122,
     draft_year: 2016,
     player_id: 21313,
-    profile_url: "https://en.khl.ru/players/21313/",
-    games_url: "https://en.khl.ru/players/21313/",
-    league: "KHL",
+    profile_url: "http://www.vhlru.ru/en/players/21313/",
+    games_url: "http://www.vhlru.ru/en/players/21313/games/",
+    // profile_url: "https://en.khl.ru/players/21313/", KHL
+    // games_url: "https://en.khl.ru/players/21313/", KHL
+    league: "VHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=268059"
   },
   {
