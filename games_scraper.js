@@ -25,10 +25,18 @@ function setDateValues() {
     let today = new Date();
     let yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
+    console.log(today)
 
-    if (+today.getTimezoneOffset() === 0) { 
-        today.setHours(today.getHours() - 4);
-        yesterday.setHours(yesterday.getHours() - 4);
+    if (+today.getTimezoneOffset() === 0) {
+        const todayOffset = isDaylightSavings(today) ? 4 : 5;
+        const yesterdayOffset = isDaylightSavings(yesterday) ? 4 : 5;
+        today.setHours(today.getHours() - todayOffset);
+        yesterday.setHours(yesterday.getHours() - yesterdayOffset);
+    } else {
+        const todayOffset = isDaylightSavings(today) ? 0 : 1;
+        const yesterdayOffset = isDaylightSavings(yesterday) ? 0 : 1;
+        today.setHours(today.getHours() - todayOffset);
+        yesterday.setHours(yesterday.getHours() - yesterdayOffset);
     }
 
     let day = String(today.getDate());
