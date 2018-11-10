@@ -120,6 +120,21 @@ module.exports.prospects = [
     ep_url: "https://www.eliteprospects.com/player/87846/trevor-moore"
   },
   {
+    first_name: "Mason",
+    last_name: "Marchment",
+    position: "LW",
+    shoots: "L",
+    dob: "1995-03-06",
+    round: null,
+    pick: null,
+    draft_year: null,
+    player_id: 6317,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6317&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6317&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "AHL",
+    ep_url: "https://www.eliteprospects.com/player/208693/mason-marchment"
+  },
+  {
     first_name: "Andrew",
     last_name: "Nielsen",
     position: "D",
