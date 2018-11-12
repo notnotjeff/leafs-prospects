@@ -25,7 +25,6 @@ function setDateValues() {
     let today = new Date();
     let yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
-    console.log(today)
 
     if (+today.getTimezoneOffset() === 0) {
         const todayOffset = isDaylightSavings(today) ? 4 : 5;
