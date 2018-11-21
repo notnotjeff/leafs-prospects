@@ -190,7 +190,7 @@ function scrape(prospects) {
                         var assists = +statGroup[1];
                         var points = +statGroup[2];
                         var shots = +data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(9)').text();
-                        var games_played = +data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)').text().split(' ')[1];
+                        var games_played = +data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)').text().split(' ')[0];
                       } else if (p.league === "Liiga") {
                         var goals = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(5)').text();
                         var assists = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(6)').text();
@@ -296,7 +296,7 @@ async function updateDB() {
   } else {
     prospectData.forEach(prospect => {
       // Log Specific Prospect:
-      if (prospect.last_name === "Piccinich") { console.log(prospect) };
+      if (prospect.last_name === "O'Connell") { console.log(prospect) };
 
       // Log All Prospects
       // console.log(prospect);
