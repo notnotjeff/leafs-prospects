@@ -27,6 +27,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "event-stream": "^4.0.1",
     "firebase": "^5.3.1"
   }
 }
