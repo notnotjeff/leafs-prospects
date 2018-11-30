@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://jefftcraig.github.io/",
   "engines": {
-    "node": "8.11.3",
+    "node": "11.3.0",
     "yarn": "1.9.4"
   },
   "dependencies": {
