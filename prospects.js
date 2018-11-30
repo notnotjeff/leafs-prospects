@@ -135,19 +135,19 @@ module.exports.prospects = [
     ep_url: "https://www.eliteprospects.com/player/208693/mason-marchment"
   },
   {
-    first_name: "Andrew",
-    last_name: "Nielsen",
-    position: "D",
+    first_name: "Morgan",
+    last_name: "Klimchuk",
+    position: "LW",
     shoots: "L",
-    dob: "1996-11-13",
-    round: 3,
-    pick: 65,
-    draft_year: 2015,
-    player_id: 6296,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6296&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6296&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    dob: "1995-03-02",
+    round: 1,
+    pick: 28,
+    draft_year: 2013,
+    player_id: 5485,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=5485&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=5485&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
     league: "AHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=131262"
+    ep_url: "https://www.eliteprospects.com/player/62209/morgan-klimchuk"
   },
   {
     first_name: "Calle",
