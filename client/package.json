@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://jefftcraig.github.io/",
+  "engines": {
+    "node": "8.11.3",
+    "yarn": "1.9.4"
+  },
   "dependencies": {
     "ajv": "^6.5.3",
     "gh-pages": "^1.2.0",

@@ -1,6 +1,9 @@
 {
   "name": "leafs-prospects",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.11.3"
+  },
   "description": "Toronto Maple Leafs Prospect aggregator",
   "main": "server.js",
   "dependencies": {
