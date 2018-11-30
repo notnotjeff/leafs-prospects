@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jtc-git.github.io/",
+  "homepage": "https://jefftcraig.github.io/",
   "dependencies": {
     "ajv": "^6.5.3",
     "gh-pages": "^1.2.0",

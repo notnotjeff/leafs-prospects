@@ -165,7 +165,7 @@ class Prospects extends Component {
         return fail !== true;
       });
 
-      this.setState({ prospects, sortColumn: "", sortDirection: "asc" });
+      this.setState({ prospects });
     });
   }
 
