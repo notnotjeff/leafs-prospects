@@ -1,5 +1,3 @@
-// Prospects OBJ
-
 module.exports.prospects = [
   {
     first_name: "Fedor",
