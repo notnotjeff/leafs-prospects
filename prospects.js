@@ -150,6 +150,21 @@ module.exports.prospects = [
     ep_url: "https://www.eliteprospects.com/player/62209/morgan-klimchuk"
   },
   {
+    first_name: "Michael",
+    last_name: "Carcone",
+    position: "LW",
+    shoots: "L",
+    dob: "1996-05-19",
+    round: null,
+    pick: null,
+    draft_year: null,
+    player_id: 5485,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6501&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6501&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "AHL",
+    ep_url: "https://www.eliteprospects.com/player/265300/michael-carcone"
+  },
+  {
     first_name: "Calle",
     last_name: "Rosen",
     position: "D",
