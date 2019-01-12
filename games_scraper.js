@@ -46,8 +46,11 @@ function setDateValues() {
     let yMonth = String(yesterday.getMonth() + 1);
     let yYear = String(yesterday.getFullYear());
     
+    // Add leading 0's to month and day if they're less than 10
     day = day < 10 ? `0${day}` : `${day}`;
     yDay = yDay < 10 ? `0${yDay}` : `${yDay}`;
+    month = month < 10 ? `0${month}` : `${month}`;
+    yMonth = yMonth < 10 ? `0${yMonth}` : `${yMonth}`;
 
     return {day, month, year, yDay, yMonth, yYear};
 }
