@@ -135,19 +135,19 @@ module.exports.prospects = [
     ep_url: "https://www.eliteprospects.com/player/208693/mason-marchment"
   },
   {
-    first_name: "Morgan",
-    last_name: "Klimchuk",
-    position: "LW",
-    shoots: "L",
-    dob: "1995-03-02",
-    round: 1,
-    pick: 28,
-    draft_year: 2013,
-    player_id: 5485,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=5485&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=5485&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    first_name: "Gabriel",
+    last_name: "Gagne",
+    position: "RW",
+    shoots: "R",
+    dob: "1996-11-11",
+    round: 2,
+    pick: 36,
+    draft_year: 2015,
+    player_id: 6434,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6434&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6434&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
     league: "AHL",
-    ep_url: "https://www.eliteprospects.com/player/62209/morgan-klimchuk"
+    ep_url: "https://www.eliteprospects.com/player/156103/gabriel-gagne"
   },
   {
     first_name: "Michael",
