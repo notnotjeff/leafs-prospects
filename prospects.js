@@ -242,21 +242,6 @@ module.exports.prospects = [
     ep_url: "http://www.eliteprospects.com/player.php?player=176637"
   },
   {
-    first_name: "Carl",
-    last_name: "Grundstrom",
-    position: "LW",
-    shoots: "L",
-    dob: "1997-12-01",
-    round: 2,
-    pick: 57,
-    draft_year: 2016,
-    player_id: 6788,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6788&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6788&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=113516"
-  },
-  {
     first_name: "Pierre",
     last_name: "Engvall",
     position: "W",
@@ -394,21 +379,6 @@ module.exports.prospects = [
     games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7314&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
     league: "AHL",
     ep_url: "https://www.eliteprospects.com/player/289453/rasmus-sandin"
-  },
-  {
-    first_name: "Sean",
-    last_name: "Durzi",
-    position: "D",
-    shoots: "R",
-    dob: "1998-10-21",
-    round: 2,
-    pick: 52,
-    draft_year: 2018,
-    player_id: 7174,
-    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7174&category=seasonstats",
-    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7174&category=gamebygame",
-    league: "OHL",
-    ep_url: "https://www.eliteprospects.com/player/268973/sean-durzi"
   },
   {
     first_name: "Semyon",
