@@ -1,6 +1,6 @@
 module.exports.seasonScrape = function (seasons, currentSeason) {
   currentSeasons = seasons.filter((season) => {
-    return season.row.season_name === `${currentSeason} Regular Season`;
+    return season.row.season_name === `${currentSeason}`;
   });
 
   let goals = 0, 

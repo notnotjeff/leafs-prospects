@@ -1,4 +1,4 @@
-module.exports.chlSeasonScrape = function (seasons, currentSeasonId) {
+module.exports.seasonScrape = function (seasons, currentSeasonId) {
   currentSeasons = seasons.filter((season) => {
     return +season.season_id === +currentSeasonId && season.season_name !== 'total'
   });

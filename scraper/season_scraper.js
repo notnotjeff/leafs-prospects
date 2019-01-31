@@ -11,6 +11,7 @@ var generalHelpers  = require('./helpers/general_helpers.js');
 
 var chlScraper      = require('./league_scrapers/chl_scraper.js');
 var ahlScraper      = require('./league_scrapers/ahl_scraper.js');
+var ushlScraper      = require('./league_scrapers/ushl_scraper.js');
 
 dotenv.config();
 const TESTING_MODE = false;
@@ -64,16 +65,21 @@ function scrape(prospects) {
                       var games_played = 0;
 
                       if (p.league === "OHL") {
-                        [goals, assists, points, shots, games_played] = chlScraper.chlSeasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
+                        [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
                       } else if (p.league === "WHL") {
-                        [goals, assists, points, shots, games_played] = chlScraper.chlSeasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
+                        [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
                       } else if (p.league === "QMJHL") {
-                        [goals, assists, points, shots, games_played] = chlScraper.chlSeasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
-                      } else if (p.league === "AHL" || p.league === "USHL") {
+                        [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
+                      } else if (p.league === "AHL") {
                         data = data.slice(5, data.length-1);
                         data = JSON.parse(data);
                         
-                        [goals, assists, points, shots, games_played] = ahlScraper.ahlSeasonScrape(data.careerStats[0].sections[0].data, generalHelpers.getCurrentSeason());
+                        [goals, assists, points, shots, games_played] = ahlScraper.seasonScrape(data.careerStats[0].sections[0].data, generalHelpers.getCurrentSeason());
+                      } else if (p.league === "USHL") {
+                        data = data.slice(5, data.length-1);
+                        data = JSON.parse(data);
+                        
+                        [goals, assists, points, shots, games_played] = ushlScraper.seasonScrape(data.careerStats[0].sections[0].data, generalHelpers.getCurrentSeason());
                       } else if (p.league === "ECHL") {
                         let seasons = data.data.stats.history;
                         let seasonYears = generalHelpers.getCurrentSeason();
