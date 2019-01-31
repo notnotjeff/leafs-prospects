@@ -1,10 +1,16 @@
-// Use 'node scraper.js' to run script
+// Use 'node scraper/season_scraper.js' to run script
 
-var rp      = require('request-promise');
-var cheerio = require('cheerio');
-var backend = require('./prospects.js');
-var admin = require('firebase-admin');
-var dotenv = require('dotenv');
+var rp              = require('request-promise');
+var cheerio         = require('cheerio');
+var backend         = require('./prospects.js');
+var admin           = require('firebase-admin');
+var dotenv          = require('dotenv');
+
+var dateHelpers     = require('./helpers/date_helpers.js');
+var generalHelpers  = require('./helpers/general_helpers.js');
+
+var chlScraper      = require('./league_scrapers/chl_scraper.js');
+var ahlScraper      = require('./league_scrapers/ahl_scraper.js');
 
 dotenv.config();
 const TESTING_MODE = false;
@@ -20,82 +26,6 @@ admin.initializeApp({
 
 // Get And Set Backend Prospect Array
 const prospects = backend.prospects;
-
-// HELPER FUNCTIONS
-function getAge(dateString)
-{
-    var today = new Date();
-    var birthDate = new Date(dateString);
-    var age = today - birthDate;
-    return Math.floor(age/31557600000*10) / 10;
-}
-
-function getCurrentSeason() {
-  // Return string in format YYYY-YY eg: 2018-19
-  let date = new Date();
-  let month = date.getMonth() + 1;
-
-  if (month > 8) {
-    return `${date.getFullYear()}-${(date.getFullYear() + 1).toString().substr(-2)}`;
-  } else {
-    date.setFullYear(date.getFullYear() - 1);
-    return `${date.getFullYear()}-${(date.getFullYear() + 1).toString().substr(-2)}`;
-  }
-}
-
-// FUNCTIONS FOR DAYLIGHT SAVINGS TIME
-function isDaylightSavings(today) {
-  const dstStart = getDateOfSundayInMonth(2, 3);
-  const dstEnd = getDateOfSundayInMonth(1, 11);
-  const offsetHours = today.getTimezoneOffset() === 0 ? 0 : 4; // If run locally in EST you need to offset for time difference from UTC
-
-  // If today is the start of daylight savings, check if it's past 2AM EST from UTC (should be 5 hours ahead during non-DST period)
-  if (`${today.getMonth()}-${today.getDate()}` === `${dstStart.getMonth()}-${dstStart.getDate()}`) {
-    return today.getHours() >= (7 - offsetHours) ? true : false;
-  // If today is end of daylight savings, check if it's past 2AM EST from UTC (should be 4 hours ahead during DST period)
-  } else if (`${today.getMonth()}-${today.getDate()}` === `${dstEnd.getMonth()}-${dstEnd.getDate()}`) {
-    return today.getHours() >= (6 - offsetHours) ? false : true;
-  // Else check if it is in between the DST period and return the proper value
-  } else {
-    return today < dstEnd && today >= dstStart ? true : false;
-  }
-}
-
-function getDateOfSundayInMonth(sundayNumber, month) {
-  // Format variables from real world values to computer values
-  sundayNumber = (sundayNumber - 1) * 7;
-  month = month - 1;
-
-  const currentYear = new Date().getFullYear();
-  const start = new Date(currentYear, month, sundayNumber);
-  const sunday = sundayNumber + (7 - start.getDay());
-
-  return new Date(currentYear, month, sunday); 
-}
-
-// LEAGUE HELPER FUNCTIONS
-
-chlScrape = (seasons, currentSeasonId) => {
-  currentSeasons = seasons.filter((season) => {
-    return +season.season_id === +currentSeasonId && season.season_name !== 'total'
-  });
-
-  let goals = 0, 
-      assists = 0, 
-      points = 0, 
-      shots = 0, 
-      games_played = 0;
-
-  for (season of currentSeasons) {
-    goals += +season.goals;
-    assists += +season.assists;
-    points += +season.points;
-    shots += +season.shots;
-    games_played += +season.games_played;
-  }
-
-  return [goals, assists, points, shots, games_played];
-}
 
 // SCRAPING FUNCTION
 function scrape(prospects) {
@@ -121,7 +51,7 @@ function scrape(prospects) {
                       var league = p.league;
                       var position = p.position;
                       var shoots = p.shoots;
-                      var age = getAge(p.dob);
+                      var age = generalHelpers.getAge(p.dob);
                       var ep_url = p.ep_url;
                       var round = p.round;
                       var draft_year = p.draft_year;
@@ -134,22 +64,19 @@ function scrape(prospects) {
                       var games_played = 0;
 
                       if (p.league === "OHL") {
-                        [goals, assists, points, shots, games_played] = chlScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
+                        [goals, assists, points, shots, games_played] = chlScraper.chlSeasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
                       } else if (p.league === "WHL") {
-                        [goals, assists, points, shots, games_played] = chlScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
+                        [goals, assists, points, shots, games_played] = chlScraper.chlSeasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
                       } else if (p.league === "QMJHL") {
-                        [goals, assists, points, shots, games_played] = chlScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
+                        [goals, assists, points, shots, games_played] = chlScraper.chlSeasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
                       } else if (p.league === "AHL" || p.league === "USHL") {
                         data = data.slice(5, data.length-1);
                         data = JSON.parse(data);
-                        goals = data.careerStats[0].sections[0].data[0].row.goals;
-                        assists = data.careerStats[0].sections[0].data[0].row.assists;
-                        points = data.careerStats[0].sections[0].data[0].row.points;
-                        shots = data.careerStats[0].sections[0].data[0].row.shots;
-                        games_played = data.careerStats[0].sections[0].data[0].row.games_played;
+                        
+                        [goals, assists, points, shots, games_played] = ahlScraper.ahlSeasonScrape(data.careerStats[0].sections[0].data, generalHelpers.getCurrentSeason());
                       } else if (p.league === "ECHL") {
                         let seasons = data.data.stats.history;
-                        let seasonYears = getCurrentSeason();
+                        let seasonYears = generalHelpers.getCurrentSeason();
 
                         for (season of seasons) {
                           if (season.season.name === `${seasonYears} Regular Season`) {
@@ -273,27 +200,7 @@ async function updateDB() {
 
   if (!TESTING_MODE) {
     // Set Time
-    let day = new Date();
-    let amPm = "";
-    let hours = "";
-    let minutes = day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
-
-    let offsetHours = isDaylightSavings(day) ? 4 : 5;
-
-    if (+day.getTimezoneOffset() === 0) { day.setHours(day.getHours() - offsetHours) }
-    
-    if (+day.getHours() < 12) { 
-      hours = String(day.getHours());
-    } else {
-      hours = String(day.getHours() - 12);
-    }
-      
-    amPm = +day.getHours() < 12 ? "am" : "pm";
-    if (+hours === 0) {
-      hours = 12;
-    }
-
-    time = `${hours}:${minutes}${amPm}`;
+    time = dateHelpers.getCurrentTime();
 
     let allTransactionPromises = [];
     const prospectsRef = admin.database().ref('prospects');
