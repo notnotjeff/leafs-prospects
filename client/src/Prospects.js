@@ -41,9 +41,6 @@ class Prospects extends Component {
       },
       updatedAt: ""
     }
-    this.sortColumn = this.sortColumn.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -66,10 +63,11 @@ class Prospects extends Component {
       });
       
       this.setState({ prospects, originalProspects: prospects });
+      this.sortColumn("points_pg");
     });
   }
 
-  sortColumn(columnName) {
+  sortColumn = (columnName) => {
     var sortColumn = this.state.sortColumn;
     var sortDirection;
     
@@ -110,11 +108,11 @@ class Prospects extends Component {
     this.setState({ prospects: sortProspects, sortColumn: columnName, sortDirection: sortDirection });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({filter: { ...this.state.filter, [e.target.name]: e.target.value}}, () => {
       let {filter, filterCategories} = this.state;
 
