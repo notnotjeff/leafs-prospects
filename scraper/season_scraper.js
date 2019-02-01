@@ -11,7 +11,13 @@ var generalHelpers  = require('./helpers/general_helpers.js');
 
 var chlScraper      = require('./league_scrapers/chl_scraper.js');
 var ahlScraper      = require('./league_scrapers/ahl_scraper.js');
-var ushlScraper      = require('./league_scrapers/ushl_scraper.js');
+var ushlScraper     = require('./league_scrapers/ushl_scraper.js');
+var echlScraper     = require('./league_scrapers/echl_scraper.js');
+var khlScraper      = require('./league_scrapers/khl_scraper.js');
+var shlScraper      = require('./league_scrapers/shl_scraper.js');
+var vhlScraper      = require('./league_scrapers/vhl_scraper.js');
+var ncaaScraper      = require('./league_scrapers/ncaa_scraper.js');
+var liigaScraper      = require('./league_scrapers/liiga_scraper.js');
 
 dotenv.config();
 const TESTING_MODE = false;
@@ -47,22 +53,22 @@ function scrape(prospects) {
 
     promises.push(rp(url)
                     .then((data) => {
-                      var first_name = p.first_name;
-                      var last_name = p.last_name;
-                      var league = p.league;
-                      var position = p.position;
-                      var shoots = p.shoots;
-                      var age = generalHelpers.getAge(p.dob);
-                      var ep_url = p.ep_url;
-                      var round = p.round;
-                      var draft_year = p.draft_year;
-                      var pick = p.pick;
+                      let first_name = p.first_name;
+                      let last_name = p.last_name;
+                      let league = p.league;
+                      let position = p.position;
+                      let shoots = p.shoots;
+                      let age = generalHelpers.getAge(p.dob);
+                      let ep_url = p.ep_url;
+                      let round = p.round;
+                      let draft_year = p.draft_year;
+                      let pick = p.pick;
 
-                      var goals = 0;
-                      var assists = 0;
-                      var points = 0;
-                      var shots = 0;
-                      var games_played = 0;
+                      let goals = 0;
+                      let assists = 0;
+                      let points = 0;
+                      let shots = 0;
+                      let games_played = 0;
 
                       if (p.league === "OHL") {
                         [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
@@ -71,84 +77,23 @@ function scrape(prospects) {
                       } else if (p.league === "QMJHL") {
                         [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
                       } else if (p.league === "AHL") {
-                        data = data.slice(5, data.length-1);
-                        data = JSON.parse(data);
-                        
+                        data = JSON.parse(data.slice(5, data.length-1));
                         [goals, assists, points, shots, games_played] = ahlScraper.seasonScrape(data.careerStats[0].sections[0].data, generalHelpers.getCurrentSeason());
                       } else if (p.league === "USHL") {
-                        data = data.slice(5, data.length-1);
-                        data = JSON.parse(data);
-                        
+                        data = JSON.parse(data.slice(5, data.length-1));
                         [goals, assists, points, shots, games_played] = ushlScraper.seasonScrape(data.careerStats[0].sections[0].data, generalHelpers.getCurrentSeason());
                       } else if (p.league === "ECHL") {
-                        let seasons = data.data.stats.history;
-                        let seasonYears = generalHelpers.getCurrentSeason();
-
-                        for (season of seasons) {
-                          if (season.season.name === `${seasonYears} Regular Season`) {
-                            goals = season.properties[1].value;
-                            assists = season.properties[2].value;
-                            points = season.properties[3].value;
-                            shots = season.properties[10].value;
-                            games_played = season.properties[0].value;
-                          }
-                        }
+                        [goals, assists, points, shots, games_played] = echlScraper.seasonScrape(data.data.stats.history, generalHelpers.getCurrentSeason());
                       } else if (p.league === "KHL") {
-                        // Check to make sure the row scraped is regular season not playoffs
-                        if (data('#pl_Stats > tbody > tr:nth-child(1) > td:nth-child(1)').text().includes("Regular")) {
-                          goals = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(4)').text();
-                          assists = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(5)').text();
-                          points = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(6)').text();
-                          shots = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(17)').text();
-                          games_played = data('#pl_Stats > tbody > tr:nth-child(2) > td:nth-child(3)').text();
-                        } else {
-                          goals = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(4)').text();
-                          assists = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(5)').text();
-                          points = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(6)').text();
-                          shots = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(17)').text();
-                          games_played = data('#pl_Stats > tbody > tr:nth-child(4) > td:nth-child(3)').text();
-                        }
+                        [goals, assists, points, shots, games_played] = khlScraper.seasonScrape(data);
                       } else if (p.league === "SHL") {
-                        // If Row Says Playoffs, Take Previous Regular Season Instead
-                        if (data('.rmss_t-stat-table__row').last().children('td:nth-child(2)').text() === "Slutspel") {
-                          goals = data('.rmss_t-stat-table__row:nth-last-of-type(2)').children('td:nth-child(5)').text();
-                          assists = data('.rmss_t-stat-table__row:nth-last-of-type(2)').children('td:nth-child(6)').text();
-                          points = data('.rmss_t-stat-table__row:nth-last-of-type(2)').children('td:nth-child(7)').text();
-                          shots = data('.rmss_t-stat-table__row:nth-last-of-type(2)').children('td:nth-child(10)').text();
-                          games_played = data('.rmss_t-stat-table__row:nth-last-of-type(2)').children('td:nth-child(4)').text();
-                        } else {
-                          goals = data('.rmss_t-stat-table__row').last().children('td:nth-child(5)').text();
-                          assists = data('.rmss_t-stat-table__row').last().children('td:nth-child(6)').text();
-                          points = data('.rmss_t-stat-table__row').last().children('td:nth-child(7)').text();
-                          shots = data('.rmss_t-stat-table__row').last().children('td:nth-child(10)').text();
-                          games_played = data('.rmss_t-stat-table__row').last().children('td:nth-child(4)').text();
-                        }
+                        [goals, assists, points, shots, games_played] = shlScraper.seasonScrape(data);
                       } else if (p.league === "VHL") {
-                        let rowNumber = 4
-                        
-                        // Set rowNumber to the right table row based on if their summary statline has playoffs or not (adds an extra row)
-                        data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).text() === "SHL Summary" ? rowNumber = 5 : rowNumber = 4;
-                        // If the last season was the playoffs skip it and go to regular season
-                        if (data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber + 1})`).text().includes("Playoffs")) { rowNumber += 2; }
-
-                        goals = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(4)').text();
-                        assists = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(5)').text();
-                        points = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(6)').text();
-                        shots = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(15)').text();
-                        games_played = data(`.player_stats > tbody > tr:nth-last-of-type(${rowNumber})`).children('td:nth-child(3)').text();
+                        [goals, assists, points, shots, games_played] = vhlScraper.seasonScrape(data);
                       } else if (p.league === "NCAA") {
-                        statGroup = data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(3)').text().split('-');
-                        goals = +statGroup[0];
-                        assists = +statGroup[1];
-                        points = +statGroup[2];
-                        shots = +data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(9)').text();
-                        games_played = +data('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)').text().split(' ')[0];
+                        [goals, assists, points, shots, games_played] = ncaaScraper.seasonScrape(data);
                       } else if (p.league === "Liiga") {
-                        goals = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(5)').text();
-                        assists = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(6)').text();
-                        points = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(7)').text();
-                        shots = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(15)').text();
-                        games_played = data('#stats-section > table:nth-child(3) > tbody > tr > td:nth-child(4)').text();
+                        [goals, assists, points, shots, games_played] = liigaScraper.seasonScrape(data);
                       }
 
                       if (Number(games_played) > 0) {
