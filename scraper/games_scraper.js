@@ -265,9 +265,10 @@ async function scrape_games(prospects) {
                 let date = dateHelpers.getDateFromArray(scrapedProspect('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(2) > td:nth-child(1)').text().split('/'), 2, 0, 1);
                 let yesterdayDate = dateHelpers.getDateFromArray(scrapedProspect('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(3) > td:nth-child(1)').text().split('/'), 2, 1, 0);
 
-                if (`${year}-${month}-${day}` === date) {
-                    let statGroup = scrapedProspect('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(2) > td:nth-child(4)').text().split('-');
+                let statGroup = scrapedProspect('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(2) > td:nth-child(4)').text().split('-');
+                if (statGroup.length > 3) { continue }
 
+                if (`${year}-${month}-${day}` === date) {
                     let goals = +statGroup[0];
                     let assists = +statGroup[1];
                     let points = +statGroup[2];
@@ -278,8 +279,6 @@ async function scrape_games(prospects) {
                 }
 
                 if (`${yYear}-${yMonth}-${yDay}` === date) {
-                    let statGroup = scrapedProspect('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(2) > td:nth-child(4)').text().split('-');
-
                     let goals = +statGroup[0];
                     let assists = +statGroup[1];
                     let points = +statGroup[2];
@@ -290,8 +289,6 @@ async function scrape_games(prospects) {
                 }
 
                 if (`${yYear}-${yMonth}-${yDay}` === yesterdayDate) {
-                    let statGroup = scrapedProspect('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(3) > td:nth-child(4)').text().split('-');
-
                     let goals = +statGroup[0];
                     let assists = +statGroup[1];
                     let points = +statGroup[2];
@@ -344,10 +341,10 @@ async function addGames() {
         // Cycle Through Today's Games
         for (game of todaysGames) {
             // Log Specific Game:
-            if (game.last_name === "Korshkov") { console.log(game) };
+            // if (game.last_name === "Korshkov") { console.log(game) };
 
             // Log All Games
-            // console.log(game);
+            console.log(game);
         }
 
         // Cycle Through Yesterdays's Games

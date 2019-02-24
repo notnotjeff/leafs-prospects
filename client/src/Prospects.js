@@ -62,8 +62,9 @@ class Prospects extends Component {
         prospects.push(snap.val());
       });
       
-      this.setState({ prospects, originalProspects: prospects });
-      this.sortColumn("points_pg");
+      this.setState({ prospects, originalProspects: prospects }, () => {
+        this.sortColumn("points_pg");
+      });
     });
   }
 
