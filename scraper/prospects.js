@@ -469,5 +469,20 @@ module.exports.prospects = [
     games_url: "http://www.vhlru.ru/en/players/25697/games/",
     league: "VHL",
     ep_url: "https://www.eliteprospects.com/player/420947/semyon-kizimov"
+  },
+  {
+    first_name: "Joseph",
+    last_name: "Duszak",
+    position: "D",
+    shoots: "R",
+    dob: "1997-07-22",
+    round: null,
+    pick: null,
+    draft_year: null,
+    player_id: 7517,
+    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7517&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7517&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+    league: "AHL",
+    ep_url: "http://www.eliteprospects.com/player.php?player=262071"
   }
 ]
