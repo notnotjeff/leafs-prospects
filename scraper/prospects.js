@@ -484,5 +484,20 @@ module.exports.prospects = [
     games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7517&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
     league: "AHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=262071"
+  },
+  {
+    first_name: "Colton",
+    last_name: "Conrad",
+    position: "C",
+    shoots: "R",
+    dob: "1997-04-27",
+    round: null,
+    pick: null,
+    draft_year: null,
+    player_id: null,
+    profile_url: "http://collegehockeyinc.com/stats/players19.php?wmum02",
+    games_url: "http://collegehockeyinc.com/stats/players19.php?wmum02",
+    league: "NCAA",
+    ep_url: "http://www.eliteprospects.com/player.php?player=199895"
   }
 ]
