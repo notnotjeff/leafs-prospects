@@ -499,5 +499,20 @@ module.exports.prospects = [
     games_url: "http://collegehockeyinc.com/stats/players19.php?wmum02",
     league: "NCAA",
     ep_url: "http://www.eliteprospects.com/player.php?player=199895"
+  },
+  {
+    first_name: "Trey",
+    last_name: "Bradley",
+    position: "LW",
+    shoots: "L",
+    dob: "1996-05-06",
+    round: null,
+    pick: null,
+    draft_year: null,
+    player_id: null,
+    profile_url: "http://collegehockeyinc.com/stats/players19.php?cc_m03",
+    games_url: "http://collegehockeyinc.com/stats/players19.php?cc_m03",
+    league: "NCAA",
+    ep_url: "http://www.eliteprospects.com/player.php?player=219827"
   }
 ]
