@@ -480,9 +480,9 @@ module.exports.prospects = [
     pick: null,
     draft_year: null,
     player_id: 7517,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7517&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7517&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
+    profile_url: "http://collegehockeyinc.com/stats/players19.php?mrcm11",
+    games_url: "http://collegehockeyinc.com/stats/players19.php?mrcm11",
+    league: "NCAA",
     ep_url: "http://www.eliteprospects.com/player.php?player=262071"
   },
   {
@@ -514,5 +514,20 @@ module.exports.prospects = [
     games_url: "http://collegehockeyinc.com/stats/players19.php?cc_m03",
     league: "NCAA",
     ep_url: "http://www.eliteprospects.com/player.php?player=219827"
+  },
+  {
+    first_name: "Justin",
+    last_name: "Brazeau",
+    position: "RW",
+    shoots: "R",
+    dob: "1998-02-02",
+    round: null,
+    pick: null,
+    draft_year: null,
+    player_id: 7183,
+    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7183&category=seasonstats",
+    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7183&category=gamebygame",
+    league: "OHL",
+    ep_url: "http://www.eliteprospects.com/player.php?player=217051"
   }
 ]
