@@ -29,7 +29,7 @@ async function scrape_games(prospects) {
     let {day, month, year, yDay, yMonth, yYear} = dateHelpers.setDateValues();
     
     for (const prospect of prospects) {
-        if (prospect.league === "OHL" || prospect.league === "AHL" || prospect.league === "ECHL" || prospect.league === "WHL" || prospect.league === "USHL") {
+        if (prospect.league === "OHL" || prospect.league === "AHL" || prospect.league === "ECHL" || prospect.league === "WHL" || prospect.league === "USHL" || prospect.league === "QMJHL") {
             var url = {
                 url: prospect.games_url,
                 json: true
@@ -78,6 +78,49 @@ async function scrape_games(prospects) {
                     let points = +scrapedProspect.SiteKit.Player.games[gameIndex - 1].points;
                     let shots = +scrapedProspect.SiteKit.Player.games[gameIndex - 1].shots;
                     let penaltyMinutes = +scrapedProspect.SiteKit.Player.games[gameIndex - 1].penalty_minutes;
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
+                }
+            } else if (prospect.league === "QMJHL") {
+                const parsedData = JSON.parse(scrapedProspect.substr(5, scrapedProspect.length - 6));
+                continue
+
+                const monthName = dateHelpers.getMonthName(+month);
+                const yMonthName = dateHelpers.getMonthName(+yMonth);
+                let gameIndex = parsedData.SiteKit.Gamebygame.games.length-1;
+
+                // Skip If No Games
+                if (gameIndex === -1) { continue }
+
+                // This will need to be changed because it's a copy of the OHL one and doesn't actually work!!!!!!
+                if (parsedData.SiteKit.Player.games[gameIndex].date_played === `${year}-${month}-${day}`) {
+                    let goals = +parsedData.SiteKit.Player.games[gameIndex].goals;
+                    let assists = +parsedData.SiteKit.Player.games[gameIndex].assists;
+                    let points = +parsedData.SiteKit.Player.games[gameIndex].points;
+                    let shots = +parsedData.SiteKit.Player.games[gameIndex].shots;
+                    let penaltyMinutes = +parsedData.SiteKit.Player.games[gameIndex].penalty_minutes;
+
+                    todaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${year}-${month}-${day}`})
+                }
+
+                if (parsedData.SiteKit.Player.games[gameIndex].date_played === `${yYear}-${yMonth}-${yDay}`) {
+                    let goals = +parsedData.SiteKit.Player.games[gameIndex].goals;
+                    let assists = +parsedData.SiteKit.Player.games[gameIndex].assists;
+                    let points = +parsedData.SiteKit.Player.games[gameIndex].points;
+                    let shots = +parsedData.SiteKit.Player.games[gameIndex].shots;
+                    let penaltyMinutes = +parsedData.SiteKit.Player.games[gameIndex].penalty_minutes;
+
+                    yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
+                }
+
+                if (gameIndex - 1 === -1) { continue }
+
+                if (parsedData.SiteKit.Player.games[gameIndex - 1].date_played === `${yYear}-${yMonth}-${yDay}`) {
+                    let goals = +parsedData.SiteKit.Player.games[gameIndex - 1].goals;
+                    let assists = +parsedData.SiteKit.Player.games[gameIndex - 1].assists;
+                    let points = +parsedData.SiteKit.Player.games[gameIndex - 1].points;
+                    let shots = +parsedData.SiteKit.Player.games[gameIndex - 1].shots;
+                    let penaltyMinutes = +parsedData.SiteKit.Player.games[gameIndex - 1].penalty_minutes;
 
                     yesterdaysGames.push({fullName: `${prospect.first_name} ${prospect.last_name}`, league: prospect.league, goals, assists, points, shots, penaltyMinutes, gameDate: `${yYear}-${yMonth}-${yDay}`})
                 }

@@ -48,6 +48,15 @@ module.exports.getDateFromArray = function (date, y, m, d){
   return `${year}-${month}-${day}`;
 }
 
+// Gets month name from integer of a month, for QMJHL game by game
+module.exports.getMonthName = function (month){
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+
+  return monthNames[+month - 1];
+}
+
 // FUNCTIONS FOR DAYLIGHT SAVINGS TIME
 function isDaylightSavings(today) {
   const dstStart = getDateOfSundayInMonth(2, 3);

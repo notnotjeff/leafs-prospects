@@ -39,7 +39,7 @@ function scrape(prospects) {
   let promises = [];
 
   prospects.forEach((p, i) => {
-    if (p.league === "OHL" || p.league === "AHL" || p.league === "ECHL" || p.league === "WHL" || p.league === "USHL") {
+    if (p.league === "OHL" || p.league === "AHL" || p.league === "ECHL" || p.league === "WHL" || p.league === "USHL" || p.league === "QMJHL") {
       var url = {
         url: p.profile_url,
         json: true
@@ -75,7 +75,8 @@ function scrape(prospects) {
                       } else if (p.league === "WHL") {
                         [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
                       } else if (p.league === "QMJHL") {
-                        [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);
+                        const parsedData = JSON.parse(data.substr(5, data.length - 6));
+                        [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(parsedData.SiteKit.Teamstat.seasons.regular, parsedData.SiteKit.Teamstat.seasons.regular[0].season_id);
                       } else if (p.league === "AHL") {
                         data = JSON.parse(data.slice(5, data.length-1));
                         [goals, assists, points, shots, games_played] = ahlScraper.seasonScrape(data.careerStats[0].sections[0].data, generalHelpers.getCurrentSeason());
@@ -146,6 +147,7 @@ function scrape(prospects) {
 }
 
 async function updateDB() {
+  console.log('Starting Scrape');
   let prospectData = await scrape(prospects);
   console.log('Completed Scrape');
 
@@ -160,8 +162,9 @@ async function updateDB() {
     ranAtRef.set({});
 
     allTransactionPromises.push(ranAtRef.push({updatedAt: time}));
-
+    
     prospectData.forEach(prospect => {
+      // console.log(prospect)
       let transactionPromise = prospectsRef.push(prospect);
       allTransactionPromises.push(transactionPromise);
     });
