@@ -1,3 +1,10 @@
+// EXAMPLE
+// {
+//   profile_url: "http://www.vhlru.ru/en/players/22888/",
+//   games_url: "http://www.vhlru.ru/en/players/22888/games",
+//   league: "VHL",
+// }
+
 module.exports.seasonScrape = function (season) {
   let goals = 0,
       assists = 0,

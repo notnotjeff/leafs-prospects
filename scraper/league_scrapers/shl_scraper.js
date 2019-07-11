@@ -1,3 +1,10 @@
+// EXAMPLE
+// {
+//   profile_url: "https://www.shl.se/lag/fe02-fe02mf1FN__vaxjo-lakers/qTK-4a8Y9mMrn__pontus-holmberg/statistics",
+//   games_url: "https://www.shl.se/lag/fe02-fe02mf1FN__vaxjo-lakers/qTK-4a8Y9mMrn__pontus-holmberg/gamelog",
+//   league: "SHL",
+// }
+
 module.exports.seasonScrape = function (season) {
   let goals = 0,
       assists = 0,

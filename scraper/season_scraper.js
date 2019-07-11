@@ -69,6 +69,7 @@ function scrape(prospects) {
                       let points = 0;
                       let shots = 0;
                       let games_played = 0;
+                      console.log(p.last_name)
 
                       if (p.league === "OHL") {
                         [goals, assists, points, shots, games_played] = chlScraper.seasonScrape(data.SiteKit.Player.regular, data.SiteKit.Player.regular[0].season_id);

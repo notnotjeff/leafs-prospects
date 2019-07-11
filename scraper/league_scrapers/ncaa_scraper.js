@@ -1,3 +1,10 @@
+// EXAMPLE
+// {
+//   profile_url: "http://collegehockeyinc.com/stats/players19.php?mrcm11",
+//   games_url: "http://collegehockeyinc.com/stats/players19.php?mrcm11",
+//   league: "NCAA",
+// }
+
 module.exports.seasonScrape = function (season) {
   let goals = 0,
       assists = 0,

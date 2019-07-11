@@ -92,7 +92,7 @@ async function scrape_games(prospects) {
                 // Skip If No Games
                 if (gameIndex === -1) { continue }
 
-                // This will need to be changed because it's a copy of the OHL one and doesn't actually work!!!!!!
+                // All this below will need to be changed because it's a copy of the OHL one and doesn't actually work!!!!!!
                 if (parsedData.SiteKit.Player.games[gameIndex].date_played === `${year}-${month}-${day}`) {
                     let goals = +parsedData.SiteKit.Player.games[gameIndex].goals;
                     let assists = +parsedData.SiteKit.Player.games[gameIndex].assists;

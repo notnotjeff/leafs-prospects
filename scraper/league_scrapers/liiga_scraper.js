@@ -1,3 +1,10 @@
+// EXAMPLE
+// {
+//   profile_url: "http://liiga.fi/pelaajat/100025980/lindgren-jesper",
+//   games_url: "http://liiga.fi/fi/pelaajat/100025980/lindgren-jesper/ottelu-ottelulta",
+//   league: "Liiga",
+// }
+
 module.exports.seasonScrape = function (season) {
   let goals = 0,
       assists = 0,

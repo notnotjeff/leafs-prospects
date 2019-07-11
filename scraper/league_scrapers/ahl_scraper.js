@@ -1,3 +1,10 @@
+// EXAMPLE
+// {
+//   profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6966&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+//   games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6966&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+//   league: "AHL",
+// }
+
 module.exports.seasonScrape = function (seasons, currentSeason) {
   currentSeasons = seasons.filter((season) => {
     return season.row.season_name === `${currentSeason} Regular Season`;

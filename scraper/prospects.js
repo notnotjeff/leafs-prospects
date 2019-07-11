@@ -1,21 +1,23 @@
 const qmjhl_season_id = 190;
 
+// EXAMPLE (See 'scraper/league_scraper' individual files for specific URLs for each league)
+// {
+//   first_name: "Timothy",
+//   last_name: "Liljegren",
+//   position: "D",
+//   shoots: "R",
+//   dob: "1999-04-20",
+//   round: 1,
+//   pick: 17,
+//   draft_year: 2017,
+//   player_id: 6893,
+//   profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6893&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+//   games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6893&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
+//   league: "AHL",
+//   ep_url: "http://www.eliteprospects.com/player.php?player=224910"
+// }
+
 module.exports.prospects = [
-  {
-    first_name: "Fedor",
-    last_name: "Gordeev",
-    position: "D",
-    shoots: "L",
-    dob: "1999-01-27",
-    round: 5,
-    pick: 141,
-    draft_year: 2017,
-    player_id: 7146,
-    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7146&category=seasonstats",
-    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7146&category=gamebygame",
-    league: "OHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=273797"
-  },
   {
     first_name: "Eemeli",
     last_name: "Rasanen",
@@ -30,21 +32,6 @@ module.exports.prospects = [
     games_url: "https://en.khl.ru/players/31190/",
     league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=302228"
-  },
-  {
-    first_name: "Ryan",
-    last_name: "McGregor",
-    position: "C",
-    shoots: "L",
-    dob: "1999-01-29",
-    round: 6,
-    pick: 172,
-    draft_year: 2017,
-    player_id: 7117,
-    profile_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7117&category=seasonstats",
-    games_url: "http://lscluster.hockeytech.com/feed/?feed=modulekit&view=player&key=2976319eb44abe94&fmt=json&client_code=ohl&lang=en&player_id=7117&category=gamebygame",
-    league: "OHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=289231"
   },
   {
     first_name: "Timothy",
@@ -137,51 +124,6 @@ module.exports.prospects = [
     ep_url: "https://www.eliteprospects.com/player/208693/mason-marchment"
   },
   {
-    first_name: "Gabriel",
-    last_name: "Gagne",
-    position: "RW",
-    shoots: "R",
-    dob: "1996-11-11",
-    round: 2,
-    pick: 36,
-    draft_year: 2015,
-    player_id: 6434,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6434&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6434&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
-    ep_url: "https://www.eliteprospects.com/player/156103/gabriel-gagne"
-  },
-  {
-    first_name: "Michael",
-    last_name: "Carcone",
-    position: "LW",
-    shoots: "L",
-    dob: "1996-05-19",
-    round: null,
-    pick: null,
-    draft_year: null,
-    player_id: 5485,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6501&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6501&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
-    ep_url: "https://www.eliteprospects.com/player/265300/michael-carcone"
-  },
-  {
-    first_name: "Calle",
-    last_name: "Rosen",
-    position: "D",
-    shoots: "L",
-    dob: "1994-02-02",
-    round: null,
-    pick: null,
-    draft_year: null,
-    player_id: 6917,
-    profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6917&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6917&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json",
-    league: "AHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=37021"
-  },
-  {
     first_name: "Andreas",
     last_name: "Borgman",
     position: "D",
@@ -210,23 +152,6 @@ module.exports.prospects = [
     games_url: "https://en.khl.ru/players/23319/",
     league: "KHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=239362"
-  },
-  {
-    first_name: "J.J.",
-    last_name: "Piccinich",
-    position: "RW",
-    shoots: "R",
-    dob: "1996-06-12",
-    round: 4,
-    pick: 103,
-    draft_year: 2014,
-    player_id: 7307,
-    profile_url: "https://www.echl.com/api/s3?q=player-8849f569f3e47885f5a72d90.json",
-    games_url: "https://www.echl.com/api/s3?q=player-8849f569f3e47885f5a72d90.json",
-    // profile_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7307&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json", // AHL
-    // games_url: "https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=7307&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json", // AHL
-    league: "ECHL",
-    ep_url: "http://www.eliteprospects.com/player.php?player=191113"
   },
   {
     first_name: "Yegor",
@@ -306,21 +231,6 @@ module.exports.prospects = [
     // games_url: "https://en.khl.ru/players/21313/", KHL
     league: "VHL",
     ep_url: "http://www.eliteprospects.com/player.php?player=268059"
-  },
-  {
-    first_name: "Dakota",
-    last_name: "Joshua",
-    position: "C",
-    shoots: "L",
-    dob: "1996-05-15",
-    round: 5,
-    pick: 128,
-    draft_year: 2014,
-    player_id: 29891,
-    profile_url: "http://collegehockeyinc.com/stats/players19.php?osum02",
-    games_url: "http://collegehockeyinc.com/stats/players19.php?osum02",
-    league: "NCAA",
-    ep_url: "http://www.eliteprospects.com/player.php?player=194948"
   },
   {
     first_name: "Ryan",
