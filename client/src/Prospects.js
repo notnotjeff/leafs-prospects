@@ -154,7 +154,7 @@ class Prospects extends Component {
               if (p[f] !== "OHL" && p[f] !== "QMJHL" && p[f] !== "WHL" && p[f] !== "AHL" && p[f] !== "ECHL" && p[f] !== "USHL" && p[f] !== "NCAA") { fail = true }
             }
             else if (f === "league" && filter[f] === "European") {
-              if (p[f] !== "KHL" && p[f] !== "MHL" && p[f] !== "VHL" && p[f] !== "Liiga" && p[f] !== "SHL" && p[f]) { fail = true }
+              if (p[f] !== "KHL" && p[f] !== "MHL" && p[f] !== "VHL" && p[f] !== "Liiga" && p[f] !== "SHL" && p[f] !== 'Mestis' && p[f]) { fail = true }
             }
             else {
               fail = true;
