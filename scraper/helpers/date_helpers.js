@@ -57,7 +57,7 @@ module.exports = {
   },
 
   // Gets month name from integer of a month, for QMJHL game by game
-  getMonthName(month) {
+  getMonthName(month, isArrayFriendly = false) {
     const monthNames = [
       'January',
       'February',
@@ -73,7 +73,7 @@ module.exports = {
       'December',
     ];
 
-    return monthNames[+month - 1];
+    return monthNames[+month - (isArrayFriendly ? 0 : 1)];
   },
 
   // FUNCTIONS FOR DAYLIGHT SAVINGS TIME

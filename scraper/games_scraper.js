@@ -54,7 +54,12 @@ async function scrape_games(prospects) {
     }
 
     if (urlData.url !== undefined) {
-      const scrapedProspect = await rp(urlData);
+      let scrapedProspect = null;
+      try {
+        scrapedProspect = await rp(urlData);
+      } catch (error) {
+        continue;
+      }
 
       if (prospect.league === 'OHL' || prospect.league === 'WHL') {
         const gameIndex = scrapedProspect.SiteKit.Player.games.length - 1;
@@ -148,26 +153,18 @@ async function scrape_games(prospects) {
           scrapedProspect.substr(5, scrapedProspect.length - 6),
         );
 
-        // const monthName = dateHelpers.getMonthName(+month);
-        // const yMonthName = dateHelpers.getMonthName(+yMonth);
-        const gameIndex = parsedData.SiteKit.Gamebygame.games.length - 1;
+        const today = new Date();
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 1);
+        const todaysGamesQMJHL = parsedData.SiteKit.Gamebygame.games[dateHelpers.getMonthName(today.getMonth(), true)] || [];
+        const yesterdaysGamesQMJHL = parsedData.SiteKit.Gamebygame.games[dateHelpers.getMonthName(today.getMonth(), true)] || [];
 
-        // Skip If No Games
-        if (gameIndex === -1) {
-          continue;
-        }
-
-        // All this below will need to be changed because it's a copy of the OHL one and doesn't actually work!!!!!!
-        if (
-          parsedData.SiteKit.Player.games[gameIndex].date_played
-          === `${year}-${month}-${day}`
-        ) {
-          const goals = +parsedData.SiteKit.Player.games[gameIndex].goals;
-          const assists = +parsedData.SiteKit.Player.games[gameIndex].assists;
-          const points = +parsedData.SiteKit.Player.games[gameIndex].points;
-          const shots = +parsedData.SiteKit.Player.games[gameIndex].shots;
-          const penaltyMinutes = +parsedData.SiteKit.Player.games[gameIndex]
-            .penalty_minutes;
+        if (todaysGamesQMJHL.filter(({ date_played }) => date_played === `${year}${month}${day}`).length > 0) {
+          const goals = todaysGamesQMJHL[0].goals === '-' ? 0 : +todaysGamesQMJHL[0].goals;
+          const assists = todaysGamesQMJHL[0].assists === '-' ? 0 : +todaysGamesQMJHL[0].assists;
+          const points = todaysGamesQMJHL[0].points === '-' ? 0 : +todaysGamesQMJHL[0].points;
+          const shots = todaysGamesQMJHL[0].shots === '-' ? 0 : +todaysGamesQMJHL[0].shots;
+          const penaltyMinutes = todaysGamesQMJHL[0].penalty_minutes === '-' ? 0 : +todaysGamesQMJHL[0].penalty_minutes;
 
           todaysGames.push({
             fullName: `${prospect.first_name} ${prospect.last_name}`,
@@ -181,43 +178,12 @@ async function scrape_games(prospects) {
           });
         }
 
-        if (
-          parsedData.SiteKit.Player.games[gameIndex].date_played
-          === `${yYear}-${yMonth}-${yDay}`
-        ) {
-          const goals = +parsedData.SiteKit.Player.games[gameIndex].goals;
-          const assists = +parsedData.SiteKit.Player.games[gameIndex].assists;
-          const points = +parsedData.SiteKit.Player.games[gameIndex].points;
-          const shots = +parsedData.SiteKit.Player.games[gameIndex].shots;
-          const penaltyMinutes = +parsedData.SiteKit.Player.games[gameIndex]
-            .penalty_minutes;
-
-          yesterdaysGames.push({
-            fullName: `${prospect.first_name} ${prospect.last_name}`,
-            league: prospect.league,
-            goals,
-            assists,
-            points,
-            shots,
-            penaltyMinutes,
-            gameDate: `${yYear}-${yMonth}-${yDay}`,
-          });
-        }
-
-        if (gameIndex - 1 === -1) {
-          continue;
-        }
-
-        if (
-          parsedData.SiteKit.Player.games[gameIndex - 1].date_played
-          === `${yYear}-${yMonth}-${yDay}`
-        ) {
-          const goals = +parsedData.SiteKit.Player.games[gameIndex - 1].goals;
-          const assists = +parsedData.SiteKit.Player.games[gameIndex - 1].assists;
-          const points = +parsedData.SiteKit.Player.games[gameIndex - 1].points;
-          const shots = +parsedData.SiteKit.Player.games[gameIndex - 1].shots;
-          const penaltyMinutes = +parsedData.SiteKit.Player.games[gameIndex - 1]
-            .penalty_minutes;
+        if (yesterdaysGamesQMJHL.filter(({ date_played }) => date_played === `${yYear}${yMonth}${yDay}`).length > 0) {
+          const goals = yesterdaysGamesQMJHL[0].goals === '-' ? 0 : +yesterdaysGamesQMJHL[0].goals;
+          const assists = yesterdaysGamesQMJHL[0].assists === '-' ? 0 : +yesterdaysGamesQMJHL[0].assists;
+          const points = yesterdaysGamesQMJHL[0].points === '-' ? 0 : +yesterdaysGamesQMJHL[0].points;
+          const shots = yesterdaysGamesQMJHL[0].shots === '-' ? 0 : +yesterdaysGamesQMJHL[0].shots;
+          const penaltyMinutes = yesterdaysGamesQMJHL[0].penalty_minutes === '-' ? 0 : +yesterdaysGamesQMJHL[0].penalty_minutes;
 
           yesterdaysGames.push({
             fullName: `${prospect.first_name} ${prospect.last_name}`,
