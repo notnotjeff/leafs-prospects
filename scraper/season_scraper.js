@@ -40,6 +40,9 @@ function scrape(prospects) {
   const promises = [];
 
   prospects.forEach((p, _i) => {
+    // eslint-disable-next-line no-console
+    console.log(p.last_name);
+
     let urlData = {};
     if (
       p.league === 'OHL'
@@ -83,9 +86,6 @@ function scrape(prospects) {
           let points = 0;
           let shots = 0;
           let games_played = 0;
-
-          // eslint-disable-next-line no-console
-          console.log(p.last_name);
 
           if (p.league === 'OHL') {
             [
