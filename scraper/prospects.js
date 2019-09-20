@@ -150,9 +150,9 @@ module.exports.prospects = [
     pick: 68,
     draft_year: 2015,
     player_id: 23319,
-    profile_url: 'https://en.khl.ru/players/23319/',
-    games_url: 'https://en.khl.ru/players/23319/',
-    league: 'KHL',
+    profile_url: 'https://liiga.fi/fi/pelaajat/60380455/dzierkals-martins/',
+    games_url: 'https://liiga.fi/fi/pelaajat/60380455/dzierkals-martins/ottelu-ottelulta',
+    league: 'Liiga',
     ep_url: 'http://www.eliteprospects.com/player.php?player=239362',
   },
   {
