@@ -248,9 +248,9 @@ function scrape(prospects) {
             pick,
           };
         })
-        .catch((err) => {
+        .catch((_err) => {
           // eslint-disable-next-line no-console
-          console.log(err);
+          console.log(p.last_name);
         }),
     );
   });
@@ -289,7 +289,7 @@ async function updateDB() {
   } else {
     prospectData.forEach((prospect) => {
       // Log Specific Prospect:
-      if (prospect.last_name === 'Piccinich') {
+      if (prospect.last_name === 'Dzierkals') {
         // eslint-disable-next-line no-console
         console.log(prospect);
       }

@@ -7,13 +7,20 @@
 
 module.exports = {
   seasonScrape(leagues) {
+    const shots = null;
+    let goals = 0;
+    let assists = 0;
+    let points = 0;
+    let games_played = 0;
+
     const stats = leagues.SkaterLevels.find(l => l.LevelName === 'Mestis');
 
-    const goals = stats.LevelGoals || null;
-    const assists = stats.LevelAssists || null;
-    const points = stats.LevelPoints || null;
-    const shots = null;
-    const games_played = stats.PlayedLevelGames || null;
+    if (stats !== undefined) {
+      goals = stats.LevelGoals;
+      assists = stats.LevelAssists;
+      points = stats.LevelPoints;
+      games_played = stats.PlayedLevelGames;
+    }
 
     return [goals, assists, points, shots, games_played];
   },
