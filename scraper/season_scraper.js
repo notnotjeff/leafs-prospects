@@ -41,7 +41,7 @@ function scrape(prospects) {
 
   prospects.forEach((p, _i) => {
     // eslint-disable-next-line no-console
-    console.log(p.last_name);
+    // console.log(p.last_name);
 
     let urlData = {};
     if (
@@ -248,9 +248,9 @@ function scrape(prospects) {
             pick,
           };
         })
-        .catch((_err) => {
+        .catch((err) => {
           // eslint-disable-next-line no-console
-          console.log(p.last_name);
+          console.log(err, p.last_name);
         }),
     );
   });
@@ -277,7 +277,7 @@ async function updateDB() {
     allTransactionPromises.push(ranAtRef.push({ updatedAt: time }));
 
     prospectData.forEach((prospect) => {
-      // console.log(prospect)
+      console.log(prospect)
       const transactionPromise = prospectsRef.push(prospect);
       allTransactionPromises.push(transactionPromise);
     });
