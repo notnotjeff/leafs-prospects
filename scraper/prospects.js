@@ -490,7 +490,7 @@ module.exports.prospects = [
     profile_url: 'https://lscluster.hockeytech.com/feed/index.php?feed=widgetkit2&key=f322673b6bcae299&p=1&client_code=lhjmq&view=Teamstat&fmt=json&player_id=17871&lang=en&force_player=0&callback=json',
     games_url: `https://lscluster.hockeytech.com/feed/index.php?feed=widgetkit2&key=f322673b6bcae299&client_code=lhjmq&view=Gamebygame&lang=en&season_id=${qmjhl_season_id}&fmt=json&dfdsfdsa=2fdsa&player_id=17871&force_player=0&callback=json`,
     league: 'QMJHL',
-    ep_url: 'https://www.eliteprospects.com/player/359539/nicholas-robertson',
+    ep_url: 'https://www.eliteprospects.com/player/514653/mikhail-abramov',
   },
   {
     first_name: 'Nick',
