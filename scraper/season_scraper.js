@@ -38,6 +38,7 @@ const prospectDB = backend.prospects;
 // SCRAPING FUNCTION
 function scrape(prospects) {
   const promises = [];
+  const seasonStartYear = dateHelpers.getSeasonStartYear();
 
   prospects.forEach((p, _i) => {
     // eslint-disable-next-line no-console
@@ -96,7 +97,7 @@ function scrape(prospects) {
               games_played,
             ] = chlScraper.seasonScrape(
               data.SiteKit.Player.regular,
-              data.SiteKit.Player.regular[0].season_id,
+              seasonStartYear,
             );
           } else if (p.league === 'WHL') {
             [
@@ -107,10 +108,11 @@ function scrape(prospects) {
               games_played,
             ] = chlScraper.seasonScrape(
               data.SiteKit.Player.regular,
-              data.SiteKit.Player.regular[0].season_id,
+              seasonStartYear,
             );
           } else if (p.league === 'QMJHL') {
             const parsedData = JSON.parse(data.substr(5, data.length - 6));
+            console.log(parsedData.SiteKit.Teamstat.seasons.regular);
             [
               goals,
               assists,
@@ -119,7 +121,7 @@ function scrape(prospects) {
               games_played,
             ] = chlScraper.seasonScrape(
               parsedData.SiteKit.Teamstat.seasons.regular,
-              parsedData.SiteKit.Teamstat.seasons.regular[0].season_id,
+              seasonStartYear,
             );
           } else if (p.league === 'AHL') {
             const parsedData = JSON.parse(data.slice(5, data.length - 1));
@@ -289,7 +291,7 @@ async function updateDB() {
   } else {
     prospectData.forEach((prospect) => {
       // Log Specific Prospect:
-      if (prospect.last_name === 'Dzierkals') {
+      if (prospect.last_name === 'Abramov') {
         // eslint-disable-next-line no-console
         console.log(prospect);
       }

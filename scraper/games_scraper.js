@@ -159,7 +159,7 @@ async function scrape_games(prospects) {
         const todaysGamesQMJHL = parsedData.SiteKit.Gamebygame.games[dateHelpers.getMonthName(today.getMonth(), true)] || [];
         const yesterdaysGamesQMJHL = parsedData.SiteKit.Gamebygame.games[dateHelpers.getMonthName(today.getMonth(), true)] || [];
 
-        if (todaysGamesQMJHL.filter(({ date_played }) => date_played === `${year}${month}${day}`).length > 0) {
+        if (todaysGamesQMJHL.filter(({ date_played }) => date_played === `${year}-${month}-${day}`).length > 0) {
           const goals = todaysGamesQMJHL[0].goals === '-' ? 0 : +todaysGamesQMJHL[0].goals;
           const assists = todaysGamesQMJHL[0].assists === '-' ? 0 : +todaysGamesQMJHL[0].assists;
           const points = todaysGamesQMJHL[0].points === '-' ? 0 : +todaysGamesQMJHL[0].points;
@@ -178,7 +178,7 @@ async function scrape_games(prospects) {
           });
         }
 
-        if (yesterdaysGamesQMJHL.filter(({ date_played }) => date_played === `${yYear}${yMonth}${yDay}`).length > 0) {
+        if (yesterdaysGamesQMJHL.filter(({ date_played }) => date_played === `${yYear}-${yMonth}-${yDay}`).length > 0) {
           const goals = yesterdaysGamesQMJHL[0].goals === '-' ? 0 : +yesterdaysGamesQMJHL[0].goals;
           const assists = yesterdaysGamesQMJHL[0].assists === '-' ? 0 : +yesterdaysGamesQMJHL[0].assists;
           const points = yesterdaysGamesQMJHL[0].points === '-' ? 0 : +yesterdaysGamesQMJHL[0].points;

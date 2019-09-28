@@ -20,9 +20,9 @@
 // }
 
 module.exports = {
-  seasonScrape(seasons, currentSeasonId) {
+  seasonScrape(seasons, currentSeasonYear) {
     const currentSeasons = seasons.filter((season) => {
-      return (+season.season_id === +currentSeasonId && season.season_name !== 'total');
+      return (season.season_name.includes(currentSeasonYear.toString()));
     });
 
     let goals = 0;
@@ -32,7 +32,7 @@ module.exports = {
     let games_played = 0;
 
     currentSeasons.forEach((season) => {
-      goals += +season.goals;
+      goals += season.goals === '-' ? 0 : +season.goals;
       assists += +season.assists;
       points += +season.points;
       shots += +season.shots;
