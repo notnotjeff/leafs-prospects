@@ -112,7 +112,6 @@ function scrape(prospects) {
             );
           } else if (p.league === 'QMJHL') {
             const parsedData = JSON.parse(data.substr(5, data.length - 6));
-            console.log(parsedData.SiteKit.Teamstat.seasons.regular);
             [
               goals,
               assists,

@@ -263,7 +263,7 @@ module.exports.prospects = [
     games_url: 'https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=6756&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json',
     // profile_url: 'http://liiga.fi/pelaajat/100025980/lindgren-jesper',
     // games_url: 'http://liiga.fi/fi/pelaajat/100025980/lindgren-jesper/ottelu-ottelulta',
-    league: 'Liiga',
+    league: 'AHL',
     ep_url: 'http://www.eliteprospects.com/player.php?player=187806',
   },
   // {
@@ -441,10 +441,10 @@ module.exports.prospects = [
     round: null,
     pick: null,
     draft_year: null,
-    player_id: 100026177,
-    profile_url: 'https://liiga.fi/fi/pelaajat/100026177/kivihalme-teemu',
-    games_url: 'https://liiga.fi/fi/pelaajat/100026177/kivihalme-teemu/ottelu-ottelulta',
-    league: 'Liiga',
+    player_id: 8025,
+    profile_url: 'https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=8025&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json',
+    games_url: 'https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=player&player_id=8025&site_id=1&key=50c2cd9b5e18e390&client_code=ahl&league_id=&lang=en&statsType=standard&callback=json',
+    league: 'AHL',
     ep_url: 'https://www.eliteprospects.com/player/141072/teemu-kivihalme',
   },
   {
