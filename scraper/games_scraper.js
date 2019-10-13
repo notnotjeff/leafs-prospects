@@ -37,7 +37,6 @@ async function scrape_games(prospects) {
     if (
       prospect.league === 'OHL'
       || prospect.league === 'AHL'
-      || prospect.league === 'ECHL'
       || prospect.league === 'WHL'
       || prospect.league === 'USHL'
       || prospect.league === 'QMJHL'
@@ -46,6 +45,8 @@ async function scrape_games(prospects) {
         url: prospect.games_url,
         json: true,
       };
+    } else if (prospect.league === 'ECHL') {
+      continue;
     } else {
       urlData = {
         url: prospect.games_url,

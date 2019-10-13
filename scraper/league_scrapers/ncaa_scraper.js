@@ -18,7 +18,8 @@ module.exports = {
     assists = +statGroup[1];
     points = +statGroup[2];
     shots = +season('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(9)').text();
-    games_played = +season('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)').text().split(' ')[0];
+    const gpRegex = season('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)').text().match(/\d+/);
+    games_played = gpRegex === null ? null : +gpRegex[0];
 
     return [goals, assists, points, shots, games_played];
   },

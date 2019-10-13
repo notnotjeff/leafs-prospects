@@ -261,7 +261,8 @@ function scrape(prospects) {
 async function updateDB() {
   // eslint-disable-next-line no-console
   console.log('Starting Scrape');
-  const prospectData = await scrape(prospectDB);
+  const scrapeProspects = !TESTING_MODE ? prospectDB : prospectDB.filter((prospect) => { return prospect.last_name === 'Greenway'; });
+  const prospectData = await scrape(scrapeProspects);
   // eslint-disable-next-line no-console
   console.log('Completed Scrape');
 
@@ -278,7 +279,8 @@ async function updateDB() {
     allTransactionPromises.push(ranAtRef.push({ updatedAt: time }));
 
     prospectData.forEach((prospect) => {
-      console.log(prospect)
+      // eslint-disable-next-line no-console
+      console.log(prospect);
       const transactionPromise = prospectsRef.push(prospect);
       allTransactionPromises.push(transactionPromise);
     });
@@ -290,7 +292,7 @@ async function updateDB() {
   } else {
     prospectData.forEach((prospect) => {
       // Log Specific Prospect:
-      if (prospect.last_name === 'Abramov') {
+      if (prospect.last_name === 'Brazeau') {
         // eslint-disable-next-line no-console
         console.log(prospect);
       }

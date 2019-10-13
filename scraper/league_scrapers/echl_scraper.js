@@ -18,7 +18,7 @@ module.exports = {
         goals += season.properties[1].value;
         assists += season.properties[2].value;
         points += season.properties[3].value;
-        shots += season.properties[10].value;
+        shots += season.properties[11].value;
         games_played += season.properties[0].value;
       }
     });
