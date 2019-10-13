@@ -45,7 +45,7 @@ async function scrape_games(prospects) {
         url: prospect.games_url,
         json: true,
       };
-    } else if (prospect.league === 'ECHL') {
+    } else if (prospect.league === 'ECHL' || prospect.league === 'NLA') {
       continue;
     } else {
       urlData = {

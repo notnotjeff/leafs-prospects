@@ -6,11 +6,11 @@ class ProspectFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      leagues: ["Any", "North American", "European", "AHL", "CHL", "ECHL", "KHL", "Liiga", "Mestis", "MHL", "NCAA", "OHL", "QMJHL", "SHL", "USHL", "VHL", "WHL"],
+      leagues: ["Any", "North American", "European", "AHL", "CHL", "ECHL", "KHL", "Liiga", "Mestis", "MHL", "NCAA", "NLA", "OHL", "QMJHL", "SHL", "USHL", "VHL", "WHL"],
       positions: ["Any", "F", "D", "W", "LW", "RW", "C"],
       shoots: ["Any", "L", "R"],
       rounds: ["Any", 1, 2, 3, 4, 5, 6, 7, "Undrafted"],
-      draft_year: ["Any", 2019, 2018, 2017, 2016, 2015, 2014, "Undrafted"]
+      draft_year: ["Any", 2019, 2018, 2017, 2016, 2015, 2014, 2013, "Undrafted"]
     }
   }
 

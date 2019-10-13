@@ -17,11 +17,13 @@ const khlScraper = require('./league_scrapers/khl_scraper.js');
 const shlScraper = require('./league_scrapers/shl_scraper.js');
 const vhlScraper = require('./league_scrapers/vhl_scraper.js');
 const ncaaScraper = require('./league_scrapers/ncaa_scraper.js');
+const nlaScraper = require('./league_scrapers/nla_scraper.js');
 const liigaScraper = require('./league_scrapers/liiga_scraper.js');
 const mestisScraper = require('./league_scrapers/mestis_scraper.js');
 
 dotenv.config();
 const TESTING_MODE = false;
+const testingProspect = 'Herzog';
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -53,6 +55,7 @@ function scrape(prospects) {
       || p.league === 'USHL'
       || p.league === 'QMJHL'
       || p.league === 'Mestis'
+      || p.league === 'NLA'
     ) {
       urlData = {
         url: p.profile_url,
@@ -146,6 +149,16 @@ function scrape(prospects) {
               parsedData.careerStats[0].sections[0].data,
               generalHelpers.getCurrentSeason(),
             );
+          } else if (p.league === 'NLA') {
+            const nlaRegex = /\(([^)]+)\)/;
+            const parsedData = JSON.parse(nlaRegex.exec(data)[1]);
+            [
+              goals,
+              assists,
+              points,
+              shots,
+              games_played,
+            ] = nlaScraper.seasonScrape(parsedData.data, `${last_name} ${first_name}`);
           } else if (p.league === 'ECHL') {
             [
               goals,
@@ -261,7 +274,7 @@ function scrape(prospects) {
 async function updateDB() {
   // eslint-disable-next-line no-console
   console.log('Starting Scrape');
-  const scrapeProspects = !TESTING_MODE ? prospectDB : prospectDB.filter((prospect) => { return prospect.last_name === 'Greenway'; });
+  const scrapeProspects = !TESTING_MODE ? prospectDB : prospectDB.filter((prospect) => { return prospect.last_name === testingProspect; });
   const prospectData = await scrape(scrapeProspects);
   // eslint-disable-next-line no-console
   console.log('Completed Scrape');
@@ -292,7 +305,7 @@ async function updateDB() {
   } else {
     prospectData.forEach((prospect) => {
       // Log Specific Prospect:
-      if (prospect.last_name === 'Brazeau') {
+      if (prospect.last_name === testingProspect) {
         // eslint-disable-next-line no-console
         console.log(prospect);
       }
