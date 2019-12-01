@@ -1,0 +1,24 @@
+{
+  "name": "leaf-aggregator",
+  "version": "1.0.0",
+  "description": "An app that pulls the counting stats of all of the Toronto Maple Leaf prospects and displays it all in one place!  You can filter by draft year, position, handedness, round drafted in, and league.",
+  "main": "index.js",
+  "dependencies": {
+    "prettier": "^1.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd ../client && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jefftcraig/leafs-prospects.git"
+  },
+  "author": "Jeff Craig",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jefftcraig/leafs-prospects/issues"
+  },
+  "homepage": "https://github.com/jefftcraig/leafs-prospects#readme"
+}
