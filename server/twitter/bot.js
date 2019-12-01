@@ -1,7 +1,7 @@
-var Twit        = require('twit');
-var dotenv      = require('dotenv');
-var htmlToImage = require('html-to-image');
-var admin       = require('firebase-admin');
+var Twit = require("twit");
+var dotenv = require("dotenv");
+var htmlToImage = require("html-to-image");
+var admin = require("firebase-admin");
 
 dotenv.config();
 
@@ -14,22 +14,24 @@ var T = new Twit({
 
 admin.initializeApp({
   credential: admin.credential.cert({
-      "private_key": process.env.FIREBASE_KEY.replace(/\\n/g, '\n'),
-      "client_email": process.env.FIREBASE_EMAIL,
-      "project_id": "leafs-prospects"
+    private_key: process.env.FIREBASE_KEY.replace(/\\n/g, "\n"),
+    client_email: process.env.FIREBASE_EMAIL,
+    project_id: "leafs-prospects"
   }),
   databaseURL: "https://leafs-prospects.firebaseio.com"
 });
 
-let prospectRows = []
-const todaysRef = admin.database().ref('todaysGames');
+let prospectRows = [];
+const todaysRef = admin.database().ref("todaysGames");
 
-todaysRef.on("value", function(snapshot) {
-  const prospects = snapshot.val();
-  const keys = Object.keys(prospects);
+todaysRef.on(
+  "value",
+  function(snapshot) {
+    const prospects = snapshot.val();
+    const keys = Object.keys(prospects);
 
-  for (const key of keys) {
-    prospectRows.push(`
+    for (const key of keys) {
+      prospectRows.push(`
       <tr>
         <td className="last_name">${prospects[key].fullName}</td>
         <td>${prospects[key].league}</td>
@@ -39,10 +41,10 @@ todaysRef.on("value", function(snapshot) {
         <td>${prospects[key].points}</td>
         <td>${prospects[key].penaltyMinutes}</td>
       </tr>
-    `)
-  }
+    `);
+    }
 
-  let prospectTable = `
+    let prospectTable = `
     <table>
       <thead>
         <tr>
@@ -59,23 +61,23 @@ todaysRef.on("value", function(snapshot) {
         ${prospectRows.join()}
       </tbody>
     </table>
-  `
+  `;
 
-  console.log(prospectTable);
+    console.log(prospectTable);
 
-  htmlToImage.toPng(prospectTable)
-  .then(function (_dataUrl) {
-    // download(dataUrl, 'my-node.png');
-  });
+    htmlToImage.toPng(prospectTable).then(function(_dataUrl) {
+      // download(dataUrl, 'my-node.png');
+    });
 
+    admin.app().delete();
+  },
+  function(errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  }
+);
 
-  admin.app().delete();
-}, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
-
-console.log(prospectRows)
-console.log(T)
+console.log(prospectRows);
+console.log(T);
 
 // T.post('statuses/update', { status: 'hello world!' }, function(err, data, response) {
 //   console.log(data)

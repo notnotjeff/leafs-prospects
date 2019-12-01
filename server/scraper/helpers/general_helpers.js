@@ -14,10 +14,14 @@ module.exports = {
     const month = date.getMonth() + 1;
 
     if (month > 8) {
-      return `${date.getFullYear()}-${(date.getFullYear() + 1).toString().substr(-2)}`;
+      return `${date.getFullYear()}-${(date.getFullYear() + 1)
+        .toString()
+        .substr(-2)}`;
     }
 
     date.setFullYear(date.getFullYear() - 1);
-    return `${date.getFullYear()}-${(date.getFullYear() + 1).toString().substr(-2)}`;
-  },
+    return `${date.getFullYear()}-${(date.getFullYear() + 1)
+      .toString()
+      .substr(-2)}`;
+  }
 };

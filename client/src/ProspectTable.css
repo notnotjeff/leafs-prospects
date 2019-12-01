@@ -24,7 +24,8 @@ table thead tr:last-child th {
   cursor: pointer;
 }
 
-.last_name, tbody tr td:first-child {
+.last_name,
+tbody tr td:first-child {
   position: sticky;
   left: -2px;
 }

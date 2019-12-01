@@ -1,11 +1,11 @@
-var express = require('express');
-const path  = require('path');
-var app     = express();
+var express = require("express");
+const path = require("path");
+var app = express();
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get('*', (req, res) => {
-  res.send('There is nothing here.');
+app.get("*", (req, res) => {
+  res.send("There is nothing here.");
 });
 
 const port = process.env.PORT || 5000;

@@ -13,7 +13,9 @@ module.exports = {
     const shots = 0;
     let games_played = 0;
 
-    const prospect = teamData.filter((player) => { return player[1] === name; });
+    const prospect = teamData.filter(player => {
+      return player[1] === name;
+    });
 
     if (prospect.length > 0) {
       games_played = prospect[0][4];
@@ -23,5 +25,5 @@ module.exports = {
     }
 
     return [goals, assists, points, shots, games_played];
-  },
+  }
 };

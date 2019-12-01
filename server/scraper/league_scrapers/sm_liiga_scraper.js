@@ -13,7 +13,9 @@ module.exports = {
     let points = 0;
     let games_played = 0;
 
-    const stats = leagues.SkaterLevels.find(l => l.LevelName === 'Nuorten SM-Liiga');
+    const stats = leagues.SkaterLevels.find(
+      l => l.LevelName === "Nuorten SM-Liiga"
+    );
 
     if (stats !== undefined) {
       goals = stats.LevelGoals;
@@ -23,5 +25,5 @@ module.exports = {
     }
 
     return [goals, assists, points, shots, games_played];
-  },
+  }
 };

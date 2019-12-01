@@ -13,14 +13,24 @@ module.exports = {
     let shots = 0;
     let games_played = 0;
 
-    const statGroup = season('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(3)').text().split('-');
+    const statGroup = season(
+      "body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(3)"
+    )
+      .text()
+      .split("-");
     goals = +statGroup[0];
     assists = +statGroup[1];
     points = +statGroup[2];
-    shots = +season('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(9)').text();
-    const gpRegex = season('body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)').text().match(/\d+/);
+    shots = +season(
+      "body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(9)"
+    ).text();
+    const gpRegex = season(
+      "body > div.page.text-center > main > section > div > div > div > div.playerstatsfull > table:nth-child(3) > tbody > tr:nth-last-child(1) > td:nth-child(2)"
+    )
+      .text()
+      .match(/\d+/);
     games_played = gpRegex === null ? null : +gpRegex[0];
 
     return [goals, assists, points, shots, games_played];
-  },
+  }
 };

@@ -13,7 +13,7 @@ module.exports = {
     let shots = 0;
     let games_played = 0;
 
-    seasons.forEach((season) => {
+    seasons.forEach(season => {
       if (season.season.name === `${currentSeason} Regular Season`) {
         goals += season.properties[1].value;
         assists += season.properties[2].value;
@@ -24,5 +24,5 @@ module.exports = {
     });
 
     return [goals, assists, points, shots, games_played];
-  },
+  }
 };

@@ -37,7 +37,7 @@ module.exports = {
       year,
       yDay,
       yMonth,
-      yYear,
+      yYear
     };
   },
 
@@ -59,18 +59,18 @@ module.exports = {
   // Gets month name from integer of a month, for QMJHL game by game
   getMonthName(month, isArrayFriendly = false) {
     const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
     ];
 
     return monthNames[+month - (isArrayFriendly ? 0 : 1)];
@@ -83,11 +83,17 @@ module.exports = {
     const offsetHours = today.getTimezoneOffset() === 0 ? 0 : 4; // If run locally in EST you need to offset for time difference from UTC
 
     // If today is the start of daylight savings, check if it's past 2AM EST from UTC (should be 5 hours ahead during non-DST period)
-    if (`${today.getMonth()}-${today.getDate()}` === `${dstStart.getMonth()}-${dstStart.getDate()}`) {
+    if (
+      `${today.getMonth()}-${today.getDate()}` ===
+      `${dstStart.getMonth()}-${dstStart.getDate()}`
+    ) {
       return today.getHours() >= 7 - offsetHours ? true : false;
     }
     // If today is end of daylight savings, check if it's past 2AM EST from UTC (should be 4 hours ahead during DST period)
-    if (`${today.getMonth()}-${today.getDate()}` === `${dstEnd.getMonth()}-${dstEnd.getDate()}`) {
+    if (
+      `${today.getMonth()}-${today.getDate()}` ===
+      `${dstEnd.getMonth()}-${dstEnd.getDate()}`
+    ) {
       return today.getHours() >= 6 - offsetHours ? false : true;
     }
 
@@ -112,9 +118,10 @@ module.exports = {
   getCurrentTime() {
     // Set Time
     const day = new Date();
-    let amPm = '';
-    let hours = '';
-    const minutes = day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
+    let amPm = "";
+    let hours = "";
+    const minutes =
+      day.getMinutes() < 10 ? `0${day.getMinutes()}` : `${day.getMinutes()}`;
     const offsetHours = this.isDaylightSavings(day) ? 4 : 5;
 
     if (+day.getTimezoneOffset() === 0) {
@@ -127,7 +134,7 @@ module.exports = {
       hours = String(day.getHours() - 12);
     }
 
-    amPm = +day.getHours() < 12 ? 'am' : 'pm';
+    amPm = +day.getHours() < 12 ? "am" : "pm";
     if (+hours === 0) {
       hours = 12;
     }
@@ -138,7 +145,9 @@ module.exports = {
   // Get year for the start of the current hockey season
   getSeasonStartYear() {
     const today = new Date();
-    if (today.getMonth() + 1 < 9) { return today.getFullYear() - 1; }
+    if (today.getMonth() + 1 < 9) {
+      return today.getFullYear() - 1;
+    }
 
     return today.getFullYear();
   }

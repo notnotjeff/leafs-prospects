@@ -7,7 +7,7 @@
 
 module.exports = {
   seasonScrape(seasons, currentSeason) {
-    const currentSeasons = seasons.filter((season) => {
+    const currentSeasons = seasons.filter(season => {
       return season.row.season_name === `${currentSeason} Regular Season`;
     });
 
@@ -17,7 +17,7 @@ module.exports = {
     let shots = 0;
     let games_played = 0;
 
-    currentSeasons.forEach((season) => {
+    currentSeasons.forEach(season => {
       goals += +season.row.goals;
       assists += +season.row.assists;
       points += +season.row.points;
@@ -26,5 +26,5 @@ module.exports = {
     });
 
     return [goals, assists, points, shots, games_played];
-  },
+  }
 };
