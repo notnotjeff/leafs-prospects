@@ -28,7 +28,7 @@ todaysRef.on("value", function(snapshot) {
   const prospects = snapshot.val();
   const keys = Object.keys(prospects);
 
-  for (key of keys) {
+  for (const key of keys) {
     prospectRows.push(`
       <tr>
         <td className="last_name">${prospects[key].fullName}</td>
@@ -64,8 +64,8 @@ todaysRef.on("value", function(snapshot) {
   console.log(prospectTable);
 
   htmlToImage.toPng(prospectTable)
-  .then(function (dataUrl) {
-    download(dataUrl, 'my-node.png');
+  .then(function (_dataUrl) {
+    // download(dataUrl, 'my-node.png');
   });
 
 
@@ -75,6 +75,7 @@ todaysRef.on("value", function(snapshot) {
 });
 
 console.log(prospectRows)
+console.log(T)
 
 // T.post('statuses/update', { status: 'hello world!' }, function(err, data, response) {
 //   console.log(data)

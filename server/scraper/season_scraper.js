@@ -42,7 +42,7 @@ function scrape(prospects) {
   const promises = [];
   const seasonStartYear = dateHelpers.getSeasonStartYear();
 
-  prospects.forEach((p, _i) => {
+  prospects.forEach((p) => {
     // eslint-disable-next-line no-console
     // console.log(p.last_name);
 

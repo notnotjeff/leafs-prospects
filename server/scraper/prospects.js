@@ -1,5 +1,5 @@
-const today = new Date();
-const currentFinnishYear = today.getMonth() + 1 < 9 ? `${today.getFullYear()}` : `${today.getFullYear() + 1}`;
+// const today = new Date();
+// const currentFinnishYear = today.getMonth() + 1 < 9 ? `${today.getFullYear()}` : `${today.getFullYear() + 1}`;
 const qmjhl_season_id = 193;
 
 // EXAMPLE (See 'scraper/league_scraper' individual files for specific URLs for each league)

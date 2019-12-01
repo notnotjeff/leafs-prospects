@@ -1,4 +1,3 @@
-import React from 'react';
 import './FilterOption.css';
 
 const FilterOption = props => {
