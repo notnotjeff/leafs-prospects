@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Footer from "./Footer";
 import Prospects from "./Prospects";
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Toronto Maple Leafs Prospect Aggregator</h1>
-        <BrowserRouter>
+        <Router>
           <div className="content-container">
             <Navigation />
             <Switch>
@@ -20,7 +20,7 @@ class App extends Component {
               <Redirect to="/" />
             </Switch>
           </div>
-        </BrowserRouter>
+        </Router>
         <Footer />
       </div>
     );

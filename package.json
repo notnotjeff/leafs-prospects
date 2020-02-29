@@ -1,23 +1,11 @@
 {
   "name": "client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "https://jefftcraig.github.io/",
+  "homepage": "https://leafs-prospects.com",
   "engines": {
     "node": "8.11.3",
     "yarn": "1.9.4"
-  },
-  "dependencies": {
-    "ajv": "^6.5.3",
-    "eslint": "^5.16.0",
-    "gh-pages": "^1.2.0",
-    "nodemon": "^1.18.4",
-    "react": "^16.2.0",
-    "react-dom": ">=16.2.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "^1.1.5",
-    "sshpk": "^1.14.2",
-    "url-parse": "^1.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,18 +20,26 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "dependencies": {
+    "firebase": "^7.9.3",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.0"
+  },
   "devDependencies": {
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-react": "^7.17.0",
-    "event-stream": "^3.3.4",
-    "firebase": "^5.3.1",
-    "handlebars": ">=4.0.14",
-    "js-yaml": ">=3.13.1",
-    "lodash": ">=4.17.13",
-    "lodash.template": ">=4.5.0",
-    "mem": ">=4.0.0",
-    "merge": ">=1.2.1",
-    "prettier": "^1.19.1",
-    "webpack-dev-server": ">=3.1.11"
+    "gh-pages": "^2.2.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
