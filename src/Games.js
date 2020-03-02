@@ -1,75 +1,94 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "./firebase.js";
 import "./Games.css";
 import GamesTable from "./GamesTable";
 
-class Games extends Component {
-  constructor(props) {
-    super(props);
+function useTodaysGames() {
+  const [todaysGames, setTodaysGames] = useState([])
+  
+  useEffect(() => {
+    const tGames = [];
 
-    this.state = {
-      todaysGames: [],
-      yesterdaysGames: [],
-      updatedAt: ""
-    };
-  }
+    firebase.database()
+      .ref("todaysGames")
+      .on("value", snapshot => {
+        snapshot.forEach(snap => {
+          tGames.push(snap.val());
+        });
 
-  componentDidMount() {
-    const todaysRef = firebase.database().ref("todaysGames");
-    const yesterdaysRef = firebase.database().ref("yesterdaysGames");
-    const timeRef = firebase.database().ref("gamesScrapedTime");
-
-    timeRef.on("value", snapshot => {
-      let time = "";
-      snapshot.forEach(snap => {
-        time = String(snap.val().updatedAt);
+        setTodaysGames(tGames)
       });
+  }, [])
 
-      this.setState({ updatedAt: time });
-    });
+  return todaysGames;
 
-    todaysRef.on("value", snapshot => {
-      let todaysGames = [];
-      snapshot.forEach(snap => {
-        todaysGames.push(snap.val());
+}
+
+function useYesterdaysGames() {
+  const [yesterdaysGames, setYesterdaysGames] = useState([])
+  
+  useEffect(() => {
+    const yGames = [];
+
+    firebase.database()
+      .ref("yesterdaysGames")
+      .on("value", snapshot => {
+        snapshot.forEach(snap => {
+          yGames.push(snap.val());
+        });
+
+        setYesterdaysGames(yGames)
       });
+  }, [])
 
-      this.setState({ todaysGames });
-    });
+  return yesterdaysGames;
+}
 
-    yesterdaysRef.on("value", snapshot => {
-      let yesterdaysGames = [];
-      snapshot.forEach(snap => {
-        yesterdaysGames.push(snap.val());
+function useUpdatedAt() {
+  const [updatedAt, setUpdatedAt] = useState('')
+  
+  useEffect(() => {
+    let time = "";
+
+    firebase.database()
+      .ref("gamesScrapedTime")
+      .on("value", snapshot => {
+        snapshot.forEach(snap => {
+          time = String(snap.val().updatedAt);
+        });
+
+        setUpdatedAt(time);
       });
+  }, [])
 
-      this.setState({ yesterdaysGames });
-    });
-  }
+  return updatedAt;
+}
 
-  render() {
-    const { todaysGames, yesterdaysGames, updatedAt } = this.state;
-    let gamesTables = (
-      <div className="games-container">
-        <GamesTable games={todaysGames} title="Today's Games" />
-        <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
-      </div>
+function Games() {
+  const todaysGames = useTodaysGames();
+  const yesterdaysGames = useYesterdaysGames();
+  const updatedAt = useUpdatedAt();
+
+  let gamesTables = (
+    <div className="games-container">
+      <GamesTable games={todaysGames} title="Today's Games" />
+      <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
+    </div>
+  );
+
+  let updatedDiv =
+    updatedAt === "" ? (
+      <div className="updated-container"></div>
+    ) : (
+      <div className="updated-container">Updated at: {updatedAt} EST</div>
     );
 
-    let updatedDiv =
-      updatedAt === "" ? (
-        <div className="updated-container"></div>
-      ) : (
-        <div className="updated-container">Updated at: {updatedAt} EST</div>
-      );
-
-    return (
-      <section>
-        {gamesTables}
-        {updatedDiv}
-      </section>
-    );
-  }
+  return (
+    <section>
+      {gamesTables}
+      {updatedDiv}
+    </section>
+  );
 }
 
 export default Games;
