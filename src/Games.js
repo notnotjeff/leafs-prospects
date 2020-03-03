@@ -7,11 +7,11 @@ function useTodaysGames() {
   const [todaysGames, setTodaysGames] = useState([])
   
   useEffect(() => {
-    const tGames = [];
-
     firebase.database()
-      .ref("todaysGames")
-      .on("value", snapshot => {
+    .ref("todaysGames")
+    .on("value", snapshot => {
+        const tGames = [];
+
         snapshot.forEach(snap => {
           tGames.push(snap.val());
         });
@@ -27,13 +27,13 @@ function useTodaysGames() {
 function useYesterdaysGames() {
   const [yesterdaysGames, setYesterdaysGames] = useState([])
   
-  useEffect(() => {
-    const yGames = [];
-
+  useEffect(() => {    
     firebase.database()
-      .ref("yesterdaysGames")
-      .on("value", snapshot => {
-        snapshot.forEach(snap => {
+    .ref("yesterdaysGames")
+    .on("value", snapshot => {
+      const yGames = [];
+
+      snapshot.forEach(snap => {
           yGames.push(snap.val());
         });
 
@@ -48,11 +48,12 @@ function useUpdatedAt() {
   const [updatedAt, setUpdatedAt] = useState('')
   
   useEffect(() => {
-    let time = "";
-
+    
     firebase.database()
-      .ref("gamesScrapedTime")
-      .on("value", snapshot => {
+    .ref("gamesScrapedTime")
+    .on("value", snapshot => {
+        let time = "";
+
         snapshot.forEach(snap => {
           time = String(snap.val().updatedAt);
         });

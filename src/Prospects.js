@@ -8,10 +8,11 @@ function useProspects() {
   const [originalProspects, setOriginalProspects] = useState([])
   
   useEffect(() => {
-    const dbProspects = []
     firebase.database()
-      .ref("prospects")
-      .on("value", snapshot => {
+    .ref("prospects")
+    .on("value", snapshot => {
+        const dbProspects = []
+
         snapshot.forEach(snap => {
           dbProspects.push(snap.val());
         });
