@@ -1,5 +1,4 @@
 node_modules
-.vscode
 .DS_Store
 npm-debug.log
 
@@ -7,6 +6,7 @@ npm-debug.log
 .env.local
 .env.development
 .env.development.local
+.env.development
 .env.test.local
 .env.production
 .env.production.local

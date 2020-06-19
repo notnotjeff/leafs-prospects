@@ -36,8 +36,8 @@ function ProspectTable({ prospects }) {
     { name: "H", value: "shoots", title: "Handedness" },
     { name: "Age", value: "age", title: "Age" },
     { name: "DY", value: "draft_year", title: "Draft Year" },
-    { name: "RD", value: "round", title: "Draft Round" },
-    { name: "Pick", value: "pick", title: "Overall Pick Number" },
+    { name: "RD", value: "draft_round", title: "Draft Round" },
+    { name: "Pick", value: "draft_pick", title: "Overall Pick Number" },
     { name: "GP", value: "games_played", title: "Games Played" },
     { name: "G", value: "goals", title: "Goals" },
     { name: "A", value: "assists", title: "Assists" },
@@ -54,8 +54,8 @@ function ProspectTable({ prospects }) {
     "league",
     "position",
     "shoots",
-    "round",
-    "pick"
+    "draft_round",
+    "draft_pick"
   ]
 
   const selectColumn = (columnName) => {
@@ -132,11 +132,11 @@ function ProspectTable({ prospects }) {
               >
                 {p.draft_year}
               </td>
-              <td className={sortColumn === "round" ? "active-col" : ""}>
-                {p.round}
+              <td className={sortColumn === "draft_round" ? "active-col" : ""}>
+                {p.draft_round}
               </td>
-              <td className={sortColumn === "pick" ? "active-col" : ""}>
-                {p.pick}
+              <td className={sortColumn === "draft_pick" ? "active-col" : ""}>
+                {p.draft_pick}
               </td>
               <td
                 className={
