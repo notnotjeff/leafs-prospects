@@ -17,13 +17,13 @@ const GamesTable = ({ games, title }) => {
   if (games.length !== 0) {
     gamesRows = games.map((game, i) => (
       <tr key={i}>
-        <td className="last_name">{game.fullName}</td>
+        <td className="last_name">{`${game.first_name} ${game.last_name}`}</td>
         <td>{game.league}</td>
         <td>{game.shots}</td>
         <td>{game.goals}</td>
         <td>{game.assists}</td>
         <td>{game.points}</td>
-        <td>{game.penaltyMinutes}</td>
+        <td>{game.penalty_minutes}</td>
       </tr>
     ));
   }

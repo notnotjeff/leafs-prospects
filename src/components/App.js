@@ -7,7 +7,7 @@ import Prospects from "./Prospects";
 import Games from "./Games";
 import Navigation from "./Navigation";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <h1>Toronto Maple Leafs Prospect Aggregator</h1>

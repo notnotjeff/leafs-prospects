@@ -1,93 +1,26 @@
-import React, { useState, useEffect } from "react";
-import firebase from "./firebase.js";
+import React from "react";
 import "./Games.css";
 import GamesTable from "./GamesTable";
+import { useGames } from "queries/games";
+import { gameIsToday, gameWasYesterday } from 'utils/game-filters';
 
-function useTodaysGames() {
-  const [todaysGames, setTodaysGames] = useState([])
-  
-  useEffect(() => {
-    firebase.database()
-    .ref("todaysGames")
-    .on("value", snapshot => {
-        const tGames = [];
+const Games = () => {
+  const { status, data } = useGames();
 
-        snapshot.forEach(snap => {
-          tGames.push(snap.val());
-        });
+  if (status === 'loading') { return <div className="loading">Collecting data...</div>; }
+  if (status === 'error') { return <div className="loading">Unable to load data!</div>; }
 
-        setTodaysGames(tGames)
-      });
-  }, [])
-
-  return todaysGames;
-
-}
-
-function useYesterdaysGames() {
-  const [yesterdaysGames, setYesterdaysGames] = useState([])
-  
-  useEffect(() => {    
-    firebase.database()
-    .ref("yesterdaysGames")
-    .on("value", snapshot => {
-      const yGames = [];
-
-      snapshot.forEach(snap => {
-          yGames.push(snap.val());
-        });
-
-        setYesterdaysGames(yGames)
-      });
-  }, [])
-
-  return yesterdaysGames;
-}
-
-function useUpdatedAt() {
-  const [updatedAt, setUpdatedAt] = useState('')
-  
-  useEffect(() => {
-    
-    firebase.database()
-    .ref("gamesScrapedTime")
-    .on("value", snapshot => {
-        let time = "";
-
-        snapshot.forEach(snap => {
-          time = String(snap.val().updatedAt);
-        });
-
-        setUpdatedAt(time);
-      });
-  }, [])
-
-  return updatedAt;
-}
-
-function Games() {
-  const todaysGames = useTodaysGames();
-  const yesterdaysGames = useYesterdaysGames();
-  const updatedAt = useUpdatedAt();
-
-  let gamesTables = (
-    <div className="games-container">
-      <GamesTable games={todaysGames} title="Today's Games" />
-      <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
-    </div>
-  );
-
-  let updatedDiv =
-    updatedAt === "" ? (
-      <div className="updated-container"></div>
-    ) : (
-      <div className="updated-container">Updated at: {updatedAt} EST</div>
-    );
+  const todaysGames = data.filter(gameIsToday);
+  const yesterdaysGames = data.filter(gameWasYesterday);
+  const updatedAt = todaysGames?.[0]?.updated_at ? new Date(Date.parse(String(todaysGames?.[0]?.updated_at))).toLocaleString() : new Date().toLocaleString();
 
   return (
     <section>
-      {gamesTables}
-      {updatedDiv}
+      <div className="games-container">
+        <GamesTable games={todaysGames} title="Today's Games" />
+        <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
+      </div>
+      <div className="updated-container">Updated at: {updatedAt} EST</div>
     </section>
   );
 }

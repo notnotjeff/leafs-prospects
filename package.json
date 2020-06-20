@@ -21,7 +21,6 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "firebase": "^7.15.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-query": "^1.5.8",

@@ -2,7 +2,7 @@ import React from "react";
 import "./ProspectFilter.css";
 import FilterOption from "./FilterOption";
 
-function ProspectFilter({ handleSubmit, handleChange }) {
+const ProspectFilter = ({ handleSubmit, handleChange }) => {
   const leagues = [
     "Any",
     "North American",

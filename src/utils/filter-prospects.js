@@ -5,7 +5,6 @@ const filterProspects = (initialProspects = [], filters) => {
     filterCategories.forEach(f => {
       if (f === "draft_round" && filters[f] !== "Any") {
         if (filters[f] === "Undrafted" && p[f] !== undefined) {
-          console.log('here')
           fail = true;
         } else if (+p[f] !== +filters[f] && filters[f] !== "Undrafted") {
           fail = true;

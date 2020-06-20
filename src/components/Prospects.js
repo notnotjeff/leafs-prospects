@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import { useQuery } from "react-query";
 import "./Prospects.css";
 import ProspectTable from "./ProspectTable";
 import ProspectFilter from "./ProspectFilter";
 import { filterProspects } from "utils/filter-prospects";
+import { useProspects } from "queries/prospects";
 
-const fetchProspects = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/prospects`);
-  const { data } = await response.json();
-
-  return data;
-}
-
-function Prospects() {
-  const { status, data } = useQuery('prospects', fetchProspects);
-  const updatedAt = data?.[0]?.updated_at ? new Date(Date.parse(String(data?.[0]?.updated_at))).toLocaleString() : null;
+const Prospects = () => {
+  const { status, data } = useProspects();
   const [filters, setFilters] = useState({
     league: "Any",
     position: "Any",
@@ -22,6 +14,11 @@ function Prospects() {
     draft_round: "Any",
     draft_year: "Any"
   })
+
+  if (status === 'loading') { return <div className="loading">Collecting data...</div>; }
+  if (status === 'error') { return <div className="loading">Unable to load data!</div>; }
+
+  const updatedAt = data?.[0]?.updated_at ? new Date(Date.parse(String(data?.[0]?.updated_at))).toLocaleString() : null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,9 +30,6 @@ function Prospects() {
   }
 
   const filteredProspects = filterProspects(data, filters)
-
-  if (status === 'loading') { return <div className="loading">Collecting data...</div>; }
-  if (status === 'error') { return <div className="loading">Unable to load data!</div>; }
 
   return (
     <section>
