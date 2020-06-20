@@ -1,5 +1,5 @@
-import React from "react";
-import "./GamesTable.css";
+import React from 'react'
+import './GamesTable.css'
 
 const GamesTable = ({ games, title }) => {
   let gamesRows = (
@@ -12,7 +12,7 @@ const GamesTable = ({ games, title }) => {
       <td></td>
       <td></td>
     </tr>
-  );
+  )
 
   if (games.length !== 0) {
     gamesRows = games.map((game, i) => (
@@ -25,7 +25,7 @@ const GamesTable = ({ games, title }) => {
         <td>{game.points}</td>
         <td>{game.penalty_minutes}</td>
       </tr>
-    ));
+    ))
   }
 
   return (
@@ -51,7 +51,7 @@ const GamesTable = ({ games, title }) => {
         <tbody>{gamesRows}</tbody>
       </table>
     </div>
-  );
+  )
 }
 
-export default GamesTable;
+export default GamesTable

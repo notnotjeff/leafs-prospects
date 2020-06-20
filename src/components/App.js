@@ -1,11 +1,11 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { ReactQueryDevtools } from "react-query-devtools";
-import "./App.css";
-import Footer from "./Footer";
-import Prospects from "./Prospects";
-import Games from "./Games";
-import Navigation from "./Navigation";
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { ReactQueryDevtools } from 'react-query-devtools'
+import './App.css'
+import Footer from './Footer'
+import Prospects from './Prospects'
+import Games from './Games'
+import Navigation from './Navigation'
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
       <Footer />
       <ReactQueryDevtools initialIsOpen={false} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,14 +1,14 @@
-import { useQuery } from "react-query";
+import { useQuery } from 'react-query'
 
 const fetchGames = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/games`);
-  const { data } = await response.json();
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/games`)
+  const { data } = await response.json()
 
-  return data;
+  return data
 }
 
 const useGames = () => {
-  return useQuery('games', fetchGames);
+  return useQuery('games', fetchGames)
 }
 
-export { useGames };
+export { useGames }

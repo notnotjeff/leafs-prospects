@@ -1,6 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "./Navigation.css";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import './Navigation.css'
 
 const Navigation = () => {
   return (
@@ -12,7 +12,7 @@ const Navigation = () => {
         <NavLink to="/games">Games</NavLink>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
