@@ -33,15 +33,15 @@ const filterProspects = (initialProspects = [], filters) => {
             fail = true
           }
         } else if (f === 'league' && filters[f] === 'CHL') {
-          if (['OHL', 'QMJHL', 'WHL'].includes(p[f])) {
+          if (!['OHL', 'QMJHL', 'WHL'].includes(p[f])) {
             fail = true
           }
         } else if (f === 'league' && filters[f] === 'North American') {
-          if (['OHL', 'QMJHL', 'WHL', 'AHL', 'ECHL', 'USHL', 'NCAA'].includes(p[f])) {
+          if (!['OHL', 'QMJHL', 'WHL', 'AHL', 'ECHL', 'USHL', 'NCAA'].includes(p[f])) {
             fail = true
           }
         } else if (f === 'league' && filters[f] === 'European') {
-          if (['KHL', 'MHL', 'VHL', 'Liiga', 'SHL', 'Mestis', 'NLA'].includes(p[f])) {
+          if (!['KHL', 'MHL', 'VHL', 'Liiga', 'SHL', 'Mestis', 'NLA'].includes(p[f])) {
             fail = true
           }
         } else {

@@ -13,10 +13,13 @@
   },
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "globals": {
-    "process": true
+    "process": true,
+    "global": true,
+    "module": true
   },
   "settings": {
     "react": {

@@ -45,7 +45,7 @@ const ProspectTable = ({ prospects }) => {
               <td className={sortColumn === 'league' ? 'active-col' : ''}>{p.league}</td>
               <td className={sortColumn === 'position' ? 'active-col' : ''}>{p.position}</td>
               <td className={sortColumn === 'shoots' ? 'active-col' : ''}>{p.shoots}</td>
-              <td className={sortColumn === 'age' ? 'active-col' : ''}>{p.age}</td>
+              <td className={sortColumn === 'age' ? 'active-col' : ''}>{Number(p.age).toFixed(1)}</td>
               <td className={sortColumn === 'draft_year' ? 'active-col' : ''}>{p.draft_year}</td>
               <td className={sortColumn === 'draft_round' ? 'active-col' : ''}>{p.draft_round}</td>
               <td className={sortColumn === 'draft_pick' ? 'active-col' : ''}>{p.draft_pick}</td>

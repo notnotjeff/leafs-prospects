@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Prospects.css'
 import ProspectTable from './ProspectTable'
-import ProspectFilter from './ProspectFilter'
+import ProspectFilters from './ProspectFilters'
 import { filterProspects } from 'utils/filter-prospects'
 import { useProspects } from 'queries/prospects'
 
@@ -24,10 +24,6 @@ const Prospects = () => {
 
   const updatedAt = data?.[0]?.updated_at ? new Date(Date.parse(String(data?.[0]?.updated_at))).toLocaleString() : null
 
-  const handleSubmit = e => {
-    e.preventDefault()
-  }
-
   const handleChange = e => {
     const newFilters = { ...filters, [e.target.name]: e.target.value }
     setFilters(newFilters)
@@ -38,7 +34,7 @@ const Prospects = () => {
   return (
     <section>
       <div className="prospects-container">
-        <ProspectFilter handleSubmit={handleSubmit} handleChange={handleChange} />
+        <ProspectFilters handleChange={handleChange} />
         <ProspectTable prospects={filteredProspects} />
       </div>
       <div className="updated-container">Updated at: {updatedAt}</div>
