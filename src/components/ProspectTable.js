@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { sortProspects, selectColumn } from 'utils/sort-prospects'
 import { sortCategories } from 'constants/sort-categories'
 import './ProspectTable.css'
@@ -6,7 +6,7 @@ import './ProspectTable.css'
 const ProspectTable = ({ prospects }) => {
   const [sortColumn, setSortColumn] = useState('points_pg')
   const [sortDirection, setSortDirection] = useState('desc')
-  const sortedProspects = sortProspects(prospects, sortColumn, sortDirection)
+  const sortedProspects = useMemo(() => sortProspects(prospects, sortColumn, sortDirection), [prospects, sortColumn, sortDirection])
 
   return (
     <div className="table-container">
