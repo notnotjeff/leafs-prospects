@@ -2,7 +2,7 @@
   "name": "client",
   "jest": {
     "restoreMocks": true,
-    "clearAllMocks": true,
+    "clearMocks": true,
     "collectCoverageFrom": [
       "**/src/**",
       "!**/node_modules/**",
