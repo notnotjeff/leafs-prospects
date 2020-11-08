@@ -41,7 +41,7 @@ const filterProspects = (initialProspects = [], filters) => {
             fail = true
           }
         } else if (f === 'league' && filters[f] === 'European') {
-          if (!['KHL', 'MHL', 'VHL', 'Liiga', 'SHL', 'Mestis', 'NLA'].includes(p[f])) {
+          if (!['KHL', 'MHL', 'VHL', 'Liiga', 'SHL', 'Mestis', 'NLA', 'Sarja20', 'Allsv', 'CZE2'].includes(p[f])) {
             fail = true
           }
         } else {
