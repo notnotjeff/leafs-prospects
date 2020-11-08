@@ -4,7 +4,7 @@ describe('gameIsToday', () => {
   it('only returns games with todays date', () => {
     jest.spyOn(global.Date, 'now').mockImplementation(() => new Date(Date.parse('2020-05-14T11:01:58.135Z')).valueOf())
 
-    const games = [{ date: '2020-06-20T11:01:58.135Z' }, { date: '2020-05-14T11:01:58.135Z' }]
+    const games = [{ date_time: '2020-06-20T11:01:58.135Z' }, { date_time: '2020-05-14T11:01:58.135Z' }]
     const todaysGames = games.filter(gameIsToday)
 
     expect(todaysGames.length).toBe(1)
@@ -24,7 +24,7 @@ describe('gameWasYesterday', () => {
   it('only returns games with yesterdays date', () => {
     jest.spyOn(global.Date, 'now').mockImplementation(() => new Date(Date.parse('2020-05-15T11:01:58.135Z')).valueOf())
 
-    const games = [{ date: '2020-06-20T11:01:58.135Z' }, { date: '2020-05-14T11:01:58.135Z' }]
+    const games = [{ date_time: '2020-06-20T11:01:58.135Z' }, { date_time: '2020-05-14T11:01:58.135Z' }]
     const yesterdaysGames = games.filter(gameWasYesterday)
 
     expect(yesterdaysGames.length).toBe(1)
