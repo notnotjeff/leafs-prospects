@@ -4,13 +4,13 @@ const filterProspects = (initialProspects = [], filters) => {
     let fail = false
     filterCategories.forEach(f => {
       if (f === 'draft_round' && filters[f] !== 'Any') {
-        if (filters[f] === 'Undrafted' && p[f] !== undefined) {
+        if (filters[f] === 'Undrafted' && p[f] !== null) {
           fail = true
         } else if (+p[f] !== +filters[f] && filters[f] !== 'Undrafted') {
           fail = true
         }
       } else if (f === 'draft_year' && filters[f] !== 'Any') {
-        if (filters[f] === 'Undrafted' && p[f] !== undefined) {
+        if (filters[f] === 'Undrafted' && p[f] !== null) {
           fail = true
         } else if (+p[f] !== +filters[f] && filters[f] !== 'Undrafted') {
           fail = true
