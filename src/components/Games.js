@@ -23,8 +23,8 @@ const Games = () => {
   return (
     <section>
       <div className="games-container">
-        <GamesTable games={todaysGames} title="Today's Games" />
-        <GamesTable games={yesterdaysGames} title="Yesterday's Games" />
+        <GamesTable games={todaysGames} title="Today's Games" id="games-today" />
+        <GamesTable games={yesterdaysGames} title="Yesterday's Games" id="games-yesterday" />
       </div>
       <div className="updated-container">Updated at: {updatedAt} EST</div>
     </section>
