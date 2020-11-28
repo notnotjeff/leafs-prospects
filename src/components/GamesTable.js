@@ -1,7 +1,7 @@
 import React from 'react'
 import './GamesTable.css'
 
-const GamesTable = ({ games, title }) => {
+const GamesTable = ({ games, title, id }) => {
   let gamesRows = (
     <tr>
       <td className="last_name">No Data</td>
@@ -29,7 +29,7 @@ const GamesTable = ({ games, title }) => {
   }
 
   return (
-    <div className="table-container">
+    <div id={id} className="table-container">
       <table>
         <thead>
           <tr>
