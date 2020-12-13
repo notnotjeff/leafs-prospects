@@ -4,9 +4,14 @@ import './Footer.css'
 const Footer = () => {
   return (
     <div className="Footer">
-      <span>Created by Jeff Craig</span>
+      <span>
+        Created by{' '}
+        <a href="https://twitter.com/not_not_jeff" target="_blank" rel="noopener noreferrer">
+          Jeff Craig
+        </a>
+      </span>
       <span className="footer-links">
-        <a href="https://twitter.com/jeff_craig_" target="_blank" rel="noopener noreferrer">
+        <a href="https://twitter.com/leafsaggregator" target="_blank" rel="noopener noreferrer">
           Twitter
         </a>
         <a href="http://www.ahltracker.com" target="_blank" rel="noopener noreferrer">
