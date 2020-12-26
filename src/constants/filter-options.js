@@ -21,6 +21,7 @@ const leagues = [
   'USHL',
   'VHL',
   'WHL',
+  'WJC',
 ]
 
 const positions = ['Any', 'F', 'D', 'W', 'LW', 'RW', 'C']
