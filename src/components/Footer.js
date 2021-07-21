@@ -7,7 +7,7 @@ const Footer = () => {
       <span>
         Created by{' '}
         <a href="https://twitter.com/not_not_jeff" target="_blank" rel="noopener noreferrer">
-          Jeff
+          NotNotJeff
         </a>
       </span>
       <span className="footer-links">
