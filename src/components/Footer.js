@@ -7,7 +7,7 @@ const Footer = () => {
       <span>
         Created by{' '}
         <a href="https://twitter.com/not_not_jeff" target="_blank" rel="noopener noreferrer">
-          Jeff Craig
+          Jeff
         </a>
       </span>
       <span className="footer-links">
@@ -20,10 +20,7 @@ const Footer = () => {
         <a href="http://www.cwhltracker.com" target="_blank" rel="noopener noreferrer">
           CWHL Tracker
         </a>
-        <a href="https://jefftcraig.github.io/ahl-writeups/" target="_blank" rel="noopener noreferrer">
-          Blog
-        </a>
-        <a href="https://public.tableau.com/profile/jeff.craig#!/" target="_blank" rel="noopener noreferrer">
+        <a href="https://public.tableau.com/app/profile/notnotjeff" target="_blank" rel="noopener noreferrer">
           Tableau
         </a>
       </span>
