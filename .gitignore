@@ -5,11 +5,8 @@ npm-debug.log
 coverage
 
 .env.local
-.env.development
 .env.development.local
-.env.development
 .env.test.local
-.env.production
 .env.production.local
 build
 
