@@ -14,8 +14,9 @@ const Games = () => {
     return <div className="loading">Unable to load data!</div>
   }
 
-  const todaysGames = data.filter(gameIsToday)
-  const yesterdaysGames = data.filter(gameWasYesterday)
+  const gameData = data.sort((a, b) => a.points < b.points)
+  const todaysGames = gameData.filter(gameIsToday)
+  const yesterdaysGames = gameData.filter(gameWasYesterday)
   const updatedAt = todaysGames?.[0]?.updated_at
     ? new Date(Date.parse(String(todaysGames?.[0]?.updated_at))).toLocaleString()
     : new Date().toLocaleString()
